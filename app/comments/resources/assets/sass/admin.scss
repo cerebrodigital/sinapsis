@@ -1,0 +1,206 @@
+@import 'bs-custom';
+@import 'spinner';
+
+#admin {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px;
+    margin-bottom: 20px;
+}
+
+.page-header {
+    margin: 0px 0 20px;
+
+    .close {
+        float: none;
+    }
+}
+
+.navbar-top .glyphicon {
+    margin-bottom: 3px;
+    vertical-align: middle;
+}
+
+.status-filter {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+    li {
+        display: inline;
+    }
+
+    a {
+        padding: 2px;
+        text-decoration: none;
+    }
+
+    .active a {
+        color: #000;
+        font-weight: bold;
+    }
+
+    .count {
+        color: #999;
+        font-weight: 400;
+    }
+}
+
+.mark {
+    background-color: #fff;
+}
+
+.bulk-actions {
+    margin: 10px 0;
+
+    select {
+        width: 120px;
+        font-size: 12px;
+        height: 30px;
+        display: inline-block;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        margin-bottom: 1px;
+    }
+}
+
+.column- {
+    &check {
+        width: 1px;
+    }
+
+    &author {
+        width: 25%;
+
+        img {
+            margin: 1px 10px 0 0;
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &page {
+        width: 15%;
+    }
+
+    &comment {
+        .submitted-on {
+            color: #777;
+        }
+
+        .content {
+            word-break: break-word;
+        }
+    }
+}
+
+.page-com-count {
+    opacity: 0.8;
+    margin-right: 5px;
+
+    &:hover, &:focus {
+        opacity: 1;
+        text-decoration: none;
+    }
+
+    .label {
+        padding-right: 0.3em;
+    }
+}
+
+.row-actions {
+    color: #ddd;
+    margin-top: 5px;
+    visibility: hidden;
+
+    a {
+        transition: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .approve {
+        color: #006505;
+    }
+
+    .unapprove {
+        color: #d98500;
+    }
+
+    .spam,
+    .trash,
+    .delete {
+        color: #a00;
+    }
+}
+
+.edit-form {
+    .alert {
+        display: none;
+    }
+
+    textarea {
+        height: 100px;
+        resize: vertical;
+    }
+}
+
+input + input,
+.input-group + .input-group {
+    margin-top: 10px;
+}
+
+.secret {
+    padding-left: 16px;
+    padding-right: 17px;
+}
+
+.table {
+    border: 1px solid #ddd;
+
+    thead>tr>th {
+        vertical-align: top;
+    }
+
+    tr:hover > td .row-actions {
+        visibility: visible;
+    }
+}
+
+.pagination {
+    margin: 0px;
+}
+
+.form-control {
+    height: 33px;
+    padding: 5px 10px;
+}
+
+select.form-control {
+    padding: 5px 6px;
+}
+
+.login {
+    max-width: 320px;
+    margin: 100px auto 20px;
+
+    form {
+        background: #fff;
+        padding: 26px 24px;
+        margin-bottom: 15px;
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+        box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    }
+
+    .error {
+        padding: 12px;
+        background: #fff;
+        margin-bottom: 15px;
+        border-left: 4px solid #dd3d36;
+        box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    }
+}

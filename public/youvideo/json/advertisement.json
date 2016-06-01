@@ -1,0 +1,31 @@
+{"adspace": [
+		{
+			"image"				:	"http://images.fandango.com/MDCsite/images/featured/201512/the-hidden-plot-of-batman-vs-superman-dawn-of-justice-593860.jpg",
+			"title"				:	"Banner Advertisement Example #1",
+			"description"		:	"You can show multiple banner advertisements both at the top or at the bottom of the widget!!",
+			"link"				:	"http://codecanyon.net/item/youmax-youtube-vimeo-facebook-instagram-grid/9989505?ref=codehandling",
+			"type"				:	"banner_top",
+			"backgroundColor"	:	"#FF5722",
+			"labelColor"		:	"#795548",
+			"titleColor"		:	"white",
+			"descriptionColor"	:	"rgba(255,255,255,0.8)",
+			"icon"				:	"fa-star",
+			"buttonText"		:	"Buy Now!!"
+			
+		},
+		{
+			"image"				:	"http://universo-nintendo.com.mx/wp-content/uploads/2015/12/Batman_v_Superman_01.jpg",
+			"title"				:	"Grid Advertisement Example #2",
+			"description"		:	"You can show multiple advertisements inside the photo grid at any specific position you want!!",
+			"link"				:	"http://codecanyon.net/item/youmax-youtube-vimeo-facebook-instagram-grid/9989505?ref=codehandling",
+			"type"				:	"grid",
+			"gridPosition"		:	"2",
+			"backgroundColor"	:	"#4CAF50",
+			"labelColor"		:	"#795548",
+			"titleColor"		:	"white",
+			"descriptionColor"	:	"rgba(255,255,255,0.8)",
+			"icon"				:	"fa-bullhorn",
+			"buttonText"		:	"Buy Now!!"			
+		}
+	]
+}

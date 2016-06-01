@@ -1,0 +1,38 @@
+<?php
+
+return [
+    'collapse' => 'Collapse',
+    'expand'   => 'Expand',
+    'reply'    => 'Reply',
+    'edit'     => 'Edit',
+    'qedit'    => 'Quick Edit',
+    'upvote'   => 'Upvote',
+    'downvote' => 'Downvote',
+    'comment'  => 'Comment',
+    'save'     => 'Save',
+    'saving'   => 'Saving...',
+    'post'     => 'Post',
+    'posting'  => 'Posting...',
+    'cancel'   => 'Cancel',
+    'name'     => 'Name',
+    'email'    => 'Email',
+    'url'      => 'Url',
+    'newest'   => 'Most Recent',
+    'oldest'   => 'Oldest First',
+    'best'     => 'Top Comments',
+    'loading'  => 'Loading...',
+    'writec'   => 'Leave a comment...',
+    'writer'   => 'Leave a reply...',
+    'hold'     => 'Your comment is awaiting moderation.',
+    'auth'     => 'You must be logged in to post comments.',
+    'throttle' => 'Too many comment posts. Please try again in :seconds seconds.',
+
+    'validation' => [
+        'content.duplicate'             => 'Duplicate comment detected; it looks as though you\'ve already said that!',
+        'content.max_pending'           => 'You have too many unapproved comments. Wait until some are approved.',
+        'root_id.exists'                => 'You can\'t reply to a comment that is awaiting moderation.',
+        'parent_id.exists'              => 'You can\'t reply to a comment that is awaiting moderation.',
+        'recaptcha'                     => 'The captcha validation failed.',
+        'g-recaptcha-response.required' => 'The captcha field is required.',
+    ],
+];

@@ -1,0 +1,11 @@
+
+/* Main font */
+h1, h2, h3, h4, h5, h6,
+.header #main-menu,
+.big-message strong,
+.video-stats .video-stat-blobs > span strong,
+#comments .comment-text > div .user-nick {
+	display: inline-block;
+	font-size: 18px;
+	font-family: 'Titillium Web';
+}

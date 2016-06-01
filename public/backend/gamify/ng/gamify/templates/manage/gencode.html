@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Generate Code - {{Caption}}</div>
+
+                    <div class="panel-body">
+                        <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{message}}</strong>
+                        </div>
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>Generate code that will facilitate you to unlock physical features on site if award unlocked from automatic call.</p>
+                                    <p>It is useful in cases like</p>
+                                    <p>e.g if you want to unlock certain rewards when user reach to level 9.</p>
+                                    <p>When user reach to level 9, let's say you want to unlock reward that can increase discount by 1%</p>
+                                    <p>When user reach to level 9, auto script will update user account level and unlock rewards. but there should be a section or function which will adjust custom website features too associate with reward. e.g increase %1 discount rate.</p>
+                                    <p>Below function <strong>Process()</strong> will be automatically call when reward unlocked by passing <strong>reward id</strong>
+                                    <p>You have to write custom code for each reward manually so that script can execute at time of awarding reward.</p>
+                                    <hr />
+                                    
+                                    <p>Copy code from below and paste it under <strong>/include/events/process_reward_features.php</strong> file. If you already add custom script for rewards, then just copy cases which is not yet available in your file.</p>
+                                   
+<pre class="prettyprint">
+<p>&lt;?php
+  /***************************************************************************************/
+  // CORE PAGE: Where you can add custom code for each reward to unlock physical features,
+  // like increasing bid levels, increasing discount on certain reward etc
+  //**************************************************************************************/
+  class process_reward_features {
+     /***********************************
+     --&gt; Please don't change the name of function
+     ************************************/
+     function process($reward_id, $userid) {
+        switch($reward_id) {
+           <span ng-repeat="item in Data">
+           /*********************************
+           -&gt; Unlock -&gt; {{item.title}}
+           -&gt; {{item.description}}
+           **********************************/
+           case {{item.id}}:
+              /* Put your custom code here associated with {{item.title}} reward. */
+              break;
+          </span>
+        }
+     }
+  }
+?&gt;
+</pre>
+
+
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

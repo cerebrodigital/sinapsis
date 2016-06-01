@@ -1,0 +1,222 @@
+
+/* Desktop view */
+
+.ot-menu-list {
+	display: none;
+	position: fixed;
+	top: 0px;
+	bottom: 0px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	z-index: 1000;
+	background: #1D1D1D;
+	color: #f0f0f0;
+	width: 70%;
+	box-shadow: 3px 0 0 rgba(0,0,0,0.2);
+	left: -70%;
+	margin-left: -3px;
+	-moz-transition: all 0.2s;
+	-webkit-transition: all 0.2s;
+	-o-transition: all 0.2s;
+}
+
+.ot-menu-toggle {
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	z-index: 1000;
+	background: #1D1D1D;
+	text-align: center;
+	color: #f0f0f0!important;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 19px 0;
+	width: 100%;
+}
+
+body.ot-menu-active .ot-menu-toggle:after {
+	content: '\f00d';
+	font-family: "FontAwesome";
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	font-size: 18px;
+}
+
+.ot-menu-toggle i.fa {
+	padding-right: 10px;
+}
+
+body.ot-menu-active {
+	overflow: hidden;
+	margin-left: 70%;
+	-moz-transition: margin-left 0.2s;
+	-webkit-transition: margin-left 0.2s;
+	-o-transition: margin-left 0.2s;
+}
+
+body.ot-menu-active .ot-menu-list {
+	left: 0px;
+	margin-left: 0px;
+}
+
+body.ot-menu-active .ot-menu-toggle {
+	left: 70%;
+}
+
+.ot-menu-toggle:hover {
+	background: #232323;
+}
+
+.ot-menu-list h3 {
+	padding: 15px;
+	font-size: 18px;
+	color: #ccc;
+	margin-bottom: 0px;
+}
+
+.ot-menu-list li {
+	border: 0px!important;
+	border-top: 1px solid rgba(255,255,255,0.07)!important;
+}
+
+.ot-menu-list li li a {
+	padding-left: 30px;
+}
+
+.ot-menu-list li a {
+	color: #ccc;
+	background: #232323;
+	box-shadow: inset -20px 0 10px -10px rgba(0,0,0,0.2);
+}
+
+.ot-menu-list li a:hover {
+	background: #1D1D1D;
+}
+
+.ot-menu-list a {
+	padding: 12px 15px;
+	display: block;
+	font-size: 12px;
+}
+
+.ot-menu-list a i {
+	display: none;
+}
+
+.ot-menu-list .big-drop > ul {
+	display: none;
+}
+
+body.ot-menu-active {
+	margin-left: 0px;
+}
+
+body.ot-menu-active .ot-menu-list {
+	width: 70px;
+}
+
+body.ot-menu-active .ot-menu-toggle {
+	left: -70px;
+}
+
+.ot-menu-list .mega-menu-full > ul {
+	display: none!important;
+}
+
+
+/* iPad view */
+@media only screen and (max-width: 700px) and (min-width: 601px) {
+	
+	body.ot-menu-ipad-enable.admin-bar .ot-menu-toggle {
+		margin-top: 32px;
+	}
+
+	body.ot-menu-ipad-enable {
+		position: inherit;
+		-moz-transition: margin-left 0.2s;
+		-webkit-transition: margin-left 0.2s;
+		-o-transition: margin-left 0.2s;
+		width: 100%;
+		margin-top: 52px;
+	}
+	
+	body.ot-menu-ipad-enable .ot-menu-toggle,
+	body.ot-menu-ipad-enable .ot-menu-list {
+		display: block!important;
+	}
+
+	body.ot-menu-ipad-enable .ot-menu-add {
+		display: none!important;
+	}
+
+	body.ot-menu-active {
+		margin-left: 40%;
+	}
+
+	body.ot-menu-active .ot-menu-list {
+		width: 40%;
+	}
+
+	body.ot-menu-active .ot-menu-toggle {
+		left: 40%;
+	}
+	
+}
+
+
+/* iPhone view */
+@media only screen and (max-width: 600px) {
+	
+	body.ot-menu-ipad-enable.admin-bar .ot-menu-toggle {
+		margin-top: 46px;
+	}
+
+	body.ot-menu-iphone-enable {
+		position: inherit;
+		-moz-transition: margin-left 0.2s;
+		-webkit-transition: margin-left 0.2s;
+		-o-transition: margin-left 0.2s;
+		width: 100%;
+		margin-top: 52px;
+	}
+	
+	body.ot-menu-ipad-enable:not(.ot-menu-iphone-enable) {
+		margin-top: 0px;
+	}
+	
+	body.ot-menu-iphone-enable .ot-menu-toggle,
+	body.ot-menu-iphone-enable .ot-menu-list {
+		display: block!important;
+	}
+	
+	body.ot-menu-ipad-enable:not(.ot-menu-iphone-enable) .ot-menu-toggle,
+	body.ot-menu-ipad-enable:not(.ot-menu-iphone-enable) .ot-menu-list {
+		display: none!important;
+	}
+	
+	body.ot-menu-iphone-enable .ot-menu-add {
+		display: none!important;
+	}
+	
+	body.ot-menu-ipad-enable:not(.ot-menu-iphone-enable) .ot-menu-add {
+		display: none!important;
+	}
+
+	body.ot-menu-active {
+		margin-left: 70%;
+	}
+
+	body.ot-menu-active .ot-menu-list {
+		width: 70%;
+	}
+
+	body.ot-menu-active .ot-menu-toggle {
+		left: 70%;
+	}
+	
+}

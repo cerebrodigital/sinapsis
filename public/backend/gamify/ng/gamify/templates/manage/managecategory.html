@@ -1,0 +1,70 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Manage Categories - {{Caption}}</div>
+
+                    <div class="panel-body">
+                        <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{message}}</strong>
+                        </div>
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                    <a href="#/addcategory/{{type}}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</a>
+                                </div>
+                            </div>
+                            <br />
+                            <div ng-if="Data.length==0" class="jumbotron">
+                                <h2 style="text-align:center;">No Records Found!</h2>
+                            </div>
+                            <div ng-if="Data.length>0">
+                                <table class="table table-condensed table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Short</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in Data">
+                                            <td style="width:20%;">
+                                                {{item.title}}
+                                            </td>
+                                            <td style="width:20%;">
+                                                {{item.shorttitle}}
+                                            </td>
+                                            <td style="width:50%;">
+                                                {{item.description}}
+                                            </td>
+                                            <td style="width:10%;">
+                                                <a class="btn btn-xs btn-warning" href="#/addcategory/{{type}}/{{item.id}}"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a class="btn btn-xs btn-danger" href ng-click="dRrecord(item.id)"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

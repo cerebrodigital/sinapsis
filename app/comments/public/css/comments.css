@@ -1,0 +1,282 @@
+@-webkit-keyframes rotate-forever {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes rotate-forever {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.comments .spinner:not(:required) {
+  height: 30px;
+  width: 30px;
+  overflow: hidden;
+  margin: 0px auto;
+  text-indent: 100%;
+  border-radius: 50%;
+  position: relative;
+  border: 4px solid #919191;
+  border-right-color: transparent;
+  -webkit-animation: rotate-forever 1s infinite linear;
+  animation: rotate-forever 1s infinite linear; }
+
+.comments .expand-transition {
+  transition: all .3s ease; }
+
+.comments .expand-enter,
+.comments .expand-leave {
+  height: 0;
+  opacity: 0;
+  margin-bottom: 0px; }
+
+.comments .total {
+  font-size: 18px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee; }
+
+.comments form {
+  margin-top: 10px; }
+  .comments form textarea {
+    width: 100%;
+    overflow: hidden;
+    resize: vertical;
+    min-height: 54px; }
+  .comments form button[type="submit"] {
+    min-width: 55px; }
+  .comments form .form-group {
+    margin-bottom: 10px; }
+  .comments form input.form-control {
+    max-width: 300px; }
+  .comments form .char-count {
+    color: #899eb8;
+    font-size: 12px; }
+  .comments form .cancel {
+    margin: 0 3px; }
+
+.comments .alert {
+  padding: 10px;
+  margin: 10px 0 15px; }
+  .comments .alert ul {
+    padding-left: 20px;
+    list-style-type: disc; }
+
+.comment-sort .dropdown-menu {
+  font-size: 13px;
+  min-width: 110px; }
+
+.comment-sort a {
+  color: #899eb8; }
+  .comment-sort a:hover {
+    color: #526b89; }
+
+.comment-content {
+  position: relative;
+  transition: all .2s ease-in-out; }
+  .comment-content.target {
+    padding-left: 12px; }
+    .comment-content.target .indicator {
+      background: #F66857;
+      transition: opacity 10s linear; }
+  .comment-content:hover .dropdown {
+    display: inline-block; }
+
+.comment-list {
+  padding: 0px;
+  margin: 0px;
+  list-style: none; }
+  .comment-list.children {
+    display: block; }
+    .comment-list.children li.comment {
+      padding: 0px;
+      border-bottom: none; }
+    .comment-list.children .comment:first-child {
+      margin-top: 20px; }
+
+li.comment {
+  padding: 20px 0; }
+
+.comment .avatar {
+  float: left;
+  margin-right: 14px; }
+  .comment .avatar img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%; }
+
+.comment .indicator {
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 64px;
+  position: absolute;
+  border-radius: 1px; }
+
+.comment.collapsed {
+  padding: 15px 0; }
+  .comment.collapsed footer,
+  .comment.collapsed .comment-list,
+  .comment.collapsed .comment-body-inner {
+    display: none; }
+  .comment.collapsed .avatar img {
+    width: 36px;
+    height: 36px; }
+  .comment.collapsed .indicator {
+    height: 36px; }
+  .comment.collapsed .comment-body {
+    margin-left: 36px; }
+    .comment.collapsed .comment-body header {
+      padding-top: 8px; }
+    .comment.collapsed .comment-body .dropdown .collapse {
+      display: none; }
+    .comment.collapsed .comment-body .dropdown .expand {
+      display: inline-block; }
+
+.comment-body form {
+  margin-left: 0 !important; }
+
+.comment-body header a,
+.comment-body footer a {
+  color: #899eb8; }
+  .comment-body header a:hover,
+  .comment-body footer a:hover {
+    color: #526b89; }
+
+.comment-body footer a {
+  font-size: 13px; }
+
+.comment-body footer .comment-voting + .reply {
+  margin-left: 5px; }
+
+.comment-body .glyphicon {
+  font-size: 11px; }
+
+.comment-body .author {
+  color: #262626;
+  font-weight: bold; }
+
+.comment-body .time-ago {
+  font-size: 13px;
+  margin-left: 6px; }
+
+.comment-body .sep {
+  height: 12px;
+  display: inline-block;
+  border-left: 2px solid #eaedee; }
+
+.comment-body .dropdown {
+  display: none;
+  margin-top: -5px; }
+  .comment-body .dropdown.open {
+    display: inline-block; }
+  .comment-body .dropdown .collapse,
+  .comment-body .dropdown .expand {
+    color: #777;
+    opacity: .5;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 2px; }
+    .comment-body .dropdown .collapse:hover,
+    .comment-body .dropdown .expand:hover {
+      opacity: 1; }
+  .comment-body .dropdown .collapse {
+    display: inline-block; }
+  .comment-body .dropdown .expand {
+    display: none; }
+  .comment-body .dropdown .caret {
+    margin-top: -5px; }
+  .comment-body .dropdown .edit-menu {
+    display: inline-block; }
+  .comment-body .dropdown .dropdown-toggle {
+    opacity: .5;
+    cursor: pointer;
+    padding-right: 3px;
+    display: inline-block; }
+    .comment-body .dropdown .dropdown-toggle:hover {
+      opacity: 1; }
+  .comment-body .dropdown .dropdown-menu {
+    top: 20px;
+    left: -70px;
+    padding: 0px;
+    min-width: 100px; }
+    .comment-body .dropdown .dropdown-menu > li > a {
+      font-size: 13px;
+      padding: 6px 10px; }
+
+.comment-body .hold {
+  color: #a94442;
+  font-size: 13px;
+  margin-top: 5px; }
+
+.comment-message {
+  padding: 5px 0;
+  line-height: 1.7;
+  word-break: break-word; }
+  .comment-message p {
+    margin-bottom: 0px; }
+  .comment-message img:not(.emoji) {
+    height: auto;
+    margin: 5px 0;
+    display: block;
+    max-width: 100%;
+    border-radius: 2px; }
+  .comment-message pre {
+    border: none;
+    padding: .8em; }
+    .comment-message pre:first-child {
+      margin-top: 0px; }
+  .comment-message ul {
+    padding-left: 20px;
+    list-style-type: disc; }
+  .comment-message .emoji {
+    width: 18px; }
+
+.comment-voting {
+  color: #999;
+  font-size: 12px;
+  display: inline-block; }
+  .comment-voting .sep {
+    margin: 0 2px; }
+  .comment-voting a.upvote.voted,
+  .comment-voting a.upvote.voted:hover {
+    color: #2e87e7 !important; }
+  .comment-voting a.downvote.voted,
+  .comment-voting a.downvote.voted:hover {
+    color: #f05f70 !important; }
+
+@media (min-width: 768px) {
+  .comment-body {
+    margin-left: 80px; }
+  .comment .children .indicator {
+    height: 42px; }
+  .comment .children .avatar img {
+    width: 42px;
+    height: 42px; }
+  .comment .children .comment-body {
+    margin-left: 55px; }
+  .comment .children .comment {
+    margin-left: 80px; }
+  .comment .children .children .comment {
+    margin-left: 55px; }
+  .comment .children .children .children .children .comment {
+    margin-left: 0; }
+  .comment .children form {
+    margin-left: 55px; }
+  .comment .children .comment-body form {
+    margin-left: 2px !important; }
+  .comment form {
+    margin-left: 80px; } }
+
+@media (max-width: 767px) {
+  .comment .avatar img {
+    width: 36px;
+    height: 36px; }
+  .comment-body form {
+    margin-top: 25px; } }

@@ -1,0 +1,9 @@
+<ul class="pagination"> 
+     <li ng-repeat="link in links" ng-class="{active: link.name == paginationOptions.pagenumber}">
+        <a ng-if="link.name=='First'" href="{{link.url}}" title="{{link.tooltip}}"><i class="fa fa-chevron-left"></i></a>
+        <a ng-if="link.name=='Prev'" href="{{link.url}}" title="{{link.tooltip}}"><i class="fa fa-backward"></i></a>
+        <a ng-if="link.name!='First' && link.name!='Prev' && link.name!='Next' && link.name!='Last'" href="{{link.url}}" title="{{link.tooltip}}">{{link.name}}</a>
+        <a ng-if="link.name=='Next'" href="{{link.url}}" title="{{link.tooltip}}"><i class="fa fa-chevron-right"></i></a>
+        <a ng-if="link.name=='Last'" href="{{link.url}}" title="{{link.tooltip}}"><i class="fa fa-forward"></i></a>
+     </li>
+ </ul>

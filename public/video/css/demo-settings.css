@@ -1,0 +1,332 @@
+
+.demo-settings {
+	display: block;
+	position: fixed;
+	top: 20%;
+	left: 20px;
+	/*background: #232323;*/
+	color: #fff;
+	z-index: 19000;
+	box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.demo-settings .demo-options {
+	display: block;
+	width: 190px;
+	background: #232323;
+	color: #767676;
+	text-align: left;
+	font-size: 11px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.demo-settings .demo-button {
+	display: block;
+	background: #232323;
+	color: #fff;
+	text-align: center;
+	line-height: 130%;
+	font-weight: bold;
+	font-size: 11px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding: 12px 15px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+.demo-settings.active .demo-button {
+	display: none;
+}
+
+.demo-settings:not(.active) .demo-options {
+	display: none;
+}
+
+.demo-settings .demo-button:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.demo-settings .demo-button i.fa {
+	display: block;
+	font-size: 25px;
+	line-height: 120%;
+}
+
+.demo-settings .demo-options .title {
+	text-align: center;
+	display: block;
+	padding: 12px 15px;
+	text-transform: uppercase;
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	background: #2a2a2a;
+	border-bottom: 1px solid #353535;
+	border-radius: 3px 3px 0px 0px;
+	-moz-border-radius: 3px 3px 0px 0px;
+	cursor: default;
+}
+
+.demo-settings .demo-options .option {
+	text-align: left;
+	display: block;
+	padding: 9px 15px 9px 15px;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 120%;
+}
+
+.demo-settings .demo-options .option:hover {
+	background: rgba(0,0,0,0.1);
+}
+
+.demo-settings .demo-options .option:last-child {
+	padding-bottom: 9px;
+}
+
+.demo-settings .demo-options .option:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.demo-settings .demo-options .option .demo-icon {
+	display: block;
+	float: left;
+}
+
+.demo-settings .demo-options .option span {
+	display: block;
+	margin-left: 50px;
+	font-family: 'Titillium Web', sans-serif;
+	color: #d3d3d3;
+	padding-top: 2px;
+}
+
+.demo-settings .demo-options .option font {
+	display: block;
+	margin-left: 50px;
+	font-size: 10px;
+	color: #767676;
+}
+
+.demo-settings .option-box {
+	display: none;
+	background: #191919;
+	border-top: 1px solid #2e2e2e;
+	border-bottom: 1px solid #2e2e2e;
+	padding: 10px 15px;
+	position: relative;
+}
+
+.demo-settings .option-box:last-child {
+	border-radius: 0px 0px 3px 3px;
+	-moz-border-radius: 0px 0px 3px 3px;
+}
+
+.demo-settings .option-box.sequal {
+	border-top: 0px;
+}
+
+.demo-settings .option-box:not(.sequal):before {
+	display: block;
+	position: absolute;
+	z-index: 20;
+	background: #191919;
+	border-top: 1px solid #2e2e2e;
+	border-left: 1px solid #2e2e2e;
+	content: '';
+	width: 7px;
+	height: 7px;
+	top: -4px;
+	left: 25px;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
+.demo-settings .sub-title {
+	display: block;
+	padding-bottom: 7px;
+	color: #d1d1d1;
+}
+
+.demo-settings .color-bulb {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: #258ac0;
+	position: relative;
+	border: 1px solid #191919;
+	border-radius: 20px;
+	-moz-border-radius: 20px;
+	margin: 0px 8px 0px 2px;
+}
+
+.demo-settings .color-bulb:before {
+	display: block;
+	position: absolute;
+	width: 10px;
+	height: 20px;
+	top: 0px;
+	right: 0px;
+	background: rgba(0,0,0,0.15);
+	content: '';
+	border-radius: 0px 20px 20px 0px;
+	-moz-border-radius: 0px 20px 20px 0px;
+}
+
+.demo-settings .color-bulb.active, .demo-settings .color-bulb.active:hover {
+	box-shadow: 0px 0px 0px 2px #fff;
+}
+
+.demo-settings .color-bulb:hover {
+	box-shadow: 0px 0px 0px 2px #575757;
+}
+
+
+.demo-settings .font-bulb {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	position: relative;
+	margin: 0px 10px 0px 2px;
+	font-size: 14px;
+	color: #ccc;
+	font-weight: bold;
+	text-align: center;
+}
+
+.demo-settings .font-bulb.active, .demo-settings .font-bulb.active:hover {
+	box-shadow: inset 0px -2px 0px 0px #fff;
+	color: #fff;
+}
+
+.demo-settings .font-bulb:hover {
+	box-shadow: inset 0px -2px 0px 0px #575757;
+	color: #fff;
+}
+
+
+.demo-settings .option-bulb {
+	display: inline-block;
+	height: 20px;
+	position: relative;
+	margin: 0px 3px 0px 2px;
+	font-size: 12px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	padding: 0px 5px;
+	line-height: 160%;
+}
+
+.demo-settings .option-bulb.active, .demo-settings .option-bulb.active:hover {
+	background: #fff;
+	color: #232323;
+}
+
+.demo-settings .option-bulb:hover {
+	background: #575757;
+}
+
+
+.demo-settings .header-bulb {
+	display: inline-block;
+	margin-bottom: 8px;
+	opacity: 0.3;
+	filter: alpha(opacity=30);
+}
+
+.demo-settings .header-bulb.active, .demo-settings .header-bulb.active:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+}
+
+.demo-settings .header-bulb:hover {
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+
+.demo-options a.option-box {
+	position: relative;
+}
+
+.demo-options .option-box[rel='background']:after {
+	display: block;
+	position: absolute;
+	content: '';
+	top: -15px;
+	right: -140px;
+	width: 129px;
+	height: 73px;
+	background: url(../images/demo/spray-info-background.png) no-repeat center;
+	z-index: 10;
+}
+
+.demo-options .option-box[rel='color-options']:not(.sequal):after {
+	display: block;
+	position: absolute;
+	content: '';
+	top: -15px;
+	right: -140px;
+	width: 129px;
+	height: 73px;
+	background: url(../images/demo/spray-info-colors.png) no-repeat center;
+	z-index: 10;
+}
+
+.demo-options .option-box[rel='font-options']:after {
+	display: block;
+	position: absolute;
+	content: '';
+	top: 15px;
+	right: -140px;
+	width: 129px;
+	height: 73px;
+	background: url(../images/demo/spray-info-fonts.png) no-repeat center;
+	z-index: 10;
+}
+
+.demo-settings .color-bulb:nth-child(n+7) {
+	margin-top: 8px;
+}
+
+.demo-settings .demo-icon {
+	background: url(../images/demo/sprites.png) no-repeat top center;
+}
+
+.demo-settings .demo-icon.f1 {
+	background-position: 0px 0px;
+}
+
+.demo-settings .demo-icon.f2 {
+	background-position: 0px -33px;
+}
+
+.demo-settings .demo-icon.f3 {
+	background-position: 0px -66px;
+}
+
+.demo-settings .demo-icon.f4 {
+	background-position: 0px -99px;
+}
+
+.demo-settings .demo-icon.f5 {
+	background-position: 0px -132px;
+}
+
+.demo-settings .demo-icon.f6 {
+	background-position: 0px -165px;
+}

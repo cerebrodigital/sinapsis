@@ -1,0 +1,85 @@
+
+@media only screen and (max-width: 900px) {
+
+	.demo-settings {
+		display: none!important;
+	}
+
+	body, div, p, a, table, td {
+		-webkit-text-size-adjust: none;
+		letter-spacing: .015em;
+	}
+
+	h1 { font-size: 24px; }
+	h2 { font-size: 20px; }
+	h3 { font-size: 18px; }
+	h4 { font-size: 16px; }
+	h5 { font-size: 14px; }
+	h6 { font-size: 12px; }
+
+	.video-list.list .item .item-content > h3 {
+		font-size: 18px;
+	}
+
+	body, p {
+		font-size: 12px;
+	}
+
+	.widget > ul li {
+		font-size: 12px;
+	}
+
+	.header #main-menu .top-menu > li > a {
+		font-size: 14px;
+	}
+
+	.header #main-menu .bottom-menu {
+		font-size: 10px;
+	}
+
+	.header #main-menu .bottom-menu li a {
+		padding: 14px 15px;
+	}
+
+	.header #main-menu .top-menu > li > a {
+		padding: 14px 15px 13px 15px;
+	}
+
+	.header #main-menu .top-menu > li.wo-description > a {
+		padding: 22px 15px 19px 15px;
+	}
+
+	.header #main-menu.minify-menu .top-menu > li > a {
+		padding: 14px 13px 13px 13px;
+	}
+
+	.header #main-menu .search-head .ot-search-field {
+		padding: 21px 15px;
+	}
+
+	.header #main-menu .search-head .ot-search-field:focus {
+		padding: 21px 45px 21px 20px;
+	}
+
+	.header #main-menu .search-head:before,
+	.header #main-menu .search-head .ot-search-button {
+		height: 59px;
+		line-height: 59px;
+	}
+
+	.header #main-menu .search-head {
+		display: none!important;
+	}
+
+	.header .header-upper .right {
+		display: none!important;
+	}
+
+	.writecomment label, #writecomment label {
+		position: inherit;
+		right: auto;
+		line-height: 14px;
+		margin-bottom: 6px;
+	}
+
+}

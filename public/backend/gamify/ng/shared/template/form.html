@@ -1,0 +1,84 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>{{message}}</strong>
+                    <p ng-if="validationLog.length > 0" ng-repeat="val in validationLog track by $index">
+                       {{val.message}}
+                    </p>
+                    
+                </div>
+                <div ng-if="showProcessing">
+                    <div class="spinner">
+                        <div class="bounce1"></div>
+                        <div class="bounce2"></div>
+                        <div class="bounce3"></div>
+                    </div>
+                </div>
+                <div class="form-horizontal" ng-if="!showProcessing">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-md-11">
+                                     <h3 class="panel-title">{{Form.header}}</h3>
+                                </div>
+                                <div class="col-md-1">
+                                    <a href="#/" class="btn btn-primary btn-sm pull-right">Back</a>
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="panel-body">
+                               <div class="form-group {{config.css}}" ng-repeat="config in formConfig">
+                                    <div ng-if="config.block">
+                                        <hr />
+                                        <h2>&nbsp;{{config.heading}}</h2>
+                                        <hr />
+                                    </div>
+                                    
+                                    <label for="{{config.caption}}" class="col-lg-2 control-label">{{config.display}}</label>
+                                    <div class="{{config.inputclass}} | col-lg-10">
+                                      <input ng-if="config.type=='textbox'" type="text" ng-blur="validate(config)" class="form-control" ng-model="config.value" placeholder="{{config.placeHolder}}">
+                                      <input ng-if="config.type=='password'" type="password" ng-blur="validate(config)" class="form-control" ng-model="config.value" placeholder="{{config.placeHolder}}">
+                                     
+                                      <textarea ng-if="config.type=='textarea'" ng-blur="validate(config)" rows="config.rows" class="form-control"  ng-model="config.value"  placeholder="{{config.placeHolder}}"></textarea>
+                                     
+                                      <div text-angular ta-text-editor-class="form-control" ta-html-editor-class="form-control" ng-if="config.type=='textangular'" ng-blur="validate(config)" rows="config.rows"  ng-model="config.value"></div>
+                                    
+                                      <select chosen ng-if="config.type=='dropdown' && !config.isMultiple"  ng-model="config.value" class="form-control" ng-options="item.id as item.title for item in config.options">                   <option value="">{{config.text}}</option>
+                                      </select>
+                                      <select chosen data-placeholder="Please select one category" ng-if="config.type=='dropdown' && config.isMultiple" multiple  ng-model="config.values" class="form-control" ng-options="item.id as item.title for item in config.options">
+                                      </select>
+                                      <div class="radio" ng-if="config.type=='radio'"  ng-repeat="rad_value in config.options">
+                                        <label>
+                                          <input type="radio" value="{{rad_value.id}}" ng-model="config.value">
+                                          {{rad_value.value}}
+                                        </label>
+                                      </div>
+                                      <div class="checkbox" ng-if="config.type=='check'" ng-repeat="rad_value in config.options">
+                                          <label>
+                                              <input type="checkbox" ng-model="bool" ng-change="syncCheckBox(bool, rad_value, config.values)" ng-checked="isCheckBoxChecked(rad_value.id, config.values)" /> {{rad_value.value}} - {{rad_value.isselected}}
+                                          </label>
+                                      </div>
+                                      <p ng-if="config.errorMsg" class="help-block">{{config.errorMsg}}</p>
+                                      <p ng-if="!config.errorMsg && config.tooltip != ''">{{config.tooltip}}</p>
+                                    </div>
+                                 
+                                  </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button ng-click="create()" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+            <div class="col-md-2">
+              
+               
+            </div>
+        </div>
+    </div>
+</div>

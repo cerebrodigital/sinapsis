@@ -1,0 +1,159 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">{{headerCaption}} {{Caption}}</div>
+                    <div class="panel-body">
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <strong>{{message}}</strong>
+                            </div>
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+                                    <a ng-if="category[0].id>0" href="#/addbadge/{{type}}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</a>
+                                    <a href="#/" class="btn btn-primary"><i class="glyphicon glyphicon-th-large"></i> Manage</a>
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <div class="form-group" ng-if="type==3">
+                                    <label for="gtitle" class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                        <h2>{{badge[0].ilevel}} Level</h2>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gtitle" class="col-sm-2 control-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="gtitle" ng-model="badge[0].title" class="form-control" placeholder="Enter Title">
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label for="gdesc" class="col-sm-2 control-label">Description</label>
+                                    <div class="col-sm-10">
+                                        <textarea id="gdesc" ng-model="badge[0].description" class="form-control" placeholder="Enter Description" rows="5"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gdesc" class="col-sm-2 control-label">Notification</label>
+                                    <div class="col-sm-10">
+                                        <textarea id="gdesc" ng-model="badge[0].notification" class="form-control" placeholder="Enter Notification (Leave blank if you want not to log no info in user achievements for selected reward)" rows="5"></textarea>
+                                        <p class="help-block">Message to be added in user history when user is awarded this feature. e.g "You have been awarded [value] xp, where [value] will be replace with their respective value (badge, reward, xp, credits, package, level)."</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="gcategory" class="col-sm-2 control-label">Select Category</label>
+                                    <div class="col-sm-10">
+                                        <select id="gcategory" ng-model="badge[0].category_id" class="form-control" ng-options="item.id as item.title for item in Categories">
+                                            <option value="">--Select--</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                         <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" ng-model="isCss" />  Use css for avator instead of icon
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                <div class="form-group" ng-if="isCss">
+                                    <label for="iscss" class="col-sm-2 control-label">CSS Class</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="iscss" ng-model="badge[0].icon_css" class="form-control" placeholder="Enter CSS">
+                                        <p class="help-block">In case you want to use font-awesome or display badge via css instead of image</p>
+                                    </div>
+                                </div>
+                               
+                                
+                                <div class="form-group">
+                                    <label for="priority" class="col-sm-2 control-label">Priority</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="priority" ng-model="badge[0].priority" class="form-control" placeholder="Enter Priority">
+                                        <p class="help-block">Use to prioritize the following item in listing.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="type==6">
+                                    <label for="xp" class="col-sm-2 control-label">Price</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="xp" ng-model="badge[0].price" class="form-control" placeholder="Enter Price $">
+                                        <p class="help-block">Price needed to buy this package.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="type==2 || type==5 || type==6">
+                                    <label for="credits" class="col-sm-2 control-label">Credits</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="credits" ng-model="badge[0].credits" class="form-control" placeholder="Enter Credits (required to unlock this reward)">
+                                        <p class="help-block" ng-if="type==2">Credits required to unlock this reward.</p>
+                                        <p class="help-block" ng-if="type==5">Credits to be rewarded when user complete this task.</p>
+                                        <p class="help-block" ng-if="type==6">Credits to be rewarded when user purchase this package.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="type==3 || type==4">
+                                    <label for="xp" class="col-sm-2 control-label">XP</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="xp" ng-model="badge[0].xp" class="form-control" placeholder="Enter XP">
+                                        <p class="help-block" ng-if="type==3">XP required to unlock this level.</p>
+                                        <p class="help-block" ng-if="type==4">XP to be rewarded when user complete this task.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-if="type==4 || type==5">
+                                    <label for="gcategory" class="col-sm-2 control-label">Is Deduct</label>
+                                    <div class="col-sm-10">
+                                        <select id="gcategory" ng-model="badge[0].isdeduct" class="form-control">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <p class="help-block">If Yes then this event will be used to deduct, remove this item from user profile.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ghide" class="col-sm-2 control-label">Is Hide</label>
+                                    <div class="col-sm-10">
+                                        <select id="ghide" ng-model="badge[0].ishide" class="form-control">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <p class="help-block">If Yes will hide selected item to display on public places. Just for internal or for specific use only. e.g if you want to assign few rewards with level 10 but not want to display these rewards in reward listings.</p>
+                                    </div>
+                                </div>
+                                 <div class="form-group" ng-if="type==1 || type==2  || type==6">
+                                    <label for="ghide" class="col-sm-2 control-label">Is Multiple</label>
+                                    <div class="col-sm-10">
+                                        <select id="ghide" ng-model="badge[0].ismultiple" class="form-control">
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                        </select>
+                                        <p class="help-block">If yes current item (badge, reward, package) to be awarded multiple times.</p>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <a ng-click="addBadge()" href class="btn btn-primary">{{headerCaption}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

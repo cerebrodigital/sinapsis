@@ -1,0 +1,17 @@
+<div id="plupload_container">
+    <div id="modalmsg">
+
+    </div>
+    <a ng-if="photowidth !=''">
+        <img class="{{photocss}}" style="width:{{photowidth}}; height:{{photoheight}}" ng-src="{{defaultphoto}}" ng-if="photoname==''" />
+        <img class="{{photocss}}" style="width:{{photowidth}}; height:{{photoheight}}" ng-src="{{path}}" ng-if="photoname!=''" alt="" />
+    </a>
+    <a href="#" ng-if="photowidth ==''">
+        <img class="{{photocss}}" ng-src="{{defaultphoto}}" ng-if="photoname==''" />
+        <img class="{{photocss}}" ng-src="{{path}}" ng-if="photoname!=''" alt="" />
+    </a>
+    <div style="text-align:center">
+        <a id="pickfiles" title="upload photo" href="#"><i class="fa fa-plus"></i></a>
+        <a id="rfile" style="display:none;" title="remove photo" href="#"><i class="fa fa-trash"></i></a>
+    </div>
+</div>

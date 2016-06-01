@@ -1,0 +1,82 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Associate with Event</div>
+                    <div class="panel-body">
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <strong>{{message}}</strong>
+                            </div>
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+                                    <a ng-if="event[0].id>0" href="#/addevent/{{type}}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</a>
+                                    <a href="#/events" class="btn btn-primary"><i class="glyphicon glyphicon-th-large"></i> Manage</a>
+                                </div>
+                            </div>
+                            <p>Associate rewards, badges, level, points, credits or packages with event. If associated, these actions should be trigger once selected event calls.</p>
+                            <p>e.g if you associate specific badge with event id = 754, if selected event triggers on specific user account, it will call specific badge to be awarded to selected user</p>
+                            
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="gtitle" class="col-sm-2 control-label">Search</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="gtitle" ng-model="searchTerm" class="form-control" placeholder="Enter Search Term">
+                                    </div>
+                                </div>
+                                <hr />
+                                <div ng-if="Data.length==0" class="jumbotron">
+                                    <h2 style="text-align:center;">No Records Found!</h2>
+                                </div>
+                                <div ng-if="Data.length>0">
+                                    <table class="table table-condensed table-hover table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>---</th>
+                                                <th>Title</th>
+                                                <th>Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in Data  | filter:searchTerm" ng-class="{success: item.isselected}">
+                                                <td style="width:5%;">
+                                                    <input type="checkbox" ng-model="item.isselected" ng-change="syncEvent(item.isselected, item)" ng-checked="isEventChecked(item.id)" />
+                                                </td>
+                                                <td style="width:75%;">
+                                                    {{item.title}}
+                                                </td>
+                                                <td style="width:15%;">
+                                                    {{item.typecaption}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <hr />
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <a ng-click="addEvent()" href class="btn btn-primary">Associate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

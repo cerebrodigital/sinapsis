@@ -1,0 +1,66 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Upload Avator - {{Caption}}</div>
+
+                    <div class="panel-body">
+                        <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{message}}</strong>
+                        </div>
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+                                    <a href="#/addbadge/{{type}}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</a>
+                                    <a href="#/" class="btn btn-primary"><i class="glyphicon glyphicon-th-large"></i> Manage</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <!-- adjust container with size of image-->
+                                    <div style="width:68px;">
+                                        <photouploader handlerpath="{{handlerpath}}"
+                                                       pickfilecaption="{{pickfilecaption}}"
+                                                       max_file_size="{{max_file_size}}"
+                                                       chunksize="{{chunksize}}"
+                                                       headers="{{headers}}"
+                                                       extensions="{{extensions}}"
+                                                       extensiontitle="{{extensiontitle}}"
+                                                       photoname="{{photoname}}"
+                                                       updatehandler="{{updatehandler}}"
+                                                       photowidth="{{photowidth}}"
+                                                       photoheight="{{photoheight}}"
+                                                       photocss="{{photocss}}"
+                                                       photopath="{{photopath}}"
+                                                       defaultphoto="{{defaultphoto}}"
+                                                       removehandler="{{removehandler}}"
+                                                       photoid="{{photoid}}">
+                                        </photouploader>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <p>Upload or replace badge photo by clicking on plus icon.</p>
+                                </div>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

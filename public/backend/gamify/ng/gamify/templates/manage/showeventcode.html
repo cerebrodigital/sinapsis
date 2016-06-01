@@ -1,0 +1,64 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Show Code - {{Caption}}</div>
+
+                    <div class="panel-body">
+                        <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{message}}</strong>
+                        </div>
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+                                    <a href="#/addbadge/{{type}}" title="Add new record" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>{{Info[0].title}}</h2>
+                                    <p>Description: {{Info[0].description}}</p>
+                                    <hr />
+                                    <p>Copy code from below and paste it under <strong>>/include/events/{{eventname}}.php</strong> file.</p>
+
+<pre class="prettyprint">
+// &lt;summary&gt;
+// {{Info[0].title}}
+// &lt;/summary&gt;
+function trigger_event_{{selectedID}}($userid)
+{
+$obj = new ga_core_bll();<span ng-repeat="item in EventData">
+$obj->trigger_item($userid, {{item.badge_id}});</span>
+}
+</pre>
+                                    <p>Once paste you can use this function in any part of your solution to trigger this event</p>
+<pre class="prettyprint">
+include_once("include/events/{{eventname}}.php");
+$obj = new {{eventname}}();
+$obj->trigger_event_{{selectedID}}($userid);
+</pre>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

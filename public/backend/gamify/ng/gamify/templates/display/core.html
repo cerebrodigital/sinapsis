@@ -1,0 +1,143 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+              
+                <div class="panel panel-default">
+                    <div class="panel-heading">Summary Information</div>
+                    <div class="panel-body">
+                        <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{message}}</strong>
+                        </div>
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            
+                            <div ng-if="userInfo.length==0" class="jumbotron">
+                                <h2 style="text-align:center;">No Records Found!</h2>
+                            </div>
+                            <div ng-if="userInfo.length>0">
+                                <div class="well">
+                                    <h2>Welcome {{userInfo[0].firstname + " " + userInfo[0].lastname}}</h2>
+                                </div>
+                                
+                                <p>User ID: <strong>{{userInfo[0].userid}}</strong></p>
+                                <p>Username: <strong>{{userInfo[0].username}}</strong></p>
+                                <div class="well">
+                                    <h3>Current Level: {{userInfo[0].levels}}</h3><br />
+                                    <p>Level Stats: <strong>{{userInfo[0].init_points}}</strong> in <strong>{{userInfo[0].max_points}}</strong>, You still require <strong>{{userInfo[0].max_points - userInfo[0].init_points}}</strong> points to reach <strong>Level {{userInfo[0].levels + 1}}</strong></p>
+                                </div>
+                                <div class="well">
+                                    <h2>Account Stats</h2>
+                                    <h3>{{userInfo[0].points}} XP</h3>
+                                    <br />
+                                    <h3>{{userInfo[0].credits}} Credits</h3>
+                                </div>
+                                <div class="well">
+                                    <h2>Badges Earned</h2>
+                                    <div ng-if="userBadges.length==0" class="jumbotron">
+                                        <h2 style="text-align:center;">No Rewards Unlocked Yet!</h2>
+                                    </div>
+                                    <div ng-if="userBadges.length>0">
+                                        <table class="table">
+                                           
+                                            <tbody>
+                                                <tr ng-repeat="item in userBadges">
+                                                    <td style="width:10%;">
+                                                        <div ng-if="item.icon_css != ''">
+                                                            <span class="{{item.icon_css}}"></span>
+                                                        </div>
+                                                        <div ng-if="item.icon_css == ''">
+                                                            <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{defaultphoto}}" src="{{defaultphoto}}" ng-if="item.icon==''" />
+                                                            <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{photopath}}{{item.icon}}" ng-if="item.icon!=''" />
+                                                        </div>
+                                                    </td>
+                                                    <td style="width:85%;">
+                                                        <h4>{{item.title}}</h4>
+                                                        <p>{{item.description}}</p>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="well">
+                                    <h2>Rewards Unlocked</h2>
+                                    <div ng-if="userRewards.length==0" class="jumbotron">
+                                        <h2 style="text-align:center;">No Rewards Unlocked Yet!</h2>
+                                    </div>
+                                    <div ng-if="userRewards.length>0">
+                                        <table class="table">
+                                            
+                                            <tbody>
+                                                <tr ng-repeat="item in userRewards">
+                                                    <td style="width:10%;">
+                                                        <div ng-if="item.icon_css != ''">
+                                                            <span class="{{item.icon_css}}"></span>
+                                                        </div>
+                                                        <div ng-if="item.icon_css == ''">
+                                                            <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{defaultphoto}}" src="{{defaultphoto}}" ng-if="item.icon==''" />
+                                                            <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{photopath}}{{item.icon}}" ng-if="item.icon!=''" />
+                                                        </div>
+                                                    </td>
+                                                    <td style="width:85%;">
+                                                        <h4>{{item.title}}</h4>
+                                                        <p>{{item.description}}</p>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                                         
+                                <div class="well">
+                                    <h2>Packages Purchased</h2>
+                                    <div ng-if="userPackages.length==0" class="jumbotron">
+                                        <h2 style="text-align:center;">No Packages Purchased Yet!</h2>
+                                    </div>
+                                    <div ng-if="userPackages.length>0">
+                                        <table class="table">
+                                            
+                                            <tbody>
+                                                <tr ng-repeat="item in userPackages">
+                                                    <td style="width:10%;">
+                                                        <div ng-if="item.icon_css != ''">
+                                                            <span class="{{item.icon_css}}"></span>
+                                                        </div>
+                                                        <div ng-if="item.icon_css == ''">
+                                                            <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{defaultphoto}}" src="{{defaultphoto}}" ng-if="item.icon==''" />
+                                                            <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{photopath}}{{item.icon}}" ng-if="item.icon!=''" />
+                                                        </div>
+                                                    </td>
+                                                    <td style="width:85%;">
+                                                        <h4>{{item.title}}</h4>
+
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                               
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

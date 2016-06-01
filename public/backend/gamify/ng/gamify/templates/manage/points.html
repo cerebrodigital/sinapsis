@@ -1,0 +1,90 @@
+﻿<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-3" ng-include="Nav">
+            </div>
+            <div class="col-md-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Manage Points</div>
+                    <div class="panel-body">
+                        <div class="alert {{messagecss}} alert-dismissible" role="alert" ng-if="message !=''">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <strong>{{message}}</strong>
+                        </div>
+                        <div ng-if="showLoader">
+                            <div class="spinner">
+                                <div class="bounce1"></div>
+                                <div class="bounce2"></div>
+                                <div class="bounce3"></div>
+                            </div>
+                        </div>
+                        <div ng-if="!showLoader">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                                    <a href="#/addbadge/{{type}}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> Add</a>
+                                </div>
+                                <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+                                    <a ng-if="Categories.length > 0" class="btn btn-primary" ng-click="filter(0)">All</a>
+                                    <a ng-repeat="item in Categories" class="btn btn-primary" href ng-click="filter(item.id)">{{item.shorttitle}}</a>
+                                    <a href="#/managecategory/{{type}}" class="btn btn-primary"><i class="glyphicon glyphicon-th-large"></i> Manage</a>
+                                </div>
+                            </div>
+                            <br />
+                            <div ng-if="Data.length==0" class="jumbotron">
+                                <h2 style="text-align:center;">No Records Found!</h2>
+                            </div>
+                            <div ng-if="Data.length>0">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                    </div>
+                                    <div class="col-md-4">
+                                         <input type="text" ng-model="searchTerm" class="form-control" placeholder="Search Points">
+                                    </div>
+                                 </div>
+                                 <br />
+                                <table class="table table-condensed table-hover table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Badge</th>
+                                            <th>XP</th>
+                                            <th>Title</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in Data | filter:searchTerm">
+                                            <td style="width:10%;">
+                                                <div ng-if="item.icon_css != ''">
+                                                    <span class="{{item.icon_css}}"></span>
+                                                </div>
+                                                <div ng-if="item.icon_css == ''">
+                                                    <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{defaultphoto}}" src="{{defaultphoto}}" ng-if="item.icon==''" />
+                                                    <img class="img-responsive" style="width:68px; height:auto;" ng-src="{{photopath}}{{item.icon}}" ng-if="item.icon!=''" />
+                                                </div>
+                                            </td>
+                                            <td style="width:10%;">
+                                                {{item.xp}}
+                                            </td>
+                                            <td style="width:60%;">
+                                                <h4>{{item.title}}</h4>
+                                                <p>{{item.description}}</p>
+                                            </td>
+                                            <td style="width:15%;">
+                                                <a class="btn btn-xs btn-info" title="Update Avator" href="#/uploadavator/{{type}}/{{item.id}}"><i class="glyphicon glyphicon-th-list"></i></a>
+                                                <a class="btn btn-xs btn-warning" title="Show Code" href="#/showcode/{{type}}/{{item.id}}"><i class="glyphicon glyphicon-book"></i></a>
+                                                <a class="btn btn-xs btn-success" title="Edit Record" href="#/addbadge/{{type}}/{{item.id}}"><i class="glyphicon glyphicon-edit"></i></a>
+                                                <a class="btn btn-xs btn-danger" title="Delete Record" href ng-click="dRrecord(item.id, item.icon)"><i class="glyphicon glyphicon-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

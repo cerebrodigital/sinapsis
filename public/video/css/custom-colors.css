@@ -1,0 +1,10 @@
+
+/* Main color scheme */
+.content-panel .panel-title, #sidebar > .widget > h3 {
+	background-color: #373737;
+}
+
+/* OT video player background */
+.otplayer-wrapper .otplayer-controls {
+	background-color: #131313;
+}
