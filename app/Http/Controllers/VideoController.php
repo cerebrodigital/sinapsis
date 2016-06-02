@@ -35,6 +35,24 @@ class VideoController extends Controller
 
     }
 
+    public function categoryPage($category) 
+    {
+        $catID = \App\models\Category::where('slug', trim($category))->first();
+        if(count($catID) > 0) {
+            $categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
+            //dd($categoria);
+            return \View::make('frontend.video.categories', compact('categoria'))->render();
+        }
+        else {
+            return "no existe ninguna categoria";
+        }
+        //dd($catID->id);
+        
+        
+
+        
+    }
+
     public function createView()
     {
         //dd($vid);

@@ -48,7 +48,7 @@
                     <a href="{{route('dashboard.profile', $post->user->id)}}" class="user-tooltip"><i class="fa fa-fire"></i>{{$post->user->username}}</a>
                     <a href="{{route('blog.view.post',$post->slug)}}"><i class="fa fa-calendar"></i>{{$post->created_at}}</a>
                   </div>
-                  <p>Has no atqui dictas iuvaret, ex suavitate voluptatum incorrupte eos. Nullam luptatum nominati ius voluptatum ea, nam omnium percipit et luptatum nominati ius ea...</p>
+                  <p>{!! substr(strip_tags($post->body), 0, 200) !!}...</p>
                   <a href="{{route('blog.view.post',$post->slug)}}" class="defbutton"><i class="fa fa-reply"></i>Leer Artículo completo</a>
                 </div>
               </div>
@@ -116,10 +116,9 @@
   li.comment.fade-transition {
       padding-right: 22px;
   }
-
   div.comment-content.clearfix {
       margin-left: -100px;
       width: 100%;
   }
   </style>
-@endsection 
+@endsection     

@@ -54,6 +54,10 @@
             </div>
   @endforeach
   {{$posts->render()}}
+  <p>Existen {{$videos->count()}} videos encontrados en este tag: <p>
+  @foreach($videos as $video)
+    {{$video->title}}
+  @endforeach
 
 @endsection  
 
@@ -91,8 +95,6 @@
             <!-- WIDGET DUELO DE LA SEMANA -->
             @include('frontend.widgets.weekly_duel')
             
-            <!-- WIDGET INFORMACION DE CONTACTO -->
-            @include('frontend.widgets.contact')
             
             
             

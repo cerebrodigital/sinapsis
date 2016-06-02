@@ -1,7 +1,12 @@
 <?php
   $post_tags = \App\models\Post::all(['tags']);
+  $video_tags = \App\models\Video::all(['tags']);
   $final = "";
   foreach($post_tags as $tag)
+  {
+      $final .= $tag->tags .",";
+  }
+  foreach($video_tags as $tag)
   {
       $final .= $tag->tags .",";
   }

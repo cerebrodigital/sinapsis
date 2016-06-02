@@ -152,13 +152,16 @@ Route::post('shouts/send', array('uses' => 'ShoutsController@create', 'as' => 's
 
 //VIDEOS
 Route::get('video/{id}', array('uses' => 'VideoController@displayOne', 'as' => 'video.view.one'));
-Route::get('videos/todos', array('uses' => 'VideoController@displayTodos', 'as' => 'video.view.todos'));
+Route::get('videos', array('uses' => 'VideoController@displayTodos', 'as' => 'video.view.todos'));
 
 Route::post('video/{id}/comentario', array('uses' => 'VideoController@createVideoComment', 'as' => 'video.post.comment'));
 Route::post('video/{id}/edit', array('uses' => 'VideoController@videoUpdate', 'as' => 'videos.post.edit'));
 
 Route::get('video/{id}', array('uses' => 'VideoController@displayOne', 'as' => 'video.view.one'));
 Route::get('video/tag/{tag}', array('uses' => 'VideoController@displayTag', 'as' => 'video.view.tag'));
+
+Route::get('video/categoria/{category}', array('uses' => 'VideoController@categoryPage', 'as' => 'video.view.category'));
+
 //Route::get('video/file/{filename}', array('uses' => 'VideoController@displayFile', 'as' => 'video.view.file'));
 
 // Prueba tags PLAYING CON CODIGO

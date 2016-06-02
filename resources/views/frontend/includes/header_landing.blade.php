@@ -6,7 +6,7 @@
               <a href="{{route('landing')}}" class="header-logo left"><img src="/syn/images/logo.png" class="logo" alt="Revelio" title="" /></a>
               <a href="#dat-menu" class="datmenu-prompt"><i class="fa fa-bars"></i>Show menu</a>
               <ul class="load-responsive" rel="Main menu">
-                <li><a href="blog.html"><span><i class="fa fa-comment"></i><strong>Noticias</strong></span></a>
+                <li><a href="#"><span><i class="fa fa-comment"></i><strong>Noticias</strong></span></a>
                   <ul class="sub-menu">
                       <?php $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get(); ?>
                       @foreach($categoriesList as $category)
@@ -17,6 +17,25 @@
                           
                             @foreach($category->children as $child) 
                                 <li><a href="{{route('blog.view.category', $child->slug)}}">{{$child->name}}</a></li>
+                            @endforeach
+                          
+                        @endif
+                            </ul>
+                        </li>
+                      @endforeach
+                  </ul>
+                </li>
+                 <li><a href="{{route('video.view.todos')}}"><span><i class="fa fa-camera-retro"></i><strong>Videos</strong></span></a>
+                  <ul class="sub-menu">
+                      <?php $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get(); ?>
+                      @foreach($categoriesList as $category)
+                        <br>
+                        <li><a href="{{route('video.view.category', $category->slug)}}">{{$category->name}}</a>
+                            <ul class="sub-menu">
+                        @if($category->children)
+                          
+                            @foreach($category->children as $child) 
+                                <li><a href="{{route('video.view.category', $child->slug)}}">{{$child->name}}</a></li>
                             @endforeach
                           
                         @endif

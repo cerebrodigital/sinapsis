@@ -304,9 +304,10 @@ class BlogController extends Controller
             'pages' => Page::all(),
             'settings' => Setting::first(),
             );*/
-        //dd($posts);
-
-        return \View::make('frontend.tags', compact('posts', 'tag'))->render();
+        
+        $videos = \App\models\Video::where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(15);
+        //dd($videos);
+        return \View::make('frontend.tags', compact('posts', 'tag', 'videos'))->render();
     }
 
 
