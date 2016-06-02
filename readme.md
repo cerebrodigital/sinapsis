@@ -1,6 +1,6 @@
 ## PROYECTO SINAPSIS
 
-Modulos:
+###Modulos:
 - Blog de Noticias
 - Videos
 - UP (Estilo 9gag posts colectivos)
@@ -24,16 +24,16 @@ Es por todo esto, que a partir de ahora borramos todos los videos respaldados en
 
 
 
----------
+-----------
 INSTALACION
 -----------
 
-1.- Clona el repo de github
-2.- Entra a tu .env y asegurate de poner las credenciales de tu base de datos.
-3.- Asegurate de verificar que configuración de apache en available-sites apunte a tu public.
-4.- dar composer install
-5.- da accesos chmod -R 777 a storage , storage/logs y bootstrap
-6.- Asegurarnos de tener las configuraciones .htaccess en la carpeta public.
+1. Clona el repo de github 
+2. Entra a tu .env y asegurate de poner las credenciales de tu base de datos.
+3. Asegurate de verificar que configuración de apache en available-sites apunte a tu public.
+4. dar composer install 
+5. da accesos chmod -R 777 a storage , storage/logs y bootstrap
+6. Asegurarnos de tener las configuraciones .htaccess en la carpeta public.
 
 
 
