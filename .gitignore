@@ -1,4 +1,4 @@
-.env
+# 3th Library
 vendor/
 node_modules/
 
@@ -7,10 +7,15 @@ bootstrap/compiled.php
 app/storage/
 
 # Laravel 5 & Lumen specific
+/bootstrap/compiled.php
 bootstrap/cache/
+public/css/
 .env.*.php
 .env.php
 .env
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
+
+# IDE JetBrains
+.idea
