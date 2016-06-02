@@ -58,6 +58,7 @@
                 <div class="form-body">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <?php $user_id = \Auth::user()->id; ?>
+                <input type="hidden" name="id" value="{{ $vid->id }}">
                 <input type="hidden" name="user_id" value="{{ $user_id }}">
                     <div class="form-group">
                         <label>Titulo del Video</label>
@@ -139,7 +140,7 @@
                         <div class="form-group">
                             <h2>Selecciona las categorías</h2>
                             <?php 
-                                $selected_categories = \DB::table('post_categories')->where('post_id', $vid->id)->get();
+                                $selected_categories = \DB::table('video_categories')->where('video_id', $vid->id)->get();
                             ?>
                             @foreach($categoriesList as $category)
                                 <br>

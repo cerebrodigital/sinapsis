@@ -64,6 +64,7 @@ class VideoController extends Controller
     {
         //dd($request->all());
         $video = \App\models\Video::find($request->get('id'));
+        //dd($video);
         $video->categories()->sync($request->get('categories'));
 
         if($video->fill($request->all()))
@@ -159,7 +160,8 @@ class VideoController extends Controller
 
     public function editView($id)
     {
-        $vid = \App\models\Video::find($id);
+        $vid = \App\models\Video::where('id', '=', $id)->with('categories')->first();
+        //dd($vid);
         $active_menu = "videos";
         $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get();
         //dd($vid);

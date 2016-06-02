@@ -13,6 +13,10 @@ class Category extends Model
     {
       return $this->belongsToMany('App\models\Post', 'post_categories');
     }
+    public function videos() 
+    {
+      return $this->belongsToMany('App\models\Video', 'video_categories');
+    }
     public function parent()
     {
         return $this->belongsTo('App\models\Category', 'parent_id');
@@ -26,6 +30,11 @@ class Category extends Model
     public function postCategories()
     {
         return $this->hasMany('App\models\PostCategory', 'category_id');
+    }
+
+        public function videoCategories()
+    {
+        return $this->hasMany('App\models\VideoCategory', 'category_id');
     }
 
     public static function dropdownList()
