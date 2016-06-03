@@ -57,7 +57,7 @@
                 <!-- BEGIN .item -->
                 <div class="item">
                   <div class="item-header">
-                    <a href="{{route('video.view.one', $video->id)}}" class="img-hover-effect loadingvideo"><img src="http://dn934mu97ziz5.cloudfront.net/videos/featured/90-featured.png" width="200" height="150" class="aspect-px" rel="http://dn934mu97ziz5.cloudfront.net/videos/featured/90-featured.png" alt="" /></a>
+                    <a href="{{route('video.view.one', $video->id)}}" class="img-hover-effect loadingvideo"><img src="{{$video->featured_image}}" width="200" height="150" class="aspect-px" rel="{{$video->featured_image}}" alt="{{$video->title}}" /></a>
                   </div>
                   <div class="item-content">
                     <h3><a href="{{route('video.view.one', $video->id)}}">{{$video->title}}</a></h3>
