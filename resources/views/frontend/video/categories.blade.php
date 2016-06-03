@@ -57,16 +57,16 @@
                 <!-- BEGIN .item -->
                 <div class="item">
                   <div class="item-header">
-                    <a href="post.html" class="img-hover-effect loadingvideo"><img src="images/aspect-px.png" width="16" height="9" class="aspect-px" rel="http://b.vimeocdn.com/ts/282/542/282542993_640.jpg" alt="" /></a>
+                    <a href="{{route('video.view.one', $video->id)}}" class="img-hover-effect loadingvideo"><img src="http://dn934mu97ziz5.cloudfront.net/videos/featured/90-featured.png" width="200" height="150" class="aspect-px" rel="http://dn934mu97ziz5.cloudfront.net/videos/featured/90-featured.png" alt="" /></a>
                   </div>
                   <div class="item-content">
-                    <h3><a href="post.html">{{$video->title}}</a></h3>
+                    <h3><a href="{{route('video.view.one', $video->id)}}">{{$video->title}}</a></h3>
                     <span class="video-meta">
-                      <a href="post.html"><i class="fa fa-comment"></i>283</a>
-                      <a href="post.html"><i class="fa fa-eye"></i>{{$video->views}}</a>
-                      <a href="#"><i class="fa fa-heart"></i>{{$video->likes}}</a>
+                      <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-comment"></i>283</a>
+                      <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-eye"></i>{{$video->views}}</a>
+                      <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-heart"></i>{{$video->likes}}</a>
                     </span>
-                    <p>Inani vocent feugait cu eam, his et impetus indoctum, mea euismod salutandi. Mel consequat moderatius intellegeb at an, appareat pertinacia no pro, noster aperiam blandit vim. Ne mei illud quidam labitur, eu adhuc clita quo.</p>
+                    <p>{!! substr(strip_tags($video->description), 0, 200) !!}...</p>
                   </div>
                 <!-- END .item -->
                 </div>

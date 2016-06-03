@@ -44,7 +44,8 @@ class VideoController extends Controller
             return \View::make('frontend.video.categories', compact('categoria'))->render();
         }
         else {
-            return "no existe ninguna categoria";
+            $categoria = \App\models\Video::with('categories')->paginate(15);
+            return \View::make('frontend.video.todas', compact('categoria'))->render();
         }
         //dd($catID->id);
         
