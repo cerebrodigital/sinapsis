@@ -261,7 +261,7 @@
                         </div>
                         -->
                         <div class="content-padding">
-                            <h2><span>Últimas publicaciones Instagram</span></h2>
+                            <h2><span>Últimas publicaciones de nuestras redes</span></h2>
                             <div id="photomax" class="photomax"></div>
                         </div> 
 
@@ -565,113 +565,102 @@
             @include('frontend.includes.footer')
         </div>
         <script type='text/javascript' src='/syn/jscript/jquery-1.11.2.min.js'></script>
+        
+
         <script src="/feed/jquery.photomax.min.js"></script>
-
-
-<!-- Include Social networks Styles -->
         <link rel="stylesheet" href="/feed/photomax_trend.min.css"/> 
-
-        <link rel="stylesheet" href="/youvideo/css/youmax_trend.min.css"/> 
 
         <script type='text/javascript' src='/syn/jscript/modernizr.custom.50878.js'></script>
         <script type='text/javascript' src='/syn/jscript/iscroll.js'></script>
         <script type='text/javascript' src='/syn/jscript/dat-menu.js'></script>
 
         <script type='text/javascript'>
-            var strike_featCount = 4;
-            var strike_autostart = true;
-            var strike_autoTime = 7000;
-            $("#photomax").photomax({ 
 
-              instagramAccessToken:"2253183612.0efbe26.3e7f307ef7574c50aacdfb456f157cb4", 
-              facebookAccessToken:"616745428493845|cac24411f347e0c5845eaa10c56720fd", 
-              googleApiKey:"AIzaSyBRoYqEpfqpjOiY7LtE0JaeNbk7ReYpO74", 
-              instagram_user_photos:[ 
-                { 
-                  name:"Instagram CD", 
-                  url:"https://instagram.com/tucerebrodigital", 
-                  selected:true
-                }, 
-              ], 
 
-              skin:"trend2", 
-              overlayType:"stat-2", 
-              thumbnailHeight:"150px",
-              loadButtonSize:"small", 
-              viewCountType:"comma", 
-              likeCommentCountType:"comma", 
-              hideHeader:true, 
-              hideNavigation:true, 
-              shareLink:"website", 
-              maxResults:2, 
-              headerTitle:"", 
-              headerSubTitle:"", 
-              headerImage:"", 
-              headerBackgroundImage:"", 
-              headerLink:"", 
-              googlePlusLink:"", 
-              twitterLink:"", 
-              facebookLink:"", 
+$("#photomax").photomax({
 
-            });
-            $("#facebook_photomax").photomax({ 
+        instagramAccessToken:"260796206.0efbe26.89a76a9668934089a2d00d928486fd26",
+        //instagramAccessToken:"2201847796.0efbe26.cc43c47c451440fab9d1ba79c1833bb5",
 
-              facebookAccessToken:"616745428493845|cac24411f347e0c5845eaa10c56720fd", 
 
-              facebook_page_photos:[ 
-                { 
-                  name:"Instagram CD", 
-                  url:"https://facebook.com/tucerebrodigital", 
-                  selected:true
-                }, 
-              ], 
+        //facebookAccessToken:"CAAKZBphEFkNwBAB7rP64PYq6D3Q07e5gdPS3aHg5fLSTSiNFFo1nlMFGclkdSQAacPRR2Pnah1E3infD4NQaFUJJRVzDA3ZCp4BFsNQBQCU6NCoSZAShqUfpMpMp2hQO22PVV6rE14981t6Plk3LUVjUPHU7ROXkjSbIQut4y2tlV5SZCHmqmcrZBolhnMBGUGt0OiZAZAOBxvg0ak8Bamz",
 
-              skin:"trend2", 
-              overlayType:"stat-2", 
-              thumbnailHeight:"130px",
-              loadButtonSize:"small", 
-              viewCountType:"comma", 
-              likeCommentCountType:"comma", 
-              hideHeader:true, 
-              hideNavigation:true, 
-              shareLink:"website", 
-              maxResults:2, 
-              headerTitle:"", 
-              headerSubTitle:"", 
-              headerImage:"", 
-              headerBackgroundImage:"", 
-              headerLink:"", 
-              googlePlusLink:"", 
-              twitterLink:"", 
-              facebookLink:"", 
+        facebookAccessToken:"616745428493845|cac24411f347e0c5845eaa10c56720fd",
 
-            });
+        googleApiKey:'AIzaSyDwQ2HJsxPGQQDAKPjb0Uujl7HfDSWEqag',
+        //googleApiKey:'AIzaSyDwQ2HJsxPGQQDAKPjb0Uujl7HfDSWEqag',
+        
+        
+        instagram_user_photos:[
+            {
+                //url:"https://instagram.com/muradosmann",
+                url:"https://www.instagram.com/tucerebrodigital",
+                name:"INSTAGRAM",
+                selected:true
+            }
+        ],
+        
+        
+        instagram_global_tagged_photos:[
+            {
+                name:"INSTAGRAM #tucerebrodigital",
+                hashtag:"#tucerebrodigital",
+                selected:false
+            }
+        ],
 
-            $("#youtube").youmax({ 
+      
 
-                apiKey:"AIzaSyBRoYqEpfqpjOiY7LtE0JaeNbk7ReYpO74", 
-                clientId:"5916945785-qdvqrtilt2p5vh0tunh5dqoe8kbk85dq.apps.googleusercontent.com", 
-                channel:"https://www.youtube.com/channel/UC0tpy9WTnTzc4H4Dti6V-1Q", 
-                  youtube_channel_uploads:[ 
-                    { 
-                      name:"Cerebro Digital en Youtube", 
-                      url:"https://www.youtube.com/channel/UC0tpy9WTnTzc4H4Dti6V-1Q", 
-                      selected:true
-                    }, 
-                  ], 
+        facebook_page_photos:[
+            {
+                url:"https://www.facebook.com/tucerebrodigital",
+                //url:"http://www.facebook.com/adidas",
+                name:"FACEBOOK FOTOS",
+                selected:false
+            }
+        ],
 
-                  autoPlayVideo:true, 
-                  autoLoadComments:true, 
-                  commentOrder:"relevance", 
-                  widgetMode:true, 
-                  viewCountType:"comma", 
-                  likeCommentCountType:"comma", 
-                  headerCountType:"comma", 
-                  loadButtonSize:"small", 
-                  hideHeader:true, 
-                  maxResults:3, 
+        facebook_page_albums:[
+            {
+                //url:"https://www.facebook.com/115012335256825",
+                url:"http://www.facebook.com/tucerebrodigital",
+                name:"FACEBOOK ALBUMS",
+                selected:false
+            }
+        ],
+        
+        overlayType:'view',
+        displayType:"popup",
+        
+        alwaysUseDropdown:false,
+        skin:"trend",
+        maxResults:4,
+        //maxResultsToLoad:3,
+        maxContainerWidth:950,
+        photoProtocol:"https:",
+        alignPopupToTop: true,
+        
+        shareLink:"photo",
+        
+        
+        viewCountType:"comma",
+        likeCommentCountType:"abbr",
+        loadMode:"loadmore", //paginate-sides, paginate-bottom
+        hideHeader:true,
+        hideNavigation:false,
 
-                });
+        showTextInsteadOfIcons:true,
+        loadButtonSize:"small",
+        
+        //hidePhotoDetails:true,
+        
+        //updateLayoutDelay:1000,       
+        
+        thumbnailHeight:"200px", //200px or auto
+        thumbnailDescription:"max-2",
+
+    });
+
         </script>
         <script type='text/javascript' src='/syn/jscript/theme-script.js'></script>
 

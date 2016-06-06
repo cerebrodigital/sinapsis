@@ -47,6 +47,10 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\models\Shout');
     }
+    public function posts() 
+    {
+        return $this->hasMany('App\models\Post', 'user_id');
+    }
 
     public function userProfile() 
     {
