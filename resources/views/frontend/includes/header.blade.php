@@ -44,6 +44,7 @@
                 </li>
                 
                 <li><a href="shortcodes.html"><span><i class="fa fa-puzzle-piece"></i><strong>Quests</strong></span></a>
+                  <!--
                   <ul class="sub-menu">
                     <li><a href="shortcodes.html">Shortcodes</a></li>
                     <li><a href="login.html">Login page</a></li>
@@ -53,18 +54,21 @@
                     <li><a href="podcasts.html">Podcast list</a></li>
                     <li><a href="podcasts-single.html">Podcast single</a></li>
                     <li><a href="404-page.html">404 Page</a></li>
-                  </ul>
+                  </ul> -->
                 </li>
                 
                 <li><a href="#up"><i class="fa fa-camera-retro"></i><strong>UP</strong></a></li>
                 <li><a href="#forum"><span><i class="fa fa-comments-o"></i><strong>Foro</strong></span></a>
+                  <!--
                   <ul class="sub-menu">
                     <li><a href="#">Lista de Ultimas Publicaciones</a></li>
                     <li><a href="#">Single forum topic</a></li>
                     <li><a href="#">Crear una nueva publicación</a></li>
                   </ul>
+                  -->
                 </li>
-                <li><a href="team.html"><span><i class="fa fa-users"></i><strong>Neuronas</strong></span></a>
+                <li><a href="#neuronas"><span><i class="fa fa-users"></i><strong>Neuronas</strong></span></a>
+                  <!--
                   <ul class="sub-menu">
                     <li><a href="#">Miembros</a></li>
                     <li><a href="user-single.html">Member profile</a></li>
@@ -73,8 +77,9 @@
                     <li><a href="user-single-friends.html">Member friends list</a></li>
                     <li><a href="user-single-instagram.html">Member Instagram photos</a></li>
                   </ul>
+                  -->
                 </li>
-                <li><a href="contact-us.html"><i class="fa fa-map-marker"></i><strong>Contacto</strong></a></li>
+                <li><a href="#contacto"><i class="fa fa-map-marker"></i><strong>Contacto</strong></a></li>
                 <!-- <li class="no-icon"><a href="#"><strong>Without icon</strong></a></li> -->
               </ul>
             </nav>
