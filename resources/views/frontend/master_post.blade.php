@@ -87,7 +87,7 @@
         color: #256193;
       }
     </style>
-<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='393425eb0a9b059f9bb289ce4bd1417f' async='async'></script>
+<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='393425eb0a9b059f9bb289ce4bd1417f' data-cfasync='false' async='async'></script>
 
   </head>
   <body class="no-slider">
