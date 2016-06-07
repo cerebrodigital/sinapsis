@@ -32,8 +32,18 @@ class VideoController extends Controller
     {
         $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(20);
         $active_menu = "videos";
+        $active_view = "ultimos";
         //dd($vid);
-        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu'));
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
+    }
+
+    public function listMostViewed()
+    {
+        $vids = \App\models\Video::orderBy('views', 'DESC')->paginate(20);
+        $active_menu = "videos";
+        $active_view = "masVistos";
+        //dd($vid);
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
     }
 
     public function jsonImport(Request $request)

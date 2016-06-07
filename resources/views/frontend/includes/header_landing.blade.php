@@ -27,9 +27,11 @@
                 </li>
                  <li><a href="{{route('video.view.categorias')}}"><span><i class="fa fa-camera-retro"></i><strong>Videos</strong></span></a>
                   <ul class="sub-menu">
+                      <li><a href="{{route('video.mas.vistos')}}">Los más vistos</a></li>
+                      <li><a href="{{route('video.view.categorias')}}">Últimos agregados</a></li>
                       <?php $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get(); ?>
                       @foreach($categoriesList as $category)
-                        <br>
+                        
                         <li><a href="{{route('video.view.category', $category->slug)}}">{{$category->name}}</a>
                             <ul class="sub-menu">
                         @if($category->children)

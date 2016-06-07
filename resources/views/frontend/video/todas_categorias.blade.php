@@ -5,8 +5,18 @@
             <div class="header-breadcrumbs">
               <h2 class="right">Videos</h2>
               <ul>
-                <li><a href="#home">Categoria</a></li>
-                <li>Últimos #{{$vids->count()}} videos agregados en todas las categorias</li>
+                <li><a href="#home">
+                  @if($active_view == "ultimos")
+                    ÚLTIMOS VIDEOS
+                    </a></li>
+                    <li>Resultados #{{$vids->count()}} Ultimos videos agregados</li>
+                  @endif
+                  @if($active_view == "masVistos")
+                    VIDEOS MÁS VISTOS
+                    </a></li>
+                    <li>Resultados #{{$vids->count()}} ordenados desde los videos más vistos</li>
+                  @endif
+                
               </ul>
             </div>
           </div>
@@ -36,7 +46,15 @@
 
             <div class="content-panel">
               <div class="panel-title">
-                <h2>Últimos videos Agregados</h2>
+                <h2>
+                  @if($active_view == "masVistos")
+                    Los videos más vistos ordenados de mayor a menor
+                  @endif
+                  @if($active_view == "ultimos")
+                    Los últimos videos agregados
+                  @endif
+
+                </h2>
                 <div class="right video-set-layout">
                   <a href="#v-set-layout" rel="grid" ><i class="fa fa-th"></i></a>
                   <a href="#v-set-layout" rel="hdgrid"><i class="fa fa-th-large"></i></a>
@@ -56,7 +74,7 @@
                   <div class="item-content">
                     <h3><a href="{{route('video.view.one', $video->id)}}">{{$video->title}}</a></h3>
                     <span class="video-meta">
-                      <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-comment"></i>283</a>
+                      <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-comment"></i>{{ \App\models\VideoComment::where('video_id', '=', $video->id)->count()}}</a>
                       <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-eye"></i>{{$video->views}}</a>
                       <a href="{{route('video.view.one', $video->id)}}"><i class="fa fa-heart"></i>{{$video->likes}}</a>
                     </span>
