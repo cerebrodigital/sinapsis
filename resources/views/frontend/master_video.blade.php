@@ -7,10 +7,10 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="description" content="@yield('description')" />
     <meta name="keywords" content="@yield('keyword')" />
-    <meta property="og:type" content="video.other" />
+    <meta property="og:type" content="video" />
     <meta property="og:title" content="@yield('title') | Cerebro Digital" />
     <meta property="og:image" content="@yield('image')" />
-    <meta property="og:description" content="@yield('image')" />
+    <meta property="og:description" content="@yield('description')" />
     <meta property="og:url" content="http://cerebrodigital.net/video/@yield('id')" />
     <meta property="og:site_name" content="Proyecto Sinapsis | Cerebro Digital" />
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />

@@ -19,7 +19,7 @@
       @section('title'){{$post->title}}@endsection
       @section('description'){!! substr(strip_tags($post->body), 0, 180) !!}...@endsection
       @section('keywords'){{$post->tags}}@endsection
-      @section('image')@if($post->type == "video"){{$post->featured}}@else{{$post->featured_media}}@endif @endsection
+      @section('image'){{$post->featured_media}}@endsection
   <h2><span>{{$post->title}}</span></h2>
   <div class="content-padding">
 

@@ -22,7 +22,7 @@
       @section('id'){{$vid->id}}@endsection
       @section('description'){!! substr(strip_tags($vid->description), 0, 250) !!}...@endsection
       @section('keywords'){{$vid->tags}}@endsection
-      @section('image')@if($vid->featured_image){{$vid->featured_image}}@endif @endsection
+      @section('image'){{$vid->featured_image}}@endsection
         <!-- BEGIN .wrapper -->
         <div class="wrapper">
           
@@ -94,7 +94,7 @@
               </div>
               @include('frontend.widgets.video.similar')
 
-              @include('frontend.widgets.video.latest')
+
 
 
           <!-- END .with-sidebar-layout -->

@@ -11,7 +11,7 @@
   <div class="panel-block video-list grid">
   
     <?php
-    $videos = \App\models\Video::orderBy('updated_at', 'DESC')->take(6)->get();
+    $videos = \App\models\Video::orderBy('updated_at', 'DESC')->take(8)->get();
     ?>
     @foreach($videos as $vid)
     <!-- BEGIN .item -->
