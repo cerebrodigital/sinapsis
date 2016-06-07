@@ -39,7 +39,9 @@
                 
                 <div class="panel-content">
                 
-                  <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='24569363'></div>
+                  <div align="center"><b>COMPARTE:</b></div> <div align="center" class="addthis_sharing_toolbox"></div>
+
+
                   <p>{!!$vid->description!!}</p>
                   <div class="video-footer">
                     <strong>Categorias:</strong>
@@ -62,24 +64,24 @@
               <div class="panel-block">
                 <div class="short-tabs">
                   <ul>
-                    <li><a href="#">Comentarios de Neuronas</a></li>
                     <li><a href="#face">Comentarios de Facebook ({{$vid->comments()->count()}})</a></li>
-                    
+                    <li><a href="#">Comentarios de Neuronas</a></li>
                   </ul>
                   <div>
-                    @include('comments::display', ['video_id' => $vid->id])
+                      <div class="fb-comments" data-href="http://cerebrodigital.net/video/{{$vid->id}}" data-numposts="3"></div>
+                      @if($vid->comments()->count() > 0)
+                      <div class="panel-title">
+                        <h2>{{$vid->comments()->count()}} Comentarios respaldados de Facebook</h2>
+                      </div>
+                      
+                      @include('frontend.widgets.video.comments', ['comments' => $vid->comments()->paginate(25)])
+                      
+
+                      @endif  
+                    
                   </div>
                   <div>
-                    <div class="fb-comments" data-href="http://cerebrodigital.net/video/{{$vid->id}}" data-numposts="3"></div>
-                    @if($vid->comments()->count() > 0)
-                    <div class="panel-title">
-                      <h2>{{$vid->comments()->count()}} Comentarios respaldados de Facebook</h2>
-                    </div>
-                    
-                    @include('frontend.widgets.video.comments', ['comments' => $vid->comments()->paginate(25)])
-                    
-
-                    @endif  
+                    @include('comments::display', ['video_id' => $vid->id])
                   </div>
                 </div>
                 
@@ -139,7 +141,7 @@
                     <div class="clear-float"></div>
                   </div>
                 <h5>Acerca de uploader</h5>
-                <p>Eos alii duis comprehensam ea. Ad vix sumo tim eam petentium, soluta corpora mnesarchum ex nemore everti dolorem at, eu mazim.</p>
+                <p>Aquí va una descripción del autor de la nota.</p>
               </div>
             <!-- END .widget -->
             </div>

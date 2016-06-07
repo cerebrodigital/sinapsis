@@ -87,7 +87,6 @@
         color: #256193;
       }
     </style>
-<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='393425eb0a9b059f9bb289ce4bd1417f' data-cfasync='false' async='async'></script>
 
   </head>
   <body class="no-slider">
@@ -139,5 +138,8 @@
     <link rel="stylesheet" type="text/css" href="/shoutbox/shoutbox.css">
     <script src="/shoutbox/shoutbox.js"></script>
     @yield('bottomscripts')
+
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57573a52e1ddf843"></script>
+
   </body>
 </html>

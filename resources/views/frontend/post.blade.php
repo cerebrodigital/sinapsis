@@ -43,9 +43,9 @@
         <a href="#" class="show-likes"><i class="fa fa-heart"></i>{{$post->total_views}} vistas </a>
 
       </div>
+      <br>
       <!-- ESTA ES PARA ORG <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='24569125'></div> -->
-      <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='24569363'></div>
-
+      <div style="float:left;"><b style="font-size:15px">COMPARTIR:</b></div> <div align="left" class="addthis_sharing_toolbox"></div>
 
       <div class="article-content">
         <p>{!!$post->body!!}</p>
