@@ -15,7 +15,8 @@
         "facebook/php-sdk-v4": "^5.2",
         "rtconner/laravel-likeable": "~1.2",
         "nesbot/carbon": "^1.21",
-        "embed/embed": "^2.7"
+        "embed/embed": "^2.7",
+        "sammyk/laravel-facebook-sdk": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
