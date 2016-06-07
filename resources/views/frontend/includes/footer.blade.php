@@ -19,7 +19,7 @@
                   </div>
                   <div class="item-content">
                     <h4><a href="{{route('blog.view.post', $footer_post->slug)}}">{{ $footer_post->title }}</a></h4>
-                    <p>{!! substr(strip_tags($footer_post->body), 0, 150) !!}</p>
+                    <p>{!! substr(strip_tags($footer_post->body), 0, 55) !!}..</p>
                   </div>
                 </div>
               @endforeach

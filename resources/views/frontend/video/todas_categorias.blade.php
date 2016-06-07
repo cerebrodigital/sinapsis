@@ -68,7 +68,12 @@
 
 
                 <div class="clear-list-button">
-                  <a href="{{$vids->nextPageUrl()}}" class="back-button">Siguiente Pagina</a>
+                  @if($vids->previousPageUrl())
+                    <a href="{{$vids->previousPageUrl()}}" class="back-button">Pagina Anterior</a>
+                  @endif
+                  @if($vids->nextPageUrl())
+                    <a href="{{$vids->nextPageUrl()}}" class="back-button">Siguiente Pagina</a>
+                  @endif
                 </div>
 
               </div>

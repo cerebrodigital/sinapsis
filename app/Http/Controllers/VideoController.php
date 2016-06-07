@@ -30,7 +30,7 @@ class VideoController extends Controller
     }
     public function listAllCategories()
     {
-        $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(3);
+        $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(20);
         $active_menu = "videos";
         //dd($vid);
         return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu'));
