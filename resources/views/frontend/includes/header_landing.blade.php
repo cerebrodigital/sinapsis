@@ -10,7 +10,7 @@
                   <ul class="sub-menu">
                       <?php $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get(); ?>
                       @foreach($categoriesList as $category)
-                        <br>
+                        
                         <li><a href="{{route('blog.view.category', $category->slug)}}">{{$category->name}}</a>
                             <ul class="sub-menu">
                         @if($category->children)

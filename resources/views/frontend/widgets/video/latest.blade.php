@@ -11,13 +11,13 @@
   <div class="panel-block video-list grid">
   
     <?php
-    $videos = \App\models\Video::orderBy('created_at', 'DESC')->take(15)->get();
+    $videos = \App\models\Video::orderBy('updated_at', 'DESC')->take(6)->get();
     ?>
     @foreach($videos as $vid)
     <!-- BEGIN .item -->
     <div class="item">
       <div class="item-header">
-        <a href="{{route('video.view.one', $vid->id)}}" class="img-hover-effect loadingvideo"><img src="{{$vid->featured_image}}" width="16" height="9" class="aspect-px" /></a>
+        <a href="{{route('video.view.one', $vid->id)}}" class="img-hover-effect loadingvideo"><img src="{{$vid->featured_image}}" width="56" height="34" class="aspect-px" /></a>
       </div>
       <div class="item-content">
         <h3><a href="{{route('video.view.one', $vid->id)}}">{{$vid->title}}</a></h3>
@@ -35,7 +35,7 @@
    
 
     <div class="clear-list-button">
-      <a href="#" class="back-button">Ver más videos</a>
+      <a href="{{route('video.view.categorias')}}" class="back-button">Ver más videos</a>
     </div>
 
   </div>

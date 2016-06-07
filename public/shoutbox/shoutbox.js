@@ -2,7 +2,9 @@ $(document).ready(function() {
 
   // load messages every 1000 milliseconds from server.
   load_data = {'fetch':1};
-  
+  var toggleState = $('.toggle_chat').css('display');
+    $('.toggle_chat').slideToggle();
+    $(".header div").attr('class', 'open_btn');
   //method to trigger when user hits enter key
   $("#shout_message").keypress(function(evt) {
     if(evt.which == 13) {
@@ -49,11 +51,7 @@ $(document).ready(function() {
      
      
   });
-  window.onload = function() {
-    var toggleState = $('.toggle_chat').css('display');
-    $('.toggle_chat').slideToggle();
-    $(".header div").attr('class', 'open_btn');
-  }
+
   
 });
 

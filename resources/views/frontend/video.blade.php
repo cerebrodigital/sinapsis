@@ -14,11 +14,6 @@
 
 
 @section('video')
-
-<video id="example_video_1"  controls preload="false" width="100%" height="auto"  >
-    <source src="{{url($vid->media_url)}}" type="video/mp4" />
-</video>
-
 @endsection
 
 @section('main')
@@ -34,6 +29,10 @@
           <div class="with-sidebar-layout left">
 
 
+            <video id="example_video_1"  controls preload="false" width="100%" height="auto"  >
+                <source src="{{url($vid->media_url)}}" type="video/mp4" />
+            </video>
+
             <div class="content-panel">
               <div class="panel-block">
                 
@@ -42,19 +41,11 @@
                 $anterior = $vid->id - 1;
                 $siguiente = $vid->id + 1;
                 ?>
-                <h3><a href="{{route('video.view.one', $anterior)}}">Anterior</a>   -   <a href="{{route('video.view.one', $siguiente)}}">Siguiente</a></h3>
-                  <div class="video-author">
-                    <img src="images/photos/image-1.jpg" class="left" alt="" />
-                    <div class="col-md-3 author-content">
-                      <span>Agregado por <a href="#">{{$vid->user->name}}</a></span>
-                      <span>{{$vid->created_at}}</span>
-                    </div>
-                    <div class="clear-float"></div>
-                  </div>
+                <div align="center">
+                  <a href="{{route('video.view.one', $anterior)}}" class="button"> &larr; Video Anterior</a>
+                  <a href="{{route('video.view.one', $siguiente)}}" class="button">Siguiente Video &rarr;</a>
+                </div>  
                   <p>{!!$vid->description!!}</p>
-                  <button onclick="capture()">Capture</button> <br/><br/>
-                  <canvas id="canvas"></canvas>
-
                   <div class="video-footer">
                     <strong>Categorias:</strong>
                     @foreach($vid->categories()->get() as $category)
@@ -121,19 +112,28 @@
               <div class="video-stats">
                 <div class="video-stat-blobs">
                   <span>
-                    <strong>{{$vid->views}}</strong>
+                    <strong style="font-size:13px">{{number_format($vid->views)}}</strong>
                     <i>views</i>
                   </span>
                   <span>
-                    <strong>{{$vid->comments()->count()}}</strong>
+                    <strong style="font-size:13px">{{number_format($vid->comments()->count())}}</strong>
                     <i>comments</i>
                   </span>
                   <span>
-                    <strong>{{$vid->likes}}</strong>
+                    <strong style="font-size:13px">{{number_format($vid->likes)}}</strong>
                     <i>likes</i>
                   </span>
                 </div>
+
                 <div class="hr-spacer"></div>
+                <div class="video-author">
+                    <img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($vid->user->email)))}}" class="left" width="50" alt="" />
+                    <div class="col-md-3 author-content">
+                      <span>Agregado por <a href="#">{{$vid->user->name}}</a></span>
+                      <span>{{$vid->created_at}}</span>
+                    </div>
+                    <div class="clear-float"></div>
+                  </div>
                 <h5>Acerca de uploader</h5>
                 <p>Eos alii duis comprehensam ea. Ad vix sumo tim eam petentium, soluta corpora mnesarchum ex nemore everti dolorem at, eu mazim.</p>
               </div>
