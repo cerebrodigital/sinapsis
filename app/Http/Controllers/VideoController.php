@@ -28,6 +28,13 @@ class VideoController extends Controller
         //dd($vid);
         return view('backend.pages.video_list')->with(compact('vids', 'active_menu'));
     }
+    public function listAllCategories()
+    {
+        $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(3);
+        $active_menu = "videos";
+        //dd($vid);
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu'));
+    }
 
     public function jsonImport(Request $request)
     {
@@ -223,6 +230,7 @@ class VideoController extends Controller
         //dd($vid1);
         return view('frontend.video')->with(compact('vid', 'vids', 'comments'));
     }
+
 
     public function displayTodos()
     {

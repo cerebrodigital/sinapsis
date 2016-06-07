@@ -153,6 +153,7 @@ Route::post('shouts/send', array('uses' => 'ShoutsController@create', 'as' => 's
 //VIDEOS
 Route::get('video/{id}', array('uses' => 'VideoController@displayOne', 'as' => 'video.view.one'));
 Route::get('videos', array('uses' => 'VideoController@displayTodos', 'as' => 'video.view.todos'));
+Route::get('videos/categorias', array('uses' => 'VideoController@listAllCategories', 'as' => 'video.view.categorias'));
 
 Route::post('video/{id}/comentario', array('uses' => 'VideoController@createVideoComment', 'as' => 'video.post.comment'));
 Route::post('video/{id}/edit', array('uses' => 'VideoController@videoUpdate', 'as' => 'videos.post.edit'));

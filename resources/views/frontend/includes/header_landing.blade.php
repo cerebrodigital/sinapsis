@@ -25,7 +25,7 @@
                       @endforeach
                   </ul>
                 </li>
-                 <li><a href="{{route('video.view.todos')}}"><span><i class="fa fa-camera-retro"></i><strong>Videos</strong></span></a>
+                 <li><a href="{{route('video.view.categorias')}}"><span><i class="fa fa-camera-retro"></i><strong>Videos</strong></span></a>
                   <ul class="sub-menu">
                       <?php $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get(); ?>
                       @foreach($categoriesList as $category)
@@ -45,7 +45,7 @@
                   </ul>
                 </li>
                 
-                <li><a href="shortcodes.html"><span><i class="fa fa-puzzle-piece"></i><strong>Quests</strong></span></a>
+                <li><a href="#quests"><span><i class="fa fa-puzzle-piece"></i><strong>Quests</strong></span></a>
                   <!--
                   <ul class="sub-menu">
                     <li><a href="shortcodes.html">Shortcodes</a></li>

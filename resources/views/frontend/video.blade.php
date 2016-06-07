@@ -38,6 +38,11 @@
               <div class="panel-block">
                 
                 <div class="panel-content">
+                <?php 
+                $anterior = $vid->id - 1;
+                $siguiente = $vid->id + 1;
+                ?>
+                <h3><a href="{{route('video.view.one', $anterior)}}">Anterior</a>   -   <a href="{{route('video.view.one', $siguiente)}}">Siguiente</a></h3>
                   <div class="video-author">
                     <img src="images/photos/image-1.jpg" class="left" alt="" />
                     <div class="col-md-3 author-content">
