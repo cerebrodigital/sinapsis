@@ -11,7 +11,7 @@
         <meta property="og:title" content="Cerebro Digital | Proyecto Sinapsis" />
         <meta property="og:image" content="https://s3.amazonaws.com/cerebrodigital/blog/uploads/ogimage.jpg" />
         <meta property="og:description" content="Somos una mente colectiva de información que se propaga a favor de la educación abierta e interactiva globalmente." />
-        <meta property="og:url" content="http://cerebrodigital.org" />
+        <meta property="og:url" content="{{\Request::url()}}" />
         <meta property="og:site_name" content="Cerebro Digital | Proyecto Sinapsis" />
         <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
         <link rel="stylesheet" type="text/css" href="/syn/css/reset.css" media="screen" />

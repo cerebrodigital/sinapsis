@@ -11,7 +11,7 @@
     <meta property="og:title" content="@yield('title') | Cerebro Digital" />
     <meta property="og:image" content="@yield('image')" />
     <meta property="og:description" content="@yield('description')" />
-    <meta property="og:url" content="http://cerebrodigital.net/@yield('slug')" />
+    <meta property="og:url" content=" {{\Request::url()}}" />
     <meta property="og:site_name" content="Proyecto Sinapsis | Cerebro Digital" />
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/syn/css/reset.css" media="screen" />
