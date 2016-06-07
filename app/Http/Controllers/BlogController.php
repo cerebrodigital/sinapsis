@@ -296,7 +296,7 @@ class BlogController extends Controller
     public function tagPage($tag) 
     {
     
-        $posts = \App\models\Post::where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(15);
+        $posts = \App\models\Post::where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(7);
 /*        $data = array(
             'media' => $media,
             'tag' => $tag,
@@ -305,7 +305,7 @@ class BlogController extends Controller
             'settings' => Setting::first(),
             );*/
         
-        $videos = \App\models\Video::where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(15);
+        $videos = \App\models\Video::where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(7);
         //dd($videos);
         return \View::make('frontend.tags', compact('posts', 'tag', 'videos'))->render();
     }

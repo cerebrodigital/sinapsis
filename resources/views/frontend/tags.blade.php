@@ -53,12 +53,57 @@
               <div class="clear-float do-the-split"></div>
             </div>
   @endforeach
-  {{$posts->render()}}
-  <p>Existen {{$videos->count()}} videos encontrados en este tag: <p>
+  <div align="center">
+    @if($posts->previousPageUrl())
+      <a href="{{$posts->previousPageUrl()}}" class="defbutton"><i class="fa"></i>&larr;  Página anterior de posts</a>
+    @endif
+    @if($posts->nextPageUrl())
+      <a href="{{$posts->nextPageUrl()}}" class="defbutton"><i class="fa"></i>Siguiente pagina de posts &rarr; </a>
+    @endif
+  </div>
+  <h2><span>Últimos videos #{{$videos->count()}} agregado en el tag: {{$tag}}</span></h2>
+  
   @foreach($videos as $video)
-    {{$video->title}}
+     <div class="content-padding">
+              
+              <div class="article-promo">
+                <div class="article-photo">
+                  <span class="article-image-out">
+                    <span class="image-comments"><span>21</span></span>
+                    <span class="article-image">
+                      <span class="nth1 strike-tooltip" title="Leer Artículo">
+                        <a href="{{route('video.view.one',$video->id)}}"><i class="fa fa-eye"></i></a>
+                      </span>
+                      <span class="nth2 strike-tooltip" title="Leer después">
+                        <a href="#"><i class="fa fa-plus"></i></a>
+                      </span>
+                      <a href="{{route('video.view.one',$video->id)}}"><img src="{{$video->featured_image}}" alt="" title="{{$video->title}}" /></a>
+                    </span>
+                  </span>
+                </div>
+                
+                <div class="article-content">
+                  <h3><a href="{{route('blog.view.post',$post->slug)}}">{{$video->title}}</a></h3>
+                  <div class="article-icons">
+                    <a href="user-single.html" class="user-tooltip"><i class="fa fa-fire"></i>datcouch</a>
+                    <a href="{{route('video.view.one',$video->id)}}"><i class="fa fa-calendar"></i>{{$video->created_at}}</a>
+                  </div>
+                  <p>Has no atqui dictas iuvaret, ex suavitate voluptatum incorrupte eos. Nullam luptatum nominati ius voluptatum ea, nam omnium percipit et luptatum nominati ius ea...</p>
+                  <a href="{{route('video.view.one',$video->id)}}" class="defbutton"><i class="fa fa-reply"></i>Leer Artículo completo</a>
+                </div>
+              </div>
+              
+              <div class="clear-float do-the-split"></div>
+            </div>
   @endforeach
-
+  <div align="center">
+    @if($videos->previousPageUrl())
+      <a href="{{$videos->previousPageUrl()}}" class="defbutton"><i class="fa"></i>&larr; Página anterior de videos</a>
+    @endif
+    @if($videos->nextPageUrl())
+      <a href="{{$videos->nextPageUrl()}}" class="defbutton"><i class="fa"></i>Siguiente pagina de videos &rarr;</a>
+    @endif
+  </div>
 @endsection  
 
 @section('sidebar')
