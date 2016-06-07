@@ -4,13 +4,13 @@
   $final = "";
   foreach($post_tags as $tag)
   {
-      $final .= $tag->tags .",";
+      $final .= trim($tag->tags) .",";
   }
   foreach($video_tags as $tag)
   {
-      $final .= $tag->tags .",";
+      $final .= trim($tag->tags) .",";
   }
-  $order = explode(',', $final);
+ $order = array_filter(preg_split('/[,\s]+/', $final));  
   $tags = array_count_values($order);
 ?>
 
