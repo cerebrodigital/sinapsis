@@ -13,6 +13,9 @@
 @endsection
 
 @section('main')
+      @section('title')Tag: {{$tag}} @endsection
+      @section('description')Navegando el contenido de el tag: {{$tag}}@endsection
+      @section('keywords'){{$tag}}@endsection
   <h2><span>Últimos artículos agregado en el tag: {{$tag}}</span></h2>
   @if(count($posts) == '0')
     <div class="content-padding">

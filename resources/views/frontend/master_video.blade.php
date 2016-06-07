@@ -7,11 +7,11 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="description" content="@yield('description')" />
     <meta name="keywords" content="@yield('keyword')" />
-    <meta property="og:type" content="cerebrodigital" />
+    <meta property="og:type" content="video.other" />
     <meta property="og:title" content="@yield('title') | Cerebro Digital" />
     <meta property="og:image" content="@yield('image')" />
-    <meta property="og:description" content="" />
-    <meta property="og:url" content="http://cerebrodigital.org/@yield('slug')" />
+    <meta property="og:description" content="@yield('image')" />
+    <meta property="og:url" content="http://cerebrodigital.net/video/@yield('id')" />
     <meta property="og:site_name" content="Proyecto Sinapsis | Cerebro Digital" />
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/syn/css/reset.css" media="screen" />
@@ -97,7 +97,7 @@
         color: #256193;
       }
     </style>
-<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='117201e15f84a24c3d84b5cbb75b33ef' async='async'></script>
+<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='393425eb0a9b059f9bb289ce4bd1417f' async='async'></script>
 
   </head>
   <body class="no-slider">

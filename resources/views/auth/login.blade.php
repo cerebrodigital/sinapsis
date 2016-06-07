@@ -23,7 +23,7 @@
                   <div class="login-passes">
                     <b>O puedes conectarte con:</b>
                     <a href="{{route('sinapsis.facebook.register')}}" class="strike-tooltip" title="Use Facebook.com passport"><img src="syn/images/social-icon-facebook.png" alt="" /></a>
-                    <a href="#" class="strike-tooltip" title="Use Twitter.com passport"><img src="syn/images/social-icon-twitter.png" alt="" /></a>
+                    <a href="{{route('sinapsis.github.register')}}" class="strike-tooltip" title="Usa Github para conectarte"><img src="syn/images/social-icon-github.png" alt="" /></a>
                     <a href="#" class="strike-tooltip" title="Use Steampowered.com passport"><img src="syn/images/social-icon-steam.png" alt="" /></a>
                     <a href="#" class="strike-tooltip" title="Use Google.com passport"><img src="syn/images/social-icon-google.png" alt="" /></a>
                   </div>

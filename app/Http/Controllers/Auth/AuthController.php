@@ -70,6 +70,10 @@ class AuthController extends Controller
     {
         return Socialite::driver('facebook')->redirect();
     }
+    public function redirectToGithubProvider()
+    {
+        return Socialite::driver('github')->redirect();
+    }
 
     /**
      * Obtain the user information from GitHub.
@@ -79,6 +83,12 @@ class AuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('facebook')->user();
+
+        // $user->token;
+    }
+    public function handleProviderGithubCallback()
+    {
+        $user = Socialite::driver('github')->user();
 
         // $user->token;
     }

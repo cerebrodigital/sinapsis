@@ -19,6 +19,7 @@
 @section('main')
 <section >
       @section('title'){{$vid->title}}@endsection
+      @section('id'){{$vid->id}}@endsection
       @section('description'){!! substr(strip_tags($vid->description), 0, 250) !!}...@endsection
       @section('keywords'){{$vid->tags}}@endsection
       @section('image')@if($vid->featured_image){{$vid->featured_image}}@endif @endsection
@@ -37,14 +38,8 @@
               <div class="panel-block">
                 
                 <div class="panel-content">
-                <?php 
-                $anterior = $vid->id - 1;
-                $siguiente = $vid->id + 1;
-                ?>
-                <div align="center">
-                  <a href="{{route('video.view.one', $anterior)}}" class="button"> &larr; Video Anterior</a>
-                  <a href="{{route('video.view.one', $siguiente)}}" class="button">Siguiente Video &rarr;</a>
-                </div>  
+                
+                  <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='24569363'></div>
                   <p>{!!$vid->description!!}</p>
                   <div class="video-footer">
                     <strong>Categorias:</strong>
@@ -107,6 +102,15 @@
           <aside id="sidebar" class="right">
 
             <!-- BEGIN .widget -->
+            <?php 
+                $anterior = $vid->id - 1;
+                $siguiente = $vid->id + 1;
+                ?>
+                <div align="center">
+                  <a href="{{route('video.view.one', $anterior)}}" class="button"> &larr; Video Anterior</a>
+                  <a href="{{route('video.view.one', $siguiente)}}" class="button">Siguiente Video &rarr;</a>
+                </div>  
+                <br>
             <div class="widget">
               <h3>Estadisticas del video</h3>
               <div class="video-stats">

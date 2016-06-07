@@ -198,6 +198,9 @@ Route::get('perfil/{id}', array('uses' => 'DashboardController@authorProfile', '
 Route::get('auth/facebook', array('uses' => 'Auth\AuthController@redirectToProvider', 'as' => 'sinapsis.facebook.register'));
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 
+Route::get('auth/github', array('uses' => 'Auth\AuthController@redirectToGithubProvider', 'as' => 'sinapsis.github.register'));
+Route::get('auth/github/callback', 'Auth\AuthController@handleProviderGithubCallback');
+
 
 
 
