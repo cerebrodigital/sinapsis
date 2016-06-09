@@ -40,7 +40,7 @@
           {{$category->name}}, 
         @endforeach
         <a href="#"><i class="fa fa-calendar"></i>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->format('d M Y')}}</a>
-        <a href="#" class="show-likes"><i class="fa fa-heart"></i>{{$post->total_views}} vistas </a>
+        <a href="#" class="show-views"><i class="fa fa-eye"></i>{{$post->total_views}} vistas </a>
 
       </div>
       <br>

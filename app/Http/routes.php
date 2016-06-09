@@ -166,6 +166,18 @@ Route::get('video/categoria/{category}', array('uses' => 'VideoController@catego
 
 //Route::get('video/file/{filename}', array('uses' => 'VideoController@displayFile', 'as' => 'video.view.file'));
 
+
+//FORUM
+Route::get('foro/test', array('uses' => 'ForumController@test', 'as' => 'foro.view.test'));
+Route::get('foro/topic/{id}', array('uses' => 'ForumController@topic', 'as' => 'foro.topic.id'));
+Route::get('foro/topics', array('uses' => 'ForumController@listAllTopics', 'as' => 'foro.topic.all'));
+Route::get('foro/crear', array('uses' => 'ForumController@createTopicView', 'as' => 'foro.create.view'));
+Route::post('foro/crear/post', array('uses' => 'ForumController@createTopic', 'as' => 'foro.create.post'));
+Route::get('foro/topics/categoria/{id}', array('uses' => 'ForumController@listTopicByCategory', 'as' => 'foro.topic.category'));
+
+
+
+
 // Prueba tags PLAYING CON CODIGO
 Route::get('test/tags', function() {
     $post_tags = \App\models\Post::all(['tags']);
@@ -232,6 +244,12 @@ Route::group(['prefix' => '/agora', 'middleware' => ['auth', 'admin']], function
         Route::get('editar/{id}', array('uses' => 'VideoController@editView', 'as' => 'videos.view.edit'));
         Route::get('post/{id}/delete', array('uses' => 'VideoController@deleteSoft', 'as' => 'videos.delete.soft'));
         Route::post('post/{id}/delete/permanent', array('uses' => 'VideoController@deleteHard', 'as' => 'videos.delete.hard'));
+        
+    });
+    Route::group(['prefix' => '/foro', 'middleware' => ['auth', 'admin']], function () {
+        Route::get('categorias', array('uses' => 'CategoriesController@forumCategories', 'as' => 'foro.categorias.edit'));
+        Route::post('categorias/crear', array('uses' => 'CategoriesController@storeForumCategory', 'as' => 'foro.categoria.crear'));
+        Route::post('topic/{id}/reply', array('uses' => 'ForumController@createMessage', 'as' => 'foro.topic.reply'));
         
     });
 

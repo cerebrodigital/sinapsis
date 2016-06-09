@@ -63,7 +63,7 @@
                 </li>
                 
                 <li><a href="#up"><i class="fa fa-camera-retro"></i><strong>UP</strong></a></li>
-                <li><a href="#forum"><span><i class="fa fa-comments-o"></i><strong>Foro</strong></span></a>
+                <li><a href="{{route('foro.topic.all')}}"><span><i class="fa fa-comments-o"></i><strong>Foro</strong></span></a>
                   <!--
                   <ul class="sub-menu">
                     <li><a href="#">Lista de Ultimas Publicaciones</a></li>

@@ -10,7 +10,7 @@
                   <ul class="sub-menu">
                       <?php $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get(); ?>
                       @foreach($categoriesList as $category)
-                        <br>
+                        
                         <li><a href="{{route('blog.view.category', $category->slug)}}">{{$category->name}}</a>
                         @if($category->children)
                           <ul class="sub-menu">
@@ -60,7 +60,7 @@
                 </li>
                 
                 <li><a href="#up"><i class="fa fa-camera-retro"></i><strong>UP</strong></a></li>
-                <li><a href="#forum"><span><i class="fa fa-comments-o"></i><strong>Foro</strong></span></a>
+                <li><a href="{{route('foro.topic.all')}}"><span><i class="fa fa-comments-o"></i><strong>Foro</strong></span></a>
                   <!--
                   <ul class="sub-menu">
                     <li><a href="#">Lista de Ultimas Publicaciones</a></li>

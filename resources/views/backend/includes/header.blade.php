@@ -270,6 +270,11 @@
                                         
                                     </ul>
                                 </li>
+                                <li class="dropdown dropdown-fw @if($active_menu == 'categorias_foro') open @endif">
+                                            <a href="{{route('foro.categorias.edit')}}">
+                                                <i class="icon-puzzle"></i> CATEGORIAS del FORO </a>
+                                            
+                                </li>
                                 <!--
                                 <li class="dropdown dropdown-fw  ">
                                     <a href="javascript:;" class="text-uppercase">

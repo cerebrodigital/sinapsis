@@ -22,6 +22,15 @@ class CategoriesController extends Controller
         return \View::make('backend.pages.categories', compact('categories', 'categoriesList', 'active_menu'));
     }
 
+
+    public function forumCategories()
+    {
+        $categories = \App\models\ForumCategory::with('children')->where('parent_id', '0')->get();
+        $categoriesList = \App\models\ForumCategory::with('children')->where('parent_id', '0')->get();
+        $active_menu = "categorias_foro";
+        return \View::make('backend.pages.forum.categories', compact('categories', 'categoriesList', 'active_menu'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,6 +69,39 @@ class CategoriesController extends Controller
                     $category = \App\models\Category::create(array('name' => $request->name, 'slug' => $request->slug, 'parent_id' => $request->parent_id));
                 } else {
                     $category = \App\models\Category::create(array('name' => $request->name, 'slug' => $request->slug));
+                }
+               return \Redirect::back();
+            }
+        }
+
+
+    }
+
+
+    public function storeForumCategory(Request $request)
+    {
+        //dd($request->all());
+        if($request->parent_id == 'subcat')
+        {
+            return \Redirect::back()->with('error', 'Necesitas escoger categoría padre para creat una subcategoria');
+        }
+        else {
+            $rules = [
+                'title' => 'required',
+                'description' => 'required',
+                'slug' => 'required|unique:forum_categories,slug',
+            ];
+            $validation = \Validator::make($request->all(),  $rules);
+
+
+            if($validation->fails()) {
+                return \Redirect::back()->withErrors($validation)->withInput();
+            } else {
+                if($request->has('parent_id')) 
+                {
+                    $category = \App\models\ForumCategory::create(array('title' => $request->title, 'description' => $request->description,  'slug' => $request->slug, 'parent_id' => $request->parent_id));
+                } else {
+                    $category = \App\models\ForumCategory::create(array('title' => $request->title, 'description' => $request->description,  'slug' => $request->slug, 'parent_id' => '0'));
                 }
                return \Redirect::back();
             }

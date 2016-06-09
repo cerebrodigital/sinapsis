@@ -15,7 +15,8 @@
         "facebook/php-sdk-v4": "^5.2",
         "rtconner/laravel-likeable": "~1.2",
         "nesbot/carbon": "^1.21",
-        "embed/embed": "^2.7"
+        "embed/embed": "^2.7",
+        "s9e/text-formatter": "^0.5.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -23,7 +24,6 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "aws/aws-sdk-php-laravel": "~3.0",
-        "s9e/text-formatter": "^0.4",
         "laravelcollective/html": "5.1.*"
     },
     "autoload": {

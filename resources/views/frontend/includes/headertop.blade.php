@@ -11,13 +11,13 @@
           
           </ul>
           <ul class="load-responsive" rel="Top menu">
-            <li><a href="podcasts.html">Podcasts</a></li>
-            <li><a href="messages.html"><span>Private messages</span></a>
-              <ul class="sub-menu">
+            
+            <li><a href="#mensajes"><span>Mensajes Privados</span></a>
+              <!-- <ul class="sub-menu">
                 <li><a href="messages.html">Conversation list</a></li>
                 <li><a href="messages-conversation.html">Single conversation</a></li>
                 <li><a href="messages-write.html">Start new conversation</a></li>
-              </ul>
+              </ul> -->
             </li>
             @if(Auth::check())
               @include('frontend.includes.readlater')
