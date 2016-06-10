@@ -1,6 +1,7 @@
 <?php
   $categories = \App\models\ForumCategory::with('children')->where('parent_id', '0')->get();
 ?>
+
     <p align="center">Menu del Foro</p>
     <div class="the-profile-top">
     @foreach($categories as $item)

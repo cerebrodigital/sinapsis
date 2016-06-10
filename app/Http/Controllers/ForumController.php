@@ -86,7 +86,12 @@ class ForumController extends Controller
     {
         $topic = \App\models\ForumTopic::where('id', '=', $id)->with('messages', 'author', 'category')->first();
         //dd($topic);
-        return \View::make('frontend.forum.topic', compact('topic'));
+        if($topic) {
+            \Event::fire(new \App\Events\ViewForumTopicHandler($topic));
+            return \View::make('frontend.forum.topic', compact('topic'));
+        }
+        return "No existe ningún tema con este id, intenta de nuevo";
+        
     }
 
     public function listAllTopics()
@@ -97,8 +102,7 @@ class ForumController extends Controller
     }
     public function listTopicByCategory($id)
     {
-        $topics = \App\models\ForumTopic::where('parent_category', '=', $id)->with('messages', 'author', 'category')->paginate(25);
-        //dd($topic);
+        $topics = \App\models\ForumTopic::where('parent_category', '=', $id)->with('messages', 'author', 'category')->orderBy('updated_at', 'DESC')->take(30)->get();
         return \View::make('frontend.forum.topics_category', compact('topics'));
     }
 

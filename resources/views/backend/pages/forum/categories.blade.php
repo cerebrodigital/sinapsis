@@ -126,7 +126,7 @@
                 @foreach($item->children as $child)
                  <ul>
 
-                         <li><a href="#">{{$child->title}}</a></li>
+                         <li><a href="#">-  {{$child->title}}</a></li>
                  </ul>
                  @endforeach
             @endif

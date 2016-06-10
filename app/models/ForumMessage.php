@@ -1,10 +1,12 @@
 <?php
 
 namespace App\models;
+use Conner\Likeable\LikeableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class ForumMessage extends Model
 {
+    use LikeableTrait;
     protected $table      = 'forum_messages';
 
 

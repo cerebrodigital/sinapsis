@@ -26,8 +26,8 @@
                     <a href="#" class="page-num">3</a>
                   </div>
                   <div class="topic-right right">
-                    <span><i class="fa fa-unlock-alt"></i>Thread closed</span>
-                    <span>12 Posts</span>
+                    <span><i class="fa fa-eye"> vistas: {{$topic->views}}</i></span> -
+                    <span>{{count($topic->messages)}} Respuestas</span>
                   </div>
 
                   <a href="#quick-reply" class="newdefbutton margin-right scroll"><i class="fa fa-comment-o"></i>Responder</a>

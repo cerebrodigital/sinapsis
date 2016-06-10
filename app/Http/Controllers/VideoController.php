@@ -236,9 +236,12 @@ class VideoController extends Controller
         $vid = \App\models\Video::with('comments')->where('id', '=', $id)->first();
         $vid1 = \App\models\Video::find($id);
         $comments = \App\models\VideoComment::where('video_id', '=', $vid1->id)->simplePaginate(25);
-
-        //dd($vid1);
-        return view('frontend.video')->with(compact('vid', 'vids', 'comments'));
+        if($vid) {
+            \Event::fire(new \App\Events\ViewVideoHandler($vid));
+            return view('frontend.video')->with(compact('vid', 'vids', 'comments'));
+        }
+        return "No encontramos ningún video con ese id, intenta de nuevo";
+        
     }
 
 

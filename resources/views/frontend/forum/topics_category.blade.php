@@ -3,7 +3,7 @@
 @section('breadcrumbs')
           <div class="wrapper">
             <div class="header-breadcrumbs">
-              <h2 class="right"><u>Lista de Temas dentro de Categoria: </u></h2>
+              <h2 class="right">Lista de Temas dentro de Categoria: <u> @if($topics){{$topics[0]->category->title}}@endif </u></h2>
               <ul class="left">
                 <li><a href="#home">FORO</a></li>
                 <li>Categoría</li>
@@ -18,9 +18,12 @@
 <div id="main">
   <div class="forum-block">
 
+
               <!-- <h2><span>Otro titulo de la pagina</span></h2> -->
               
               <div class="content-padding">
+              <b>@if($topics){{$topics[0]->category->title}}@endif</b><br>
+              <small>@if($topics){{$topics[0]->category->description}}@endif</small>
                 <div class="forum-description">
                   <div class="pagination right">
                     <a href="#" class="page-num">1</a>
@@ -54,10 +57,10 @@
                       <i class="fa fa-comments-o"></i>
                     </i>
                   @endif
-                    <span>@if($topic->pinned == '1')<i class="sticky">PIN</i>@endif {{$topic->title}}</span>
+                    <span style="font-size:11px">@if($topic->pinned == '1')<i class="sticky">PIN</i>@endif{{$topic->title}}</span>
                   </a>
                   <div class="thread-author">
-                    <span class="f-user-link"><a href="{{route('dashboard.profile', $topic->author->id)}}"><strong>{{$topic->author->username}}</strong></a></span>
+                    <span style="font-size:11px" class="f-user-link"><a href="{{route('dashboard.profile', $topic->author->id)}}"><strong>{{$topic->author->username}}</strong></a></span>
                   </div>
                   <div class="thread-replies">
                     <span>{{count($topic->messages)}}</span>
@@ -82,7 +85,7 @@
               <div class="content-padding">
                 <div class="forum-description">
                   <div class="pagination right">
-                  {!!$topics->render()!!}
+                  
                   </div>
 
                   <a href="{{route('foro.create.view')}}" class="defbutton big"><i class="fa fa-comment-o"></i>CREAR UN NUEVO TEMA</a>
