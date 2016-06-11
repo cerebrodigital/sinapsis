@@ -1,6 +1,7 @@
 <?php
   $post_tags = \App\models\Post::all(['tags']);
   $video_tags = \App\models\Video::all(['tags']);
+  $forum_topic = \App\models\ForumTopic::all(['tags']);
   $final = "";
   foreach($post_tags as $tag)
   {
@@ -10,8 +11,13 @@
   {
       $final .= trim($tag->tags) .",";
   }
+  foreach($forum_topic as $tag)
+  {
+      $final .= trim($tag->tags) .",";
+  }
  $order = array_filter(preg_split('/[,\s]+/', $final));  
   $tags = array_count_values($order);
+  arsort($tags);
 ?>
 
 <div class="panel">

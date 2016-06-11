@@ -103,7 +103,12 @@ class ForumController extends Controller
     public function listTopicByCategory($id)
     {
         $topics = \App\models\ForumTopic::where('parent_category', '=', $id)->with('messages', 'author', 'category')->orderBy('updated_at', 'DESC')->take(30)->get();
-        return \View::make('frontend.forum.topics_category', compact('topics'));
+        if(count($topics) > 0) {
+            $title = $topics[0]->category->title;
+            return \View::make('frontend.forum.topics_category', compact('topics', 'title'));
+        } else {
+            return \View::make('frontend.forum.topics_noResult');
+        }
     }
 
     public function createMessage(Request $request, $id)

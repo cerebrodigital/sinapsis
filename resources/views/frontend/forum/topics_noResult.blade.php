@@ -3,7 +3,7 @@
 @section('breadcrumbs')
           <div class="wrapper">
             <div class="header-breadcrumbs">
-              <h2 class="right">Lista de Temas dentro de Categoria: <u> @if($title){{$topics[0]->category->title}}@endif </u></h2>
+              <h2 class="right">La categoría no existe, favor de intentar otro menu</h2>
               <ul class="left">
                 <li><a href="#home">FORO</a></li>
                 <li>Categoría</li>
@@ -22,8 +22,7 @@
               <!-- <h2><span>Otro titulo de la pagina</span></h2> -->
               
               <div class="content-padding">
-              <b>@if($topics){{$topics[0]->category->title}}@endif</b><br>
-              <small>@if($topics){{$topics[0]->category->description}}@endif</small>
+
                 <div class="forum-description">
                   <div class="pagination right">
                     <a href="#" class="page-num">1</a>
@@ -48,37 +47,7 @@
               </div>
               <!-- BEGIN .forum-threads -->
               <div class="forum-threads">
-              @foreach($topics as $topic)
-                <!-- BEGIN .thread-link -->
-                <div class="thread-link thread-unread thread-sticky">
-                  <a href="{{route('foro.topic.id', $topic->id)}}">
-                  @if(count($topic->messages) > 0)
-                    <i class="forum-icon strike-tooltip" title="Topic has answers"> 
-                      <i class="fa fa-comments-o"></i>
-                    </i>
-                  @endif
-                    <span style="font-size:11px">@if($topic->pinned == '1')<i class="sticky">PIN</i>@endif{{$topic->title}}</span>
-                  </a>
-                  <div class="thread-author">
-                    <span style="font-size:11px" class="f-user-link"><a href="{{route('dashboard.profile', $topic->author->id)}}"><strong>{{$topic->author->username}}</strong></a></span>
-                  </div>
-                  <div class="thread-replies">
-                    <span>{{count($topic->messages)}}</span>
-                  </div>
-                  <div class="thread-views">
-                    <span>{{$topic->views}}</span>
-                  </div>
-                  <div class="thread-last">
-                  @if(count($topic->messages) >0)
-                    <span class="f-user-link"><a href="user-single.html"><strong>autor</strong></a></span>
-                    <span class="t-date">fecha</span>
-                  @else
-                    <span class="t-date">ninguna respuesta aun</span>
-                  @endif
-                  </div>
-                <!-- END .thread-link -->
-                </div>
-              @endforeach
+                <h3 align="center" style="color:red;">No existe ninguna categoria con este nombre, así como resultados.</h3>
               <!-- END .forum-threads -->
               </div>
               

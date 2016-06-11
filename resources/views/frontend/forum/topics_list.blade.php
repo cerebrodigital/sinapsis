@@ -63,7 +63,7 @@
                     <span>{{count($topic->messages)}}</span>
                   </div>
                   <div class="thread-views">
-                    <span>0</span>
+                    <span>{{$topic->views}}</span>
                   </div>
                   <div class="thread-last">
                   @if(count($topic->messages) >0)

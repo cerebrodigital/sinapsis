@@ -85,15 +85,7 @@
 
  
 @section('bottomscripts')
-    <link rel="stylesheet" href="/vendor/comments/css/bootstrapless.css">
-    <link rel="stylesheet" href="/vendor/comments/css/prism-okaidia.css"> <!-- Optional -->
-    <link rel="stylesheet" href="/vendor/comments/css/comments.css">
-    <script src="//cdn.jsdelivr.net/vue/1.0.16/vue.min.js"></script>
 
-    <!-- Must be included before the closing </body> tag! -->
-    <script src="/vendor/comments/js/utils.js"></script> 
-    <script src="/vendor/comments/js/comments.js"></script>
-    <script>new Vue({el: '#comments'});</script>
     <script type='text/javascript'>
       var strike_autostart = false;
 
