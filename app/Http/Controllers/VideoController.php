@@ -240,7 +240,7 @@ class VideoController extends Controller
             \Event::fire(new \App\Events\ViewVideoHandler($vid));
             return view('frontend.video')->with(compact('vid', 'vids', 'comments'));
         }
-        return "No encontramos ningún video con ese id, intenta de nuevo";
+        abort(404);
         
     }
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ab13fa80f8a0e15467aa4631c776320",
-    "content-hash": "2d4a507458d1f66de52372c10ec33ab6",
+    "hash": "d2727e408cd2f0279d6a7e8701c5dc8d",
+    "content-hash": "670b7fa45732b6c174d44fcaf0d2c482",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1075,6 +1075,54 @@
                 "uri"
             ],
             "time": "2016-04-13 19:56:01"
+        },
+        {
+            "name": "hootlex/laravel-friendships",
+            "version": "v1.0.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hootlex/laravel-friendships.git",
+                "reference": "ecfe074738bb21040d30db2e9ba66eb255ac28c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hootlex/laravel-friendships/zipball/ecfe074738bb21040d30db2e9ba66eb255ac28c7",
+                "reference": "ecfe074738bb21040d30db2e9ba66eb255ac28c7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "laravel/laravel": "5.*",
+                "phpunit/phpunit": "5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hootlex\\Friendships\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hootlex",
+                    "email": "hootlex@icloud.com"
+                }
+            ],
+            "description": "This package gives Eloqent models the ability to manage their friendships.",
+            "keywords": [
+                "eloqent",
+                "friend-system",
+                "friends",
+                "friendships",
+                "laravel"
+            ],
+            "time": "2016-06-01 23:48:13"
         },
         {
             "name": "intervention/image",

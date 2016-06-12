@@ -90,7 +90,7 @@ class ForumController extends Controller
             \Event::fire(new \App\Events\ViewForumTopicHandler($topic));
             return \View::make('frontend.forum.topic', compact('topic'));
         }
-        return "No existe ningún tema con este id, intenta de nuevo";
+        abort(404);
         
     }
 
@@ -107,7 +107,7 @@ class ForumController extends Controller
             $title = $topics[0]->category->title;
             return \View::make('frontend.forum.topics_category', compact('topics', 'title'));
         } else {
-            return \View::make('frontend.forum.topics_noResult');
+            abort(404);
         }
     }
 

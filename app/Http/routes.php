@@ -204,8 +204,13 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::get('dashboard/perfil', 'DashboardController@home');
+Route::get('dashboard/perfil', array('uses' => 'DashboardController@home', 'as' => 'dashboard.perfil'));
+Route::get('perfil/llenar', array('uses' => 'DashboardController@llenarPerfil', 'as' => 'perfil.llenar'));
 Route::get('perfil/{id}', array('uses' => 'DashboardController@authorProfile', 'as' => 'dashboard.profile'));
+Route::get('perfil/editar/{id}', array('uses' => 'DashboardController@editProfileView', 'as' => 'profile.edit.view'));
+Route::post('perfil/editar/{id}', array('uses' => 'DashboardController@editProfile', 'as' => 'profile.edit.post'));
+
+
 
 Route::get('auth/facebook', array('uses' => 'Auth\AuthController@redirectToProvider', 'as' => 'sinapsis.facebook.register'));
 Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');

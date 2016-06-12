@@ -16,7 +16,8 @@
         "rtconner/laravel-likeable": "~1.2",
         "nesbot/carbon": "^1.21",
         "embed/embed": "^2.7",
-        "s9e/text-formatter": "^0.5.2"
+        "s9e/text-formatter": "^0.5.2",
+        "hootlex/laravel-friendships": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

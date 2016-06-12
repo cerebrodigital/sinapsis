@@ -6,7 +6,7 @@
               <h2 class="right">Tag</h2>
               <ul>
                 <li><a href="#home">Artículos</a></li>
-                <li>Tag: {{$tag}}, #{{count($posts)}} publicaciones encontradas.</li>
+                <li>Tag: {{$tag}}, # @if($posts) {{count($posts)}} @endif publicaciones encontradas.</li>
               </ul>
             </div>
           </div>
@@ -55,15 +55,16 @@
         
         <div class="clear-float do-the-split"></div>
       </div>
-        <div align="center">
+        
+    @endforeach
+    <div align="center">
           @if($posts->previousPageUrl())
             <a href="{{$posts->previousPageUrl()}}" class="defbutton"><i class="fa"></i>&larr;  Página anterior de posts</a>
           @endif
           @if($posts->nextPageUrl())
             <a href="{{$posts->nextPageUrl()}}" class="defbutton"><i class="fa"></i>Siguiente pagina de posts &rarr; </a>
           @endif
-        </div>
-    @endforeach
+    </div>
   @else
     <div class="content-padding">
       <h3 style="color:red;">No más artículos disponibles, pero tal vez si videos.</h3>

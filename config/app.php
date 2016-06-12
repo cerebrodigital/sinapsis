@@ -152,6 +152,7 @@ return [
         Aws\Laravel\AwsServiceProvider::class,
         \Conner\Likeable\LikeableServiceProvider::class,
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
+        Hootlex\Friendships\FriendshipsServiceProvider::class,
 
 
         

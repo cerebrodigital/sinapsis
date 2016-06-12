@@ -17,12 +17,12 @@
 <div class="signup-panel">
 
               <div class="left">
-                <h2><span>Log in</span></h2>
+                <h2><span>Registrate </span></h2>
                 <div class="content-padding">
-                  <p class="p-padding">An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
+                  <p class="p-padding">Para ser parte de esta comunidad digital debes registrarte en esta aplicación con la cual unificamos y llevamos registro del aporte de todas nuestras neuronas.</p>
 
                   <div class="login-passes">
-                    <b>O puedes usar los passports:</b>
+                    <b>Puedes conectarte con:</b>
                     <a href="{{route('sinapsis.facebook.register')}}" class="strike-tooltip" title="Use Facebook.com passport"><img src="syn/images/social-icon-facebook.png" alt="" /></a>
                     <a href="#" class="strike-tooltip" title="Use Twitter.com passport"><img src="syn/images/social-icon-twitter.png" alt="" /></a>
                     <a href="#" class="strike-tooltip" title="Use Steampowered.com passport"><img src="syn/images/social-icon-steam.png" alt="" /></a>
@@ -63,12 +63,12 @@
                       </p>
 
                       <p>
-                        <label for="password">Password:<span class="required">*</span></label>
+                        <label for="password">Contraseña:<span class="required">*</span></label>
                         <input type="password" name="password" id="password" value="" />
                       </p>
 
                       <p>
-                        <label for="password_confirmation">password repeat:<span class="required">*</span></label>
+                        <label for="password_confirmation">Repetir contraseña:<span class="required">*</span></label>
                         <input type="password" name="password_confirmation" id="password_confirmation" value="" />
                       </p>
 
@@ -77,7 +77,7 @@
                       </p>
 
                       <p>
-                        <span class="info-msg">If you already have an account please <a href="login.html">log in</a> !</span>
+                        <span class="info-msg">Si ya tienes una cuenta puedes <a href="{{url('/login')}}">CONECTARTE</a> !</span>
                       </p>
 
                     </form>
@@ -87,35 +87,34 @@
               </div>
 
               <div class="right">
-                <h2><span>¿QUE ES SINAPSIS DIGITAL?</span></h2>
+                <h2><span>¿QUE ES El PROYECTO SINAPSIS?</span></h2>
                 <div class="content-padding">
                   
                   <div class="form-split-about">
-                    <p class="p-padding">Lorem ipsum dolor sit amet, natum referrentur sea no. Sensibus definitionem necessitatibus id vim, eu ornatus intellegat argumentum nam. Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
+                    <p class="p-padding">Cerebro Digital es un medio de difusión conocido en toda hispanoamerica.
+                    Este proyecto es una app desarrollada usando Laravel 5.2, la cual unifica a los usuarios para
+                    hacer "sinapsis", lo cual alegoricamente signicia "interacción" sin filtros, que almacena indicadores
+                    que permitiran a un usuario ganar puntos de Experiencia, así como puntos de Reputación y posteriormente 
+                    utilizarlos para tener muchas sorpresas gratis por interactuar y apoyar a los demás.
+                    </p>
 
                     <ul>
                       <li>
-                        <i class="fa fa-picture-o"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua.</p>
+                        <i class="fa fa-tasks"></i>
+                        <b>Diferente Módulos</b>
+                        <p class="p-padding">Existen los módulos de Artículos, Video, Media y Foros. Todos estos tienen métricas, sistemas de puntos y recompensas.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-trophy"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
+                        <b>Sistema de recompensas</b>
+                        <p class="p-padding">Un algoritmo de puntos, niveles, rangos y medallas permitirán ser premiado por tus aportes y ayuda a los demás usuarios.</p>
                       </li>
 
                       <li>
                         <i class="fa fa-microphone"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
-                      </li>
-                      
-                      <li>
-                        <i class="fa fa-comments"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua.</p>
+                        <b>Tus proyectos y eventos tienen voz</b>
+                        <p class="p-padding">Colabora en la comunidad, sube de nivel, date a conocer y tendrás accesos a difundir tus iniciativas, eventos o aportes al mundo de la educación en nuestra red de millones de usuarios.</p>
                       </li>
                     </ul>
                     

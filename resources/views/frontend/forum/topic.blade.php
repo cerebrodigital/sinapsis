@@ -53,12 +53,15 @@
                       <div>
                         <a href="user-single.html" class="forum-user user-tooltip"><b>{{$topic->author->username}}</b></a>
                       </div>
-                      <div>
-                        <span>Rating: <strong class="rating-good">+3000</strong></span>
-                      </div>
-                      <div>
-                        <span><strong>293</strong> posts</span>
-                      </div>
+                        <div>
+                          <small>Exp: <small class="rating-good">{{$topic->author->experience}}</small></small>
+                        </div>
+                        <div>
+                          <small>Rep: <small class="rating-bad">{{$topic->author->experience}}</small></small>
+                        </div>
+                        <div>
+                          <small style="color:black;">amigos(<small >{{$topic->author->getFriends()->count()}}</small>)</small>
+                        </div>
                     </div>
                     <div class="clear-float"></div>
                   </div>
@@ -110,10 +113,13 @@
                           <a href="user-single.html" class="forum-user user-tooltip"><b>{{$message->author->username}}.</b></a>
                         </div>
                         <div>
-                          <span>Rating: <strong class="rating-bad">-25</strong></span>
+                          <small>Exp: <small class="rating-good">{{$message->author->experience}}</small></small>
                         </div>
                         <div>
-                          <span><strong>4</strong> posts</span>
+                          <small>Rep: <small class="rating-bad">{{$message->author->experience}}</small></small>
+                        </div>
+                        <div>
+                          <small style="color:black;">amigos(<small >{{$message->author->getFriends()->count()}}</small>)</small>
                         </div>
                       </div>
                       <div class="clear-float"></div>
@@ -213,6 +219,7 @@
 
  
 @section('bottomscripts')
+
     <script type='text/javascript'>
       var strike_autostart = false;
 

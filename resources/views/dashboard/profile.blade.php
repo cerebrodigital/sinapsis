@@ -6,83 +6,7 @@
     
     <div class="profile-shadow"></div>
 
-    <!-- BEGIN .profile-left-side -->
-    <div class="profile-left-side">
-
-        <div class="the-profile-top">
-
-            <div class="profile-user-name">
-            <br>
-                <h1>{!! $user->name !!}</h1>
-                <div class="sttaa"><span>RECOMENDADO:</span>Lectura "<a href="forum-single.html">Aprender a hacer sinapsis y avanzar</a>"</div>
-            </div>
-
-            <div class="avatar online">
-                <div class="avatar-button"><a href="#"><i class="fa fa-camera-retro"></i>Change Photo</a></div>
-                <img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($user->email)))}}" width="215" class="setborder" alt="" />
-            </div>
-            
-            <div>
-                <ul class="user-button-list">
-                    <li><span class="info-msg">The one who digs a hole, has a shovel!</span></li>
-                </ul>
-
-                <div class="user-panel-about">
-                    <div>
-                        <b><i class="fa fa-male"></i>About me</b>
-                        <p>Cum no veri sententiae. Ei est primis melius admodum, at nisl nibh fugit cum, scaevola perpetua cu cum.</p>
-                        <small>{!! $user->email !!}</small>
-                    </div>
-
-                    <div class="user-achievements">
-                        <b><i class="fa fa-trophy"></i>My achievements</b>
-                        <p>
-                            <span class="ach strike-tooltip" title="Joined Revelio"><i class="fa fa-unlock-alt"></i></span>
-                            <span class="ach strike-tooltip" title="Here from beginning"><i class="fa fa-bar-chart-o"></i></span>
-                            <span class="ach strike-tooltip" title="Active on forums"><i class="fa fa-comments-o"></i></span>
-                            <span class="ach strike-tooltip" title="Writes a lot"><i class="fa fa-keyboard-o"></i></span>
-                            <span class="ach strike-tooltip" title="Admin aproved"><i class="fa fa-thumbs-up"></i></span>
-                            <span class="ach strike-tooltip" title="Helps everyone"><i class="fa fa-medkit"></i></span>
-                            <span class="ach strike-tooltip" title="Night owl"><i class="fa fa-moon-o"></i></span>
-                            <span class="ach strike-tooltip" title="Comes and plays"><i class="fa fa-gamepad"></i></span>
-                        </p>
-                    </div>
-                </div>
-
-                <ul class="user-button-list">
-                    <li><a href="messages-write.html" class="defbutton profile-button"><i class="fa fa-comment"></i>Private message</a></li>
-                    <li><a href="#" class="defbutton profile-button"><i class="fa fa-coffee"></i>Follow him</a></li>
-                    <li><a href="#edit" class="defbutton profile-button enabled"><i class="fa fa-wrench"></i>Change profile info</a></li>
-                    <li><a href="#" class="defbutton profile-button disabled"><i class="fa fa-ban"></i>Ban this user</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="the-profile-navi">
-            <ul class="profile-navi">
-                <li><a href="#top"><span class="left-avatar"><img src="images/photos/avatar-1.jpg" alt="" /></span>Viewing <b>Datcouch</b> profile<br />Back to top<span class="clear-float"></span></a></li>
-                <li class="active"><a href="user-single.html"><i class="fa fa-globe"></i>Profile information</a></li>
-                <li><a href="user-single-guestbook.html"><i class="fa fa-comment-o"></i>Guest book</a></li>
-                <li><a href="user-single-comments.html"><i class="fa fa-comment"></i>My comments</a></li>
-                <li><a href="user-single-blog.html"><i class="fa fa-book"></i>Personal blog</a></li>
-                <li><a href="user-single-music.html"><i class="fa fa-music"></i>Music playlist</a></li>
-                <li><a href="user-single-friends.html"><i class="fa fa-users"></i>Friends<span class="notif">10</span></a></li>
-                <li><a href="user-single-threads.html"><i class="fa fa-comments-o"></i>Forum topics<span class="notif">66</span></a></li>
-                <li><a href="user-single-instagram.html"><i class="fa fa-camera-retro"></i>Instagram photos</a></li>
-            </ul>
-            
-            <div class="profile-panel instagram">
-                <div class="pieces">
-                    <a href="https://instagram.com/marcisbee/" target="_blank"><img src="https://scontent-fra.cdninstagram.com/hphotos-xfp1/t51.2885-15/e15/10576140_778241095547266_331905980_n.jpg" alt="" /></a>
-                    <a href="https://instagram.com/marcisbee/" target="_blank"><img src="https://scontent-fra.cdninstagram.com/hphotos-xpa1/outbound-distilleryimage1/t0.0-17/OBPTH/427393eef7af11e2b65722000a9e00be_7.jpg" alt="" /></a>
-                    <a href="https://instagram.com/marcisbee/" target="_blank"><img src="https://scontent-fra.cdninstagram.com/hphotos-xpa1/outbound-distilleryimage5/t0.0-17/OBPTH/3259ed5670c711e2a9dd22000a9e29a7_7.jpg" alt="" /></a>
-                </div>
-                <div class="clear-float"></div>
-            </div>
-        </div>
-
-    <!-- END .profile-left-side -->
-    </div>
+   @include('dashboard.profile_left')
 
     <!-- BEGIN .profile-right-side -->
     <div class="profile-right-side">
@@ -275,7 +199,7 @@
             
            
 
-           @include('comments::display', ['pageId' => $user->username])
+           @include('comments::display', ['pageId' => $user->email])
 
         <!-- END .content-padding -->
         </div>

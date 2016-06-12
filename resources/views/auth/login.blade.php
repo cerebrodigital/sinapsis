@@ -18,18 +18,18 @@
               <div class="left">
                 <h2><span>CONECTARSE</span></h2>
                 <div class="content-padding">
-                  <p class="p-padding">An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
-
+                  <p class="p-padding">Conectate para darle seguimiento a tu cuenta y acumular más puntos y subir niveles.</p>
+                  <!--
                   <div class="login-passes">
                     <b>O puedes conectarte con:</b>
                     <a href="{{route('sinapsis.facebook.register')}}" class="strike-tooltip" title="Use Facebook.com passport"><img src="syn/images/social-icon-facebook.png" alt="" /></a>
                     <a href="{{route('sinapsis.github.register')}}" class="strike-tooltip" title="Usa Github para conectarte"><img src="syn/images/social-icon-github.png" alt="" /></a>
                     <a href="#" class="strike-tooltip" title="Use Steampowered.com passport"><img src="syn/images/social-icon-steam.png" alt="" /></a>
                     <a href="#" class="strike-tooltip" title="Use Google.com passport"><img src="syn/images/social-icon-google.png" alt="" /></a>
-                  </div>
+                  </div> -->
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">
-                      <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                      <strong>Whoops!</strong> Hubieron problemas con las credenciales que introduciste. Intenta de nuevo.<br><br>
                       <ul>
                         @foreach ($errors->all() as $error)
                           <li>{{ $error }}</li>
@@ -37,8 +37,7 @@
                       </ul>
                     </div>
                 @endif
-                  <div class="the-form" style="margin-top:40px;">
-
+                  <div class="the-form" style="margin-top:10px;">
 
                           <form method="post" method="POST" action="{{ url('/auth/login') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -55,7 +54,7 @@
                             </p>
 
                             <p>
-                              <label for="password">Password:</label>
+                              <label for="password">Contrasela:</label>
                               <input type="password" name="password" id="password" value="" />
                             </p>
 
@@ -67,12 +66,12 @@
                             </p>
 
                             <p class="form-footer">
-                              <input type="submit" name="login_submit" id="login_submit" value="Log in" />
+                              <input type="submit" name="login_submit" id="login_submit" value="CONECTAR" />
                             </p>
 
                             <p style="margin-top:40px;">
                               <span class="info-msg">Si no tienes una cuenta, <a href="{{route('sinapsis.register.get')}}">REGISTRATE</a>
-                              <br /><br />If lost password <a href="{{route('sinapsis.password.reset')}}">click aqui</a> y te ayudaremos a resetearlo.</span>
+                              <br /><br />Si perdiste tu Constraseña <a href="{{route('sinapsis.password.reset')}}">click aqui</a> y te ayudaremos a resetearla.</span>
                             </p>
 
                           </form>
@@ -82,35 +81,34 @@
               </div>
 
               <div class="right">
-                <h2><span>¿QUE ES SINAPSIS DIGITAL?</span></h2>
+                <h2><span>¿QUE ES El PROYECTO SINAPSIS?</span></h2>
                 <div class="content-padding">
                   
                   <div class="form-split-about">
-                    <p class="p-padding">Lorem ipsum dolor sit amet, natum referrentur sea no. Sensibus definitionem necessitatibus id vim, eu ornatus intellegat argumentum nam. Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
+                    <p class="p-padding">Cerebro Digital es un medio de difusión conocido en toda hispanoamerica.
+                    Este proyecto es una app desarrollada usando Laravel 5.2, la cual unifica a los usuarios para
+                    hacer "sinapsis", lo cual alegoricamente signicia "interacción" sin filtros, que almacena indicadores
+                    que permitiran a un usuario ganar puntos de Experiencia, así como puntos de Reputación y posteriormente 
+                    utilizarlos para tener muchas sorpresas gratis por interactuar y apoyar a los demás.
+                    </p>
 
                     <ul>
                       <li>
-                        <i class="fa fa-picture-o"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua.</p>
+                        <i class="fa fa-tasks"></i>
+                        <b>Diferente Módulos</b>
+                        <p class="p-padding">Existen los módulos de Artículos, Video, Media y Foros. Todos estos tienen métricas, sistemas de puntos y recompensas.</p>
                       </li>
                       
                       <li>
                         <i class="fa fa-trophy"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
+                        <b>Sistema de recompensas</b>
+                        <p class="p-padding">Un algoritmo de puntos, niveles, rangos y medallas permitirán ser premiado por tus aportes y ayuda a los demás usuarios.</p>
                       </li>
 
                       <li>
                         <i class="fa fa-microphone"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua. Accumsan scripserit cu mel, ut dolorem adolescens per.</p>
-                      </li>
-                      
-                      <li>
-                        <i class="fa fa-comments"></i>
-                        <b>Id ius facete urbanitas concludaturque mea</b>
-                        <p class="p-padding">Ius modo interpretaris at, alia erat pri te. An euripidis assentior accommodare usu, ut eam fabellas facilisi perpetua.</p>
+                        <b>Tus proyectos y eventos tienen voz</b>
+                        <p class="p-padding">Colabora en la comunidad, sube de nivel, date a conocer y tendrás accesos a difundir tus iniciativas, eventos o aportes al mundo de la educación en nuestra red de millones de usuarios.</p>
                       </li>
                     </ul>
                     

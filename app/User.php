@@ -9,12 +9,13 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Hootlex\Friendships\Traits\Friendable;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword;
+    use Authenticatable, Authorizable, CanResetPassword, Friendable;
 
     /**
      * The database table used by the model.
@@ -52,10 +53,12 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\models\Post', 'user_id');
     }
 
-    public function userProfile() 
+    public function user_profile() 
     {
       return $this->belongsTo('App\models\UserProfile', 'id', 'user_id');
     }
+
+
 
 
     public function getAuthor()

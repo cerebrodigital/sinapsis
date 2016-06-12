@@ -11,14 +11,15 @@
           
           </ul>
           <ul class="load-responsive" rel="Top menu">
-            
-            <li><a href="#mensajes"><span>Mensajes Privados</span></a>
-              <!-- <ul class="sub-menu">
-                <li><a href="messages.html">Conversation list</a></li>
-                <li><a href="messages-conversation.html">Single conversation</a></li>
-                <li><a href="messages-write.html">Start new conversation</a></li>
-              </ul> -->
-            </li>
+            @if(Auth::check())
+              <li><a href="#mensajes"><span>Perfíl</span></a>
+                <ul class="sub-menu">
+                  <li><a href="{{route('profile.edit.view', \Auth::user()->id)}}">Editar Perfil</a></li>
+                  <li><a href="messages-conversation.html">Single conversation</a></li>
+                  <li><a href="messages-write.html">Start new conversation</a></li>
+                </ul> 
+              </li>
+            @endif
             @if(Auth::check())
               @include('frontend.includes.readlater')
               <li><a href="{{route('sinapsis.logout')}}" style="color:red;">Desconectar</a></li>

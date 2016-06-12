@@ -208,28 +208,23 @@ class BlogController extends Controller
 
     public function viewPost($slug)
     {
-        $posts = \App\models\Post::where('slug', $slug)->with('user')->get();
-        $post = \App\models\Post::find($posts[0]->id);
-        \Event::fire(new \App\Events\ViewPostHandler($post));
-        if($post->type == 'video')
-        {
-            $info = Embed::create($post->featured_media);
-            $post->featured_media = $info->code;
-            $post->featured = $info->image;
-            $info->width = 650;
+        $post = \App\models\Post::where('slug', $slug)->with('user')->first();
+        if($post) {
+            //$post = \App\models\Post::find($posts[0]->id);
+            \Event::fire(new \App\Events\ViewPostHandler($post));
+            if($post->type == 'video')
+            {
+                $info = Embed::create($post->featured_media);
+                $post->featured_media = $info->code;
+                $post->featured = $info->image;
+                $info->width = 650;
+                return \View::make('frontend.post', compact('post'));
+            }
             return \View::make('frontend.post', compact('post'));
         } else {
-
+            abort(404);
         }
-        //$update_post = \App\models\Post::find($posts[0]->id);
-        //$total_views = $update_post->total_views;
-        //$update_post->total_views = $total_views + 1;
-        //$update_post->save();
-        //dd($posts);
-        //$post[0]->total_views = $post[0]->total_views + 1;
-        //$post->update(array('total_views' => $post[0]->total_views ));
-        //dd($post[0]->total_views);
-        return \View::make('frontend.post', compact('post'));
+
 
     }
     public function postEdit($id)
