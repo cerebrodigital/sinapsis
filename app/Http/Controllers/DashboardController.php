@@ -14,7 +14,9 @@ class DashboardController extends Controller
     public function home()
     {
         if(\Auth::check()) {
-            return \View::make('dashboard.home');
+            $user = \App\User::where('id', '=', \Auth::user()->id)->with('user_profile', 'posts', 'videos', 'topics', 'replies')->first();
+            //dd($user);
+            return \View::make('dashboard.home', compact('user'));
         } else {
             return \Redirect::to('/login');
         }
@@ -37,7 +39,7 @@ class DashboardController extends Controller
     // Perfil de autor
     public function authorProfile($id)
     {
-        $user = \App\User::with('user_profile')->where('id', $id)->first();
+        $user = \App\User::with('user_profile', 'posts', 'videos', 'topics', 'replies')->where('id', $id)->first();
         //dd($user);
         if($user) {
             return view('dashboard/profile', compact('user'));

@@ -174,7 +174,7 @@ Route::get('foro/topics', array('uses' => 'ForumController@listAllTopics', 'as' 
 Route::get('foro/crear', array('uses' => 'ForumController@createTopicView', 'as' => 'foro.create.view'));
 Route::post('foro/crear/post', array('uses' => 'ForumController@createTopic', 'as' => 'foro.create.post'));
 Route::get('foro/topics/categoria/{id}', array('uses' => 'ForumController@listTopicByCategory', 'as' => 'foro.topic.category'));
-
+Route::post('topic/{id}/reply', array('uses' => 'ForumController@createMessage', 'as' => 'foro.topic.reply'));
 
 
 
@@ -209,6 +209,9 @@ Route::get('perfil/llenar', array('uses' => 'DashboardController@llenarPerfil', 
 Route::get('perfil/{id}', array('uses' => 'DashboardController@authorProfile', 'as' => 'dashboard.profile'));
 Route::get('perfil/editar/{id}', array('uses' => 'DashboardController@editProfileView', 'as' => 'profile.edit.view'));
 Route::post('perfil/editar/{id}', array('uses' => 'DashboardController@editProfile', 'as' => 'profile.edit.post'));
+Route::post('perfil/agregar/{id}', array('uses' => 'ProfileController@addFriend', 'as' => 'profile.add.friend'));
+Route::get('perfil/aceptar/{id}', array('uses' => 'ProfileController@acceptFriendship', 'as' => 'profile.accept.friend'));
+Route::get('perfil/rechazar/{id}', array('uses' => 'ProfileController@denyFriendship', 'as' => 'profile.deny.friend'));
 
 
 
@@ -254,7 +257,7 @@ Route::group(['prefix' => '/agora', 'middleware' => ['auth', 'admin']], function
     Route::group(['prefix' => '/foro', 'middleware' => ['auth', 'admin']], function () {
         Route::get('categorias', array('uses' => 'CategoriesController@forumCategories', 'as' => 'foro.categorias.edit'));
         Route::post('categorias/crear', array('uses' => 'CategoriesController@storeForumCategory', 'as' => 'foro.categoria.crear'));
-        Route::post('topic/{id}/reply', array('uses' => 'ForumController@createMessage', 'as' => 'foro.topic.reply'));
+        
         
     });
 

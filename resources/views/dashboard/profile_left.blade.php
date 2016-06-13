@@ -44,10 +44,29 @@
 
                 <ul class="user-button-list">
                 @if(\Auth::check())
-                    <li><a href="#mensajes" class="defbutton profile-button"><i class="fa fa-comment"></i>Private message</a></li>
-                    <li><a href="#" class="defbutton profile-button"><i class="fa fa-coffee"></i>Solicitud de Amistad</a></li>
-                    <li><a href="#edit" class="defbutton profile-button enabled"><i class="fa fa-wrench"></i>Change profile info</a></li>
-                    <li><a href="#" class="defbutton profile-button disabled"><i class="fa fa-ban"></i>Ban this user</a></li>
+                      @if(\Auth::user()->id == $user->id)
+                            <li><a href="#edit" class="defbutton profile-button enabled"><i class="fa fa-wrench"></i>Change profile info</a></li>
+                      @else
+                            <li><a href="#mensajes" class="defbutton profile-button"><i class="fa fa-comment"></i>Private message</a></li>
+                            @if(\Auth::user()->isFriendWith($user) == false)
+                                @if(\Auth::user()->hasFriendRequestFrom($user) || $user->hasFriendRequestFrom(\Auth::user()) )
+                                    <p>Tienes una invitación de amistad con este usuario. @if(\Auth::user()->hasFriendRequestFrom($user)) <b style="color:green;"><a href="{{route('profile.accept.friend', $user->id)}}">Aceptala</a> - <b style="color:red;"><a href="{{route('profile.deny.friend', $user->id)}}">Denegar Amistad</a></b>  @else <b>Espera que la acepten</b> @endif </p>
+                                @else
+                                    <form role="form" method="POST" action="{{route('profile.add.friend', $user->id)}}" enctype="multipart/form-data">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <div align="center"><button type="submit" class="defbutton profile-button" ><i class="fa fa-coffee"></i>Enviar Solicitud de Amistad</button></div>
+                                    </form>
+                                @endif
+                            @else
+                                <p color="style:green"><b>Eres amigo de este usuario</b></p>
+                                
+                            @endif 
+                        
+                      @endif         
+                    
+                      @if(\Auth::user()->role == 'admin')  
+                        <li><a href="#" class="defbutton profile-button disabled"><i class="fa fa-ban"></i>Ban this user</a></li>
+                      @endif
                 @endif
                 </ul>
             </div>
@@ -56,8 +75,9 @@
         <div class="the-profile-navi">
             <ul class="profile-navi">
             <br>
-                <h5>Links a Redes:</h5>
+                
                 @if( $user->user_profile->instagram || $user->user_profile->facebook || $user->user_profile->youtube || $user->user_profile->googleplus)
+                    <h5>Links a Redes:</h5>
                     <li><a href="{{$user->user_profile->instagram}}" target="_blank"><i class="fa fa-instagram"></i>Visitar Instagram</a></li>
                     <li><a href="{{$user->user_profile->facebook}}" target="_blank"><i class="fa fa-facebook"></i>Visitar Facebook</a></li>
                     <li><a href="{{$user->user_profile->youtube}}" target="_blank"><i class="fa fa-youtube"></i>Visitar Youtube</a></li>

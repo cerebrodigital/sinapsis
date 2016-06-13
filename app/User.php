@@ -53,6 +53,21 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('App\models\Post', 'user_id');
     }
 
+    public function videos() 
+    {
+        return $this->hasMany('App\models\Video', 'user_id');
+    }
+
+    public function topics() 
+    {
+        return $this->hasMany('App\models\ForumTopic', 'user_id');
+    }
+
+    public function replies() 
+    {
+        return $this->hasMany('App\models\ForumMessage', 'user_id');
+    }
+
     public function user_profile() 
     {
       return $this->belongsTo('App\models\UserProfile', 'id', 'user_id');

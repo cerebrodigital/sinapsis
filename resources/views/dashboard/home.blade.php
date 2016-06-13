@@ -87,12 +87,13 @@
             <!-- BEGIN .info-blocks -->
             <div class="info-blocks">
                 <ul>
-                    <li><a href="#" class="info-block"><b>1.2k</b><span>Sinapsis</span></a></li>
-                    <li><a href="#" class="info-block"><b>29</b><span>Articulos</span></a></li>
-                    <li><a href="#" class="info-block"><b>300</b><span>Publicaciones</span></a></li>
-                    <li><a href="#" class="info-block"><b>23</b><span>Créditos</span></a></li>
-                    <li><a href="#" class="info-block"><b>40</b><span>Puntos</span></a></li>
-                    <li><span class="info-block"><b>777</b><span>Karma</span></span></li>
+                    <li><a href="#" class="info-block"><b>{{$user->experience}}</b><span>Exp</span></a></li>
+                    <li><span class="info-block"><b>777</b><span>Rep</span></span></li>
+                    <li><a href="#" class="info-block"><b>{{$user->posts()->count()}}</b><span>Articulos</span></a></li>
+                    <li><a href="#" class="info-block"><b>{{$user->videos()->count()}}</b><span>Videos</span></a></li>
+                    <li><a href="#" class="info-block"><b>{{$user->topics()->count()}}</b><span>Temas Foro</span></a></li>
+                    <li><a href="#" class="info-block"><b>{{$user->replies()->count()}}</b><span>Respuestas</span></a></li>
+                    
                 </ul>
                 <div class="clear-float"></div>
             <!-- END .info-blocks -->
@@ -166,20 +167,32 @@
             <!-- BEGIN .music-blocks -->
             <div class="music-blocks">
                 <ul>
+                
                     <li>
                         <ol>
-                            <li><a href="user-single-music-single.html"><span class="music-img"><img src="http://i4.ytimg.com/vi/AHitulGaS9k/default.jpg" alt=""></span><b>Jonas Brothers</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
-                            <li><a href="user-single-music-single.html"><span class="music-img"><img src="http://i4.ytimg.com/vi/vIAQuDkhXpQ/default.jpg" alt=""></span><b>Feint</b><span>Snake Eyes (Feat. CoMa)</span><span class="clear-float"></span></a></li>
-                            <li><a href="user-single-music-single.html"><span class="music-img"><img src="http://i4.ytimg.com/vi/rNpBahr49mA/default.jpg" alt=""></span><b>Ellie Goulding</b><span>Figure 8</span><span class="clear-float"></span></a></li>
+                        @if($user->posts()->count() > 0)
+                            <h4>Artículos publicados</h4>
+                            @foreach($user->posts()->take(4)->get() as $post)
+                                <li><a href="user-single-music-single.html"><span class="music-img"><img src="{{$post->featured_image}}" alt="" height="40"></span><b>{{$post->title}}</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
+                            @endforeach
+                        @else
+                            <h4>Este usuario no tiene Artículos publicados</h4>
+                        @endif
                         </ol>
                     </li>
                     <li>
                         <ol>
-                            <li><a href="user-single-music-single.html"><span class="music-img"><img src="http://i4.ytimg.com/vi/4Xk_pViVP_k/default.jpg" alt=""></span><b>Foster The People</b><span>Don't Stop (TheFatRat Remix)</span><span class="clear-float"></span></a></li>
-                            <li><a href="user-single-music-single.html"><span class="music-img"><img src="http://i4.ytimg.com/vi/qizlN1Ow1Fc/default.jpg" alt=""></span><b>JIKES &amp; Greg Cooke</b><span>Its Amazing</span><span class="clear-float"></span></a></li>
-                            <li><a href="user-single-music-single.html"><span class="music-img"><img src="http://i4.ytimg.com/vi/FU4cnelEdi4/default.jpg" alt=""></span><b>Netsky</b><span>Puppy</span><span class="clear-float"></span></a></li>
+                        @if($user->videos()->count() > 0)
+                            <h4>Videos publicados</h4>
+                            @foreach($user->videos()->take(4)->get() as $video)
+                                <li><a href="user-single-music-single.html"><span class="music-img"><img src="{{$video->featured_image}}" alt=""></span><b>{{$video->title}}</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
+                            @endforeach
+                        @else
+                            <h4>Este usuario no tiene videos publicados</h4>
+                        @endif
                         </ol>
                     </li>
+                
                 </ul>
                 <div class="clear-float"></div>
             <!-- END .music-blocks -->
@@ -187,7 +200,7 @@
             
             <div>
                 <center>
-                    <a href="user-single-music.html" class="defbutton"><i class="fa fa-music"></i>View all songs</a>
+                    <a href="#vermas" class="defbutton"><i class="fa fa-more"></i>Ver más artículos y videos</a>
                 </center>
             </div>
             

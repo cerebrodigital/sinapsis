@@ -16,7 +16,19 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+
+    }
+
+    public function addFriend($id)
+    {
+        $user = \Auth::user();
+        $external = \App\User::find($id);
+        $response = $user->befriend($external);
+        if($response == true) {
+            return \Redirect::back()->with('success', 'Se ha agregado satisfactoariamente como amigo, Hay que esperar a que te acepten.');
+        } 
+        return \Redirect::back()->with('error', 'Ya se mando invitación previamente.');
+        
     }
 
     /**
@@ -24,9 +36,27 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function acceptFriendship($id)
     {
-        //
+        $user = \App\User::find($id);
+        $response = \Auth::user()->acceptFriendRequest($user);
+        if($response == true) {
+            return \Redirect::back()->with('success', 'Has aceptado la solicitud de amistad.');
+        } 
+        return \Redirect::back()->with('error', 'Un error sucedio.');
+
+    }
+
+
+    public function denyFriendship($id)
+    {
+        $user = \App\User::find($id);
+        $response = \Auth::user()->denyFriendRequest($user);
+        if($response == true) {
+            return \Redirect::back()->with('success', 'Has aceptado la solicitud de amistad.');
+        } 
+        return \Redirect::back()->with('error', 'Un error sucedio.');
+
     }
 
     /**
