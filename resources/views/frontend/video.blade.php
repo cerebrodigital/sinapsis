@@ -38,7 +38,7 @@
               <div class="panel-block">
                 
                 <div class="panel-content">
-                
+                  <div style="float:right;"><a href="{{route('video.like', $vid->id)}}" class="loveBtn" style="color:white;font-size:15px"><i class="fa fa-heart" style="color:white;" aria-hidden="true"></i><b> Favorito ({{$vid->likeCount}})</b></a></div>
                   <div align="center"><b>COMPARTE:</b></div> <div align="center" class="addthis_sharing_toolbox"></div>
 
 

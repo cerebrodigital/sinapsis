@@ -27,6 +27,19 @@ class ForumController extends Controller
         return TextFormatter::render($xml);
     }
 
+    public function likeTopic($id) 
+    {
+        if(\Auth::check())
+        {
+            $video = \App\models\ForumTopic::find($id);
+            $video->like(\Auth::user()->id);
+            return \Redirect::back()->with('success', 'Has añadido este video como tu favorito');
+        } else {
+            return \Redirect::to('/login');
+        }
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *

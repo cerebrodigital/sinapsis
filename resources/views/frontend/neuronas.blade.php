@@ -3,10 +3,10 @@
 @section('breadcrumbs')
           <div class="wrapper">
             <div class="header-breadcrumbs">
-              <h2 class="right">Blog</h2>
+              <h2 class="right">Usuarios</h2>
               <ul>
-                <li><a href="#home">Noticia</a></li>
-                <li>Categoria</li>
+                <li><a href="#home">Listado</a></li>
+                <li>Neuronas</li>
               </ul>
             </div>
           </div>
@@ -15,7 +15,7 @@
 
 
 @section('main')
-
+  
       @section('title')
         Listado de Neuronas | Cerebro Digital
       @endsection
@@ -28,59 +28,64 @@
       @section('image')
         
       @endsection
-  <h2><span>Listado de Neuronas</span></h2>
-  <div class="content-padding">
 
-    <div class="article-full">
-      <div class="article-main-photo">
-        <p>Esta es una lista de los últimos usuarios registrados, así como un board de los más activos, más votados y con mayor reputación en la comunidad.</p>
-      </div>
-      <div class="article-icons">
+    <h2><span>Listado de neuronas/usuarios</span></h2>
 
-      </div>
-      <!-- ESTA ES PARA ORG <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='24569125'></div> -->
-
-      <div class="friends-block">
-          <?php 
-            $users = \App\User::orderBy('created_at','DESC')->get();
-          ?>
-          @foreach($users as $neurona)
-                <div class="friend-single">
-                      <a href="user-single.html" class="avatar online"><img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($neurona->email))); ?>" class="setborder" title="" alt="" /></a>
-                      <a href="user-single.html" class="friend-user user-tooltip"><b>{{$neurona->name}}</b></a>
-                      <a href="user-single.html" class="friend-user user-tooltip"><b>{{$neurona->username}}</b></a>
+            <div class="content-padding">
+              <div class="article-full">
+                <div class="staff-block">
+                <?php 
+                  $users = \App\User::orderBy('created_at','DESC')->paginate(15);
+                ?>
+                @foreach($users as $neurona)
+                  <div class="item">
+                    <a href="{{route('dashboard.profile', $neurona->id)}}"><img src="http://www.gravatar.com/avatar/{{md5(strtolower(trim($neurona->email)))}}" class="item-photo" alt="" /></a>
+                    
+                    <div class="item-content">
+                    <div class="social-links">
+                    @if($neurona->user_profile)
+                      @if($neurona->user_profile->facebook)
+                        <a href="{{$neurona->user_profile->facebook}}"><i class="fa fa-facebook"></i></a>
+                      @endif
+                      @if($neurona->user_profile->twitter)
+                        <a href="{{$neurona->user_profile->twitter}}"><i class="fa fa-twitter"></i></a>
+                      @endif
+                      @if($neurona->user_profile->googleplus)
+                        <a href="{{$neurona->user_profile->googleplus}}"><i class="fa fa-google-plus"></i></a>
+                      @endif
+                      @if($neurona->user_profile->youtube)
+                        <a href="{{$neurona->user_profile->youtube}}"><i class="fa fa-youtube"></i></a>
+                      @endif
+                    @endif
+                      </div>
+                      <h3><a href="{{route('dashboard.profile', $neurona->id)}}">{{$neurona->username}}</a><span>{{$neurona->title}}</span></h3>
+                      
+                      <p>{{$neurona->name}}</p>
+                    @if($neurona->user_profile)
+                      <p>{{$neurona->user_profile_descripcion}}</p>
+                    @else
+                      <p>Esta neurona aún no completa la descripción de su perfil</p>
+                    @endif
+                    </div>
+                  </div>
+                @endforeach
                 </div>
-          @endforeach
-      </div>
-      <div>
-      
-      </div>
-      <br>
-    </div>
-    
-    <!-- <div class="clear-float do-the-split"></div> -->
-    
-    <!-- BEGIN .article-footer -->
-    <div class="article-footer">
 
-
-      <div class="similar-posts">
-        
-        
-          
-        </div>
-
-      </div>
-    <!-- END .article-footer -->
-    </div>
-
-  <!-- END .content-padding -->
-  </div>
-  <!-- HERE I ATTACH THE INCLUDE -->
-
+              </div>
+                <br><br><br>
+                <div class="clear-list-button" align="center">
+                  @if($users->previousPageUrl())
+                    <a href="{{$users->previousPageUrl()}}" class="button">Pagina Anterior</a>
+                  @endif
+                  @if($users->nextPageUrl())
+                    <a href="{{$users->nextPageUrl()}}" class="button">Siguiente Pagina</a>
+                  @endif
+                </div>
+            </div>
 
   <!-- END .content-padding -->
 
+  
 
 @endsection  
 
@@ -118,22 +123,20 @@
           </aside>
 @endsection   
 @section('bottomscripts')
-    <link rel="stylesheet" href="/vendor/comments/css/bootstrapless.css">
-    <link rel="stylesheet" href="/vendor/comments/css/prism-okaidia.css"> <!-- Optional -->
-
-    <!-- Must be included before the closing </body> tag! -->
-
     <script type='text/javascript'>
       var strike_autostart = false;
     </script>
-  <style>
-  li.comment.fade-transition {
-      padding-right: 22px;
-  }
+    <style>
+      li.comment.fade-transition {
+          padding-right: 22px;
+      }
 
-  div.comment-content.clearfix {
-      margin-left: -100px;
-      width: 100%;
-  }
-  </style>
-@endsection   
+      div.comment-content.clearfix {
+          margin-left: -100px;
+          width: 100%;
+      }
+      div.social-links a {
+          width: 22px;
+      }
+    </style>
+@endsection     

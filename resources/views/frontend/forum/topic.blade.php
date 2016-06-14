@@ -20,11 +20,7 @@
               
               <div class="content-padding">
                 <div class="forum-description">
-                  <div class="pagination right">
-                    <span class="page-num current">1</span>
-                    <a href="#" class="page-num">2</a>
-                    <a href="#" class="page-num">3</a>
-                  </div>
+                  <div style="float:right;"><a href="{{route('topic.like', $topic->id)}}" class="loveBtn" style="color:white;font-size:15px"><i class="fa fa-heart" style="color:white;" aria-hidden="true"></i><b> Favorito ({{$topic->likeCount}})</b></a></div>
                   <div class="topic-right right">
                     <span><i class="fa fa-eye"> vistas: {{$topic->views}}</i></span> -
                     <span>{{count($topic->messages)}} Respuestas</span>

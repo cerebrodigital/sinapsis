@@ -69,7 +69,7 @@
                   </ul>
                   -->
                 </li>
-                <li><a href="#neuronas"><span><i class="fa fa-users"></i><strong>Neuronas</strong></span></a>
+                <li><a href="{{url('/neuronas')}}"><span><i class="fa fa-users"></i><strong>Neuronas</strong></span></a>
                   <!--
                   <ul class="sub-menu">
                     <li><a href="#">Miembros</a></li>

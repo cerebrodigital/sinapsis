@@ -227,6 +227,21 @@ class BlogController extends Controller
 
 
     }
+
+    public function likePost($id) 
+    {
+        if(\Auth::check())
+        {
+            $article = \App\models\Post::find($id);
+            $article->like(\Auth::user()->id);
+            return \Redirect::back()->with('success', 'Has añadido esta nota como tu favorita');
+        } else {
+            return \Redirect::to('/login');
+        }
+        
+    }
+
+
     public function postEdit($id)
     {
         $post = \App\models\Post::where('id', $id)->with('user')->get();

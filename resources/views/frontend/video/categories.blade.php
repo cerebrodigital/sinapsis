@@ -74,7 +74,7 @@
 
 
                 <div class="clear-list-button">
-                  <a href="browse.html" class="back-button">Ver más videos</a>
+                  <a href="#categorias" class="back-button">Ver más videos</a>
                 </div>
 
               </div>

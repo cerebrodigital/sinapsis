@@ -42,6 +42,8 @@
         <a href="#"><i class="fa fa-calendar"></i>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->format('d M Y')}}</a>
         <a href="#" class="show-views"><i class="fa fa-eye"></i>{{$post->total_views}} vistas </a>
 
+        <div style="float:right;"><a href="{{route('blog.like.post', $post->id)}}" class="loveBtn" style="color:white;"><i class="fa fa-heart" style="color:white;" aria-hidden="true"></i>Favorito ({{$post->likeCount}})</a></div>
+
       </div>
       <br>
       <!-- ESTA ES PARA ORG <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='24569125'></div> -->
@@ -183,5 +185,6 @@
           margin-left: -100px;
           width: 100%;
       }
+
     </style>
 @endsection     

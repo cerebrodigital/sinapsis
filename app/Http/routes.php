@@ -163,6 +163,7 @@ Route::get('video/{id}', array('uses' => 'VideoController@displayOne', 'as' => '
 Route::get('video/tag/{tag}', array('uses' => 'VideoController@displayTag', 'as' => 'video.view.tag'));
 
 Route::get('video/categoria/{category}', array('uses' => 'VideoController@categoryPage', 'as' => 'video.view.category'));
+Route::get('video/fav/{id}', array('uses' => 'VideoController@likeVideo', 'as' => 'video.like')); 
 
 //Route::get('video/file/{filename}', array('uses' => 'VideoController@displayFile', 'as' => 'video.view.file'));
 
@@ -175,6 +176,7 @@ Route::get('foro/crear', array('uses' => 'ForumController@createTopicView', 'as'
 Route::post('foro/crear/post', array('uses' => 'ForumController@createTopic', 'as' => 'foro.create.post'));
 Route::get('foro/topics/categoria/{id}', array('uses' => 'ForumController@listTopicByCategory', 'as' => 'foro.topic.category'));
 Route::post('topic/{id}/reply', array('uses' => 'ForumController@createMessage', 'as' => 'foro.topic.reply'));
+Route::get('topic/fav/{id}', array('uses' => 'ForumController@likeTopic', 'as' => 'topic.like')); 
 
 
 
@@ -226,6 +228,9 @@ Route::get('auth/github/callback', 'Auth\AuthController@handleProviderGithubCall
 
 // BLOG ROUTES 
 Route::get('{slug}', array('uses' => 'BlogController@viewPost', 'as' => 'blog.view.post')); 
+Route::get('fav/{id}', array('uses' => 'BlogController@likePost', 'as' => 'blog.like.post')); 
+
+
 Route::get('tags/{tag}', array('uses' => 'BlogController@tagPage', 'as' => 'blog.view.tag'));
 Route::get('categoria/{category}', array('uses' => 'BlogController@categoryPage', 'as' => 'blog.view.category'));
 Route::get('hello/world', array('uses' => 'BlogController@hello', 'as' => 'blog.view.hello'));

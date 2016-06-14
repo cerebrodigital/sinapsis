@@ -20,6 +20,19 @@ class VideoController extends Controller
     {
         //$this->path = $filePath;
     }
+
+    public function likeVideo($id) 
+    {
+        if(\Auth::check())
+        {
+            $video = \App\models\Video::find($id);
+            $video->like(\Auth::user()->id);
+            return \Redirect::back()->with('success', 'Has añadido este video como tu favorito');
+        } else {
+            return \Redirect::to('/login');
+        }
+        
+    }
     
     public function listVideos()
     {
