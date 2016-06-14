@@ -1,4 +1,4 @@
-<?php $mostViewed_posts = App\models\Post::orderBy('created_at', 'DESC')->take(5)->get(); ?>
+<?php $mostViewed_posts = App\models\Post::orderBy('created_at', 'DESC')->take(7)->get(); ?>
 <div class="panel">
   <h2>Últimas publicaciones</h2>
   <div class="top-right"><a href="blog.html">Ver todos</a></div>

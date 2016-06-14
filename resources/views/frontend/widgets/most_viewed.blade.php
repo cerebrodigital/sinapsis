@@ -1,4 +1,4 @@
-<?php $mostViewed_posts = App\models\Post::orderBy('total_views', 'DESC')->orderBy('created_at', 'DESC')->take(5)->get(); ?>
+<?php $mostViewed_posts = App\models\Post::orderBy('total_views', 'DESC')->orderBy('created_at', 'DESC')->take(7)->get(); ?>
 <div class="panel">
   <h2>Más Vistos de la Semana</h2>
   <div class="top-right"><a href="blog.html">Ver todos</a></div>

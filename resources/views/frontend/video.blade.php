@@ -45,6 +45,7 @@
                   <p>{!!$vid->description!!}</p>
                   <div class="video-footer">
                     <strong>Categorias:</strong>
+                    <?php $categoria_id = $vid->categories()->first()->id; ?>
                     @foreach($vid->categories()->get() as $category)
                       {{$category->name}}, 
                     @endforeach
@@ -78,10 +79,9 @@
                       
 
                       @endif  
-                    
                   </div>
                   <div>
-                    @include('comments::display', ['video_id' => $vid->id])
+                    @include('comments::display', ['video_id' => 'video-'. $vid->id])
                   </div>
                 </div>
                 
@@ -179,25 +179,9 @@
     <!-- Must be included before the closing </body> tag! -->
     <script src="/vendor/comments/js/utils.js"></script> 
     <script src="/vendor/comments/js/comments.js"></script>
-      
-    <script>
-      new Vue({el: '#comments'});
-      window.onload = function() {
-        var video = document.getElementById('example_video_1');
-        var thecanvas = document.getElementById('thecanvas');
-        var img = document.getElementById('thumbnail_img');
-        var video = videojs(document.getElementById('example_video_1'));
-          video.on("load", function(){
-            video.bigPlayButton.show();
-          });
-
-        document.querySelector('#example_video_1').bigPlay()
-      }
-      function capture(){
-          var canvas = document.getElementById('canvas');
-          var video = document.getElementById('example_video_1');
-          canvas.getContext('2d').drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-      }
+    <script>new Vue({el: '#comments'});</script>
+    <script type='text/javascript'>
+      var strike_autostart = false;
     </script>
 
 

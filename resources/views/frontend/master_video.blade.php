@@ -146,18 +146,18 @@
       <!-- BEGIN .footer -->
       @include('frontend.includes.footer')
     </div>
-    <script type='text/javascript' src='/syn/jscript/jquery-1.11.2.min.js'></script>
+    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
     <script type='text/javascript' src='/syn/jscript/modernizr.custom.50878.js'></script>
     <script type='text/javascript' src='/syn/jscript/iscroll.js'></script>
     <script type='text/javascript' src='/syn/jscript/dat-menu.js'></script>
-    <script src="//code.jquery.com/jquery-2.2.0.min.js"></script>
+
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/video/jscript/jquery-latest.min.js"></script>
     <script type="text/javascript" src="/video/jscript/ot-menu.js"></script>
     <script type="text/javascript" src="/video/jscript/theme-scripts.js"></script>
     
     
-    <script type='text/javascript' src='syn/jscript/theme-script.js'></script>
+    <script type='text/javascript' src='/syn/jscript/theme-script.js'></script>
     <link rel="stylesheet" type="text/css" href="/shoutbox/shoutbox.css">
     <script src="/shoutbox/shoutbox.js"></script>
     @yield('bottomscripts')

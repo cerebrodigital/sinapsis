@@ -63,18 +63,3 @@
   top:1px;
 }
 </style>
-<script>
-$( document ).ready(function() {
-  console.log("el documento esta listo");
-  $('body').on('click', '.cargarMas', function(e){
-      console.log("Se dió click a cargar mas");
-      e.preventDefault();
-      var url = $(this).attr('href');
-      
-      $.get(url, function(data){
-          $('.comments').html(data);
-          console.log(data);
-      });
-  });
-});
-</script>

@@ -23,15 +23,13 @@
 @endsection
 
 
-@section('video')
-
-
-
-@endsection
 
 @section('main')
 <section >
-
+      @section('title')Todas las categorías de videos @endsection
+      @section('description') Listado de todas los videos respaldados en esta comunidad. @endsection
+      @section('keywords')videos, todos, categorias @endsection
+      @section('image'){{URL::to('/syn/images/videosmeta.jpg')}}@endsection
       
 
         <!-- BEGIN .wrapper -->

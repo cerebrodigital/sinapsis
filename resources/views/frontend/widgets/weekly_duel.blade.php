@@ -1,5 +1,6 @@
             <div class="panel">
-              <h2>El duelo de la semana</h2>
+              <h2>El duelo de la semana (próximamente)
+              </h2>
               <div class="panel-content">
 
                 <div class="voting-line">
