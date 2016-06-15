@@ -15,6 +15,11 @@
 
 
 @section('main')
+  
+      @section('title')Lista de Temas en el Foro @endsection
+      @section('description')Listado de todas las temáticas que existen en los foros de Cerebro Digital @endsection
+      @section('keywords')foros, listado, temas @endsection
+      @section('image') @endsection
 <div id="main">
   <div class="forum-block">
 

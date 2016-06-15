@@ -6,31 +6,21 @@
               <h2 class="right">Videos</h2>
               <ul>
                 <li><a href="#home">Categoria</a></li>
-                @foreach($categoria as $cat)
-                <li>Últimos #{{$cat->videos->count()}} videos agregados de la categoria {{$cat->name}}</li>
-                @endforeach
+                <li>Últimos #{{$categoria->count()}} videos agregados de la categoria {{$category}}</li>
               </ul>
             </div>
           </div>
 @endsection
 
 
-@section('video')
-
-
-
-@endsection
 
 @section('main')
 <section >
-  @foreach($categoria as $cat)
-      @section('title'){{$cat->name}}@endsection
-      @section('description')Sección dedicada a videos de la categoría {{$cat->name}}@endsection
-      @section('keywords'){{$cat->name}}@endsection
-    @if($cat->videos->count() > 0)
-      
-
-        <!-- BEGIN .wrapper -->
+      @section('title')Videos de {{$category}} @endsection
+      @section('description')Sección dedicada a videos de la categoría {{$category}}@endsection
+      @section('keywords'){{$category}}@endsection
+    
+    @if($categoria->count() > 0)
       <section class="content">
         
         <!-- BEGIN .wrapper -->
@@ -53,7 +43,7 @@
               <div class="panel-block video-list list">
               
 
-              @foreach($cat->videos as $video)
+              @foreach($categoria as $video)
                 <!-- BEGIN .item -->
                 <div class="item">
                   <div class="item-header">
@@ -72,10 +62,14 @@
                 </div>
               @endforeach
 
-
-                <div class="clear-list-button">
-                  <a href="#categorias" class="back-button">Ver más videos</a>
-                </div>
+              <div class="clear-list-button" align="center">
+                @if($categoria->previousPageUrl())
+                  <a href="{{$categoria->previousPageUrl()}}" class="button">Pagina Anterior</a>
+                @endif
+                @if($categoria->nextPageUrl())
+                  <a href="{{$categoria->nextPageUrl()}}" class="button">Siguiente Pagina</a>
+                @endif
+              </div>
 
               </div>
             </div>
@@ -106,10 +100,6 @@
 
           <!-- END #sidebar -->
           </aside>
-          
-        
-      
-@endforeach<!-- BEGIN .content -->
       </section>
 
 @endsection  

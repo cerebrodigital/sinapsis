@@ -35,24 +35,36 @@ class BlogController extends Controller
     {
         $catID = \App\models\Category::where('slug', trim($category))->first();
         if(count($catID) > 0) {
-            $categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
+            //$categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
+            $categoria = \App\models\Category::find($catID->id)->posts()->paginate(20); 
             //dd($categoria);
-            return \View::make('frontend.categories', compact('categoria'))->render();
+            return \View::make('frontend.categories', compact('categoria', 'category'));
         }
         else {
-            return "no existe ninguna categoria";
+            abort(404);
         }
-        //dd($catID->id);
-        
-        
-
-        
+        //dd($catID->id);   
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function listAllCategories()
+    {
+        $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(20);
+        $active_menu = "blogs";
+        $active_view = "ultimos";
+        //dd($vid);
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
+    }
+
+    public function listMostViewed()
+    {
+        $vids = \App\models\Video::orderBy('views', 'DESC')->paginate(20);
+        $active_menu = "blogs";
+        $active_view = "masVistos";
+        //dd($vid);
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
+    }
+
+
     public function createPost()
     {
         $rules = array(

@@ -15,6 +15,10 @@
 
 
 @section('main')
+    @section('title'){{$topic->title}} @endsection
+    @section('description'){!! substr(strip_tags($topic->message), 0, 200) !!} @endsection
+    @section('keywords'){{$topic->tags}} @endsection
+    @section('image')thumbnail_image @endsection
 <div id="main">
   <div class="forum-block">
               

@@ -69,13 +69,15 @@ class VideoController extends Controller
     {
         $catID = \App\models\Category::where('slug', trim($category))->first();
         if(count($catID) > 0) {
-            $categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
+            //$categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
+            $categoria = \App\models\Category::find($catID->id)->videos()->paginate(20); 
             //dd($categoria);
-            return \View::make('frontend.video.categories', compact('categoria'))->render();
+            return \View::make('frontend.video.categories', compact('categoria', 'category'))->render();
         }
         else {
-            $categoria = \App\models\Video::with('categories')->paginate(15);
-            return \View::make('frontend.video.todas', compact('categoria'))->render();
+            //$categoria = \App\models\Video::with('categories')->paginate(15);
+            //return \View::make('frontend.video.todas', compact('categoria'))->render();
+            abort(404);
         }
         //dd($catID->id);
         

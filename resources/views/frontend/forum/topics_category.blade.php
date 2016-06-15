@@ -22,7 +22,12 @@
               <!-- <h2><span>Otro titulo de la pagina</span></h2> -->
               
               <div class="content-padding">
-              <b>@if($topics){{$topics[0]->category->title}}@endif</b><br>
+              <b>@if($topics){{$topics[0]->category->title}}
+                        @section('title')Lista de Temas en {{$topics[0]->category->title}} @endsection
+                        @section('description')Listado de todas las temáticas que existen en la categoría {{$topics[0]->category->title}} en los foros de Cerebro Digital @endsection
+                        @section('keywords')foros, listado, categoria @endsection
+                        @section('image') @endsection
+              @endif</b><br>
               <small>@if($topics){{$topics[0]->category->description}}@endif</small>
                 <div class="forum-description">
                   <div class="pagination right">

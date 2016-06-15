@@ -6,30 +6,34 @@
               <h2 class="right">Categoría</h2>
               <ul>
                 <li><a href="#home">Artículos</a></li>
-                <li>Categoría: , #{{$categoria->count()}} publicaciones encontradas.</li>
+                <li>Categoría: {{$category}} , #{{$categoria->count()}} publicaciones encontradas.</li>
               </ul>
             </div>
           </div>
 @endsection
 
 @section('main')
-  <h2><span>Últimos artículos agregado en la categoría: </span></h2>
+  <h2><span>Últimos artículos agregado en la categoría: {{$category}}</span></h2>
   
-    
+      
+      @section('title')Categoría de {{$category}} @endsection
+      @section('description')En esta categoría se filtran todos los artículos de {{$category}} que se han publicado en la página. @endsection
+      @section('keywords')articulos, posts, categorias @endsection
+      @section('image') @endsection
   
-  @foreach($categoria as $cat)
-    @if($cat->posts->count() > 0)
+
+    @if($categoria->count() > 0)
       <div class="content-padding">
         <br>
-        <h3 align="center">Se encontraron {{$cat->posts->count()}} resultados. </h3>
+        <h3 align="center">Se encontraron {{$categoria->count()}} resultados. </h3>
       </div>
-      @foreach($cat->posts as $post)
+      @foreach($categoria as $post)
             <div class="content-padding">
               
               <div class="article-promo">
                 <div class="article-photo">
                   <span class="article-image-out">
-                    <span class="image-comments"><span>21</span></span>
+                    <!-- <span class="image-comments"><span></span></span> -->
                     <span class="article-image">
                       <span class="nth1 strike-tooltip" title="Leer Artículo">
                         <a href="{{route('blog.view.post',$post->slug)}}"><i class="fa fa-eye"></i></a>
@@ -58,6 +62,14 @@
             
       @endforeach
 
+      <div class="clear-list-button" align="center">
+        @if($categoria->previousPageUrl())
+          <a href="{{$categoria->previousPageUrl()}}" class="button">Pagina Anterior</a>
+        @endif
+        @if($categoria->nextPageUrl())
+          <a href="{{$categoria->nextPageUrl()}}" class="button">Siguiente Pagina</a>
+        @endif
+      </div>
         
     @else
       <div class="content-padding">
@@ -66,8 +78,7 @@
       </div>
     @endif
     
-      
-  @endforeach
+    
   
 
 @endsection  
