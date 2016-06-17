@@ -69,11 +69,15 @@
                             <td>{{$post->status}}</td>
                             <td>{{$post->slug}}</td>
                             <td>{{$post->created_at}}</td>
-                            <td><a href="{{route('blog.post.edit', array('id' => $post->id))}}" class="btn -small-warning">EDITAR</a>
-                                @if(\Auth::user()->is_admin)
+                            <td>
+                            @can('post-author', $post->user_id))
+                                <a href="{{route('blog.post.edit', array('id' => $post->id))}}" class="btn -small-warning">EDITAR</a>
+                            @endcan
+                                @can('admin-access')
+                                    <a href="{{route('blog.post.edit', array('id' => $post->id))}}" class="btn -small-warning">EDITAR</a>
                                     <a href="{{route('blog.post.delete', array('id' => $post->id))}}" class="btn btn-warning">BORRAR</a>
                                     <a href="{{route('blog.post.deletePermanent', array('id' => $post->id))}}" class="btn btn-danger">borrar permanentemente</a>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach    

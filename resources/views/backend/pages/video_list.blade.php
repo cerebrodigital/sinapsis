@@ -46,8 +46,8 @@
                             <th class="all">id</th>
                             <th class="min-phone-l">UID</th>
                             <th class="min-tablet" width="20%">Titulo</th>
-                            <th class="none">Media Destacado</th>
-                            <th class="none">Vistas totales</th>
+                            <th class="none">imagen</th>
+                            <th class="none">Vistas</th>
                             <th class="none">Likes</th>
                             <th class="desktop">Tags</th>
                             <th class="none">Creado en:</th>
@@ -60,16 +60,20 @@
                             <td>{{$vid->id}}</td>
                             <td>{{$vid->user_id}}</td>
                             <td>{{$vid->title}}</td>
-                            <td>{{$vid->media_url}}</td>
+                            <td><img src="{{$vid->featured_image}}" height="50"></td>
                             <td>{{$vid->views}}</td>
                             <td>{{$vid->likes}}</td>
                             <td>{{$vid->tags}}</td>
                             <td>{{$vid->created_at}}</td>
-                            <td><a href="{{route('videos.view.edit', array('id' => $vid->id))}}" class="btn -small-warning">EDITAR</a>
-                                @if(\Auth::user()->is_admin)
+                            <td>
+                            @can('video-author', $vid->user_id))
+                                <a href="{{route('videos.view.edit', array('id' => $vid->id))}}" class="btn -small-warning">EDITAR</a>
+                            @endcan
+                                @can('admin-access')
+                                    <a href="{{route('videos.view.edit', array('id' => $vid->id))}}" class="btn -small-warning">EDITAR</a>
                                     <a href="{{route('videos.delete.soft', array('id' => $vid->id))}}" class="btn btn-warning">BORRAR</a>
                                     <a href="{{route('videos.delete.hard', array('id' => $vid->id))}}" class="btn btn-danger">borrar permanentemente</a>
-                                @endif
+                                @endcan
                             </td>
                         </tr>
                     @endforeach    

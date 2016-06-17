@@ -138,9 +138,19 @@ Route::post('auth/login', array('uses' => 'Auth\AuthController@postLogin', 'as' 
 Route::get('logout', array('uses' => 'Auth\AuthController@getLogout', 'as' => 'sinapsis.logout'));
 
 Route::get('test', function() {
-    $post = \App\models\Post::find(1);
-    \Event::fire(new \App\Events\ViewPostHandler($post));
-
+    auth()->loginUsingId(2);
+    $post = \App\models\Post::findOrFail(1);
+    if(\Auth::user()->role == "admin") {
+        return "Soy el architect";
+    }
+    if(\Auth::user()->role == "editor") {
+        return "Soy editor general de artículos";
+    }
+    if(\Gate::denies('updatePost', $post) ) {
+        abort(403, 'Nonononono, ¿que intentas? eres n00b, no tienes acceso.' );
+    } else {
+        return "Soy el que escribió este artículo";
+    }
 });
 
 Route::get('neuronas', function() {
@@ -191,7 +201,9 @@ Route::get('test/tags', function() {
     $order = explode(',', $final);
     dd(array_count_values($order));
 });
-
+Route::get('testing', function() {
+    return \Config::get('facebook.connections.main.app_id');
+});
 
 
 // Registration routes...

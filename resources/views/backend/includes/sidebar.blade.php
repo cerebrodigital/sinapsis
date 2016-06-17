@@ -10,7 +10,7 @@
                                         </li>
                                         <li>
                                             <a href="{{route('blog.post.public')}}">
-                                                <i class="icon-home"></i> Posts Públicos ({{\App\models\Post::where('status', 'publicada')->count()}})</a>
+                                                <i class="icon-home"></i> Posts Públicos ({{\App\models\Post::where('status', 'publico')->count()}})</a>
                                         </li>
                                         <li>
                                             <a href="{{route('blog.post.draft')}}">

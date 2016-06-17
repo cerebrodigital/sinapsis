@@ -45,7 +45,7 @@
           <div class="article-content">
             <h3><a href="{{route('blog.view.post',$post->slug)}}">{{$post->title}}</a></h3>
             <div class="article-icons">
-              <a href="user-single.html" class="user-tooltip"><i class="fa fa-fire"></i>datcouch</a>
+              <a href="{{route('dashboard.profile', $post->user->id)}}" class="user-tooltip"><i class="fa fa-fire"></i>{{$post->user->username}}</a>
               <a href="{{route('blog.view.post',$post->slug)}}"><i class="fa fa-calendar"></i>{{$post->created_at}}</a>
             </div>
             <p>Has no atqui dictas iuvaret, ex suavitate voluptatum incorrupte eos. Nullam luptatum nominati ius voluptatum ea, nam omnium percipit et luptatum nominati ius ea...</p>

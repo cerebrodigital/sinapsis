@@ -34,6 +34,7 @@
     @if($errors)
         {{$errors->first()}}
     @endif
+    @if(!\Gate::denies('admin-access'))
     <h2>CREAR O EDITAR CATEGORIAS</h2>
         @if (Session::has('error'))
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -98,6 +99,7 @@
             </form>
         </div>
     </div>
+    @endif
     <!-- END SAMPLE FORM PORTLET-->
     
 

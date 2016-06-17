@@ -77,10 +77,15 @@
                         <div class="form-group">
                             <label>Status de la Nota</label>
                             <select class="form-control" name="status">
+                            @if(\Gate::denies('admin-access'))
                                 <option value="draft">Draft</option>
+                                <option value="borrador">Borrador</option>
+                            @else
                                 <option value="publico">Publicada</option>
+                                <option value="draft">Draft</option>
                                 <option value="borrador">Borrador</option>
                                 <option value="desactivado">Desactivado</option>
+                            @endif
                             </select>
                         </div>
                     </div>
@@ -118,11 +123,7 @@
                                     <span></span>
                                 </label>
                                 <label class="mt-radio">
-                                    <input type="radio"  class="radio-featured"  id="imagenURL_featured" name="type" value="URLimage"> URL Imagen
-                                    <span></span>
-                                </label>
-                                <label class="mt-radio">
-                                    <input type="radio"  class="radio-featured"  id="video_featured" name="type" value="video"> Video/Media/Audio
+                                    <input type="radio"  class="radio-featured"  id="video_featured" name="type" value="video"> URL de Imagen/Video/Media óAudio
                                     <span></span>
                                 </label>
                             </div>

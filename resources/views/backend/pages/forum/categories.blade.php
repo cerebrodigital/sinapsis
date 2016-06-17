@@ -29,11 +29,12 @@
 @section('content')
 
 
-<div class="col-md-6 ">
+<div class="col-md-4 ">
                                         <!-- BEGIN SAMPLE FORM PORTLET-->
     @if($errors)
         {{$errors->first()}}
     @endif
+    @if(!\Gate::denies('admin-access'))
     <h2>CREAR O EDITAR CATEGORIAS DEL FORO</h2>
         @if (Session::has('error'))
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -41,6 +42,7 @@
               <strong>Error!</strong> {{Session::get('error')}}.
             </div>
         @endif
+    
         <div class="portlet-body form">
 
             <form role="form" method="POST" action="{{route('foro.categoria.crear')}}">
@@ -111,13 +113,14 @@
                 </div>
             </form>
         </div>
+    @endif
     </div>
     <!-- END SAMPLE FORM PORTLET-->
     
 
     <!-- END SAMPLE FORM PORTLET-->
 </div>
-<div class="col-md-6">
+<div class="col-md-8">
     <div class="portlet-body form">
     @foreach($categories as $item)
             <li>

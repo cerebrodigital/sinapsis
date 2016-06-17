@@ -69,18 +69,38 @@
         <h2><span>Acerca del autor</span></h2>
 
         <div class="inner">
-          <a href="{{route('dashboard.profile', $post->user->id)}}" class="avatar avatar-large online user-tooltip">
+          <a href="{{route('dashboard.profile', $post->user->id)}}" class="avatar avatar-large online">
             <img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($post->user->email))); ?>" alt="" class="author-image setborder" />
           </a>
           <div class="side">
             <a href="{{route('dashboard.profile', $post->user->id)}}" class="comment-user user-tooltip"><b>{{$post->user->username}}</b></a>
             <i>{{$post->user->name}}</i>
 
-            <a href="#"><i class="fa fa-comment"></i>{{count(\App\models\Post::where('user_id',$post->user->id)->get())}} Articles</a>
+            <a href="#"><i class="fa fa-list"></i>{{count(\App\models\Post::where('user_id',$post->user->id)->get())}} Artículos</a>
+            <a href="#"><i class="fa fa-play"></i>{{count(\App\models\Video::where('user_id',$post->user->id)->get())}} Videos</a>
+          
+
+          @if($post->user->user_profile->facebook)  
+              <a href="{{$post->user->user_profile->facebook}}"><i class="fa fa-facebook"></i> Facebook</a>
+          @endif
+          @if($post->user->user_profile->instagram)  
+              <a href="{{$post->user->user_profile->instagram}}"><i class="fa fa-instagram"></i> Instagram</a>
+          @endif
+          @if($post->user->user_profile->youtube)  
+              <a href="{{$post->user->user_profile->youtube}}"><i class="fa fa-youtube"></i> Youtube</a>
+          @endif
+          @if($post->user->user_profile->googleplus)  
+              <a href="{{$post->user->user_profile->googleplus}}"><i class="fa fa-google-plus"></i> Google Plus</a>
+          @endif
+
+
           </div>
           <div class="clear-float">
-
-            <p>Esta es una descripcion alternativa de este perfil pronto habra perfiles.</p>
+          @if($post->user->user_profile->descripcion)  
+            <p>{!! substr(strip_tags($post->user->user_profile->descripcion), 0, 120) !!}</p>
+          @else
+            <p>Este usuario no tiene descripción de perfil.</p>
+          @endif
 
 
           </div>
@@ -94,7 +114,7 @@
         
         <div class="home-article right">
           <ul>
-          <?php $author_posts = \App\models\Post::byAuthor($post->user_id)->orderBy('created_at', 'DESC')->take(3)->get(); ?>
+          <?php $author_posts = \App\models\Post::byAuthor($post->user_id)->orderBy('created_at', 'DESC')->take(5)->get(); ?>
           @foreach($author_posts as $author_post)
             <li>
               <a href="{{route('blog.view.post', $author_post->slug)}}">

@@ -105,7 +105,7 @@
                         @if($user->posts()->count() > 0)
                             <h4>Artículos publicados</h4>
                             @foreach($user->posts()->take(4)->get() as $post)
-                                <li><a href="user-single-music-single.html"><span class="music-img"><img src="{{$post->featured_image}}" alt="" height="40"></span><b>{{$post->title}}</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
+                                <li><a href="{{route('blog.view.post', $post->slug)}}"><span class="music-img"><img src="{{$post->featured_image}}" alt="" height="40"></span><b>{{$post->title}}</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
                             @endforeach
                         @else
                             <div align="center"><h4>Este usuario no tiene Artículos publicados</h4></div>
@@ -117,7 +117,7 @@
                         @if($user->videos()->count() > 0)
                             <h4>Videos publicados</h4>
                             @foreach($user->videos()->take(4)->get() as $video)
-                                <li><a href="user-single-music-single.html"><span class="music-img"><img src="{{$video->featured_image}}" alt=""></span><b>{{$video->title}}</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
+                                <li><a href="{{route('video.view.one', $video->id)}}"><span class="music-img"><img src="{{$video->featured_image}}" alt=""></span><b>{{$video->title}}</b><span>Pom Poms</span><span class="clear-float"></span></a></li>
                             @endforeach
                         @else
                             <div align="center"><h4>Este usuario no tiene videos publicados</h4></div>
@@ -131,7 +131,7 @@
             
             <div>
                 <center>
-                    <a href="user-single-music.html" class="defbutton"><i class="fa fa-music"></i>View all songs</a>
+                    <a href="#" class="defbutton"><i class="fa fa-music"></i>Ver más artículos</a>
                 </center>
             </div>
             

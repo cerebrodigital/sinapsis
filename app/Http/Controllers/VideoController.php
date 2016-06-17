@@ -116,16 +116,31 @@ class VideoController extends Controller
         //dd($request->all());
         $video = \App\models\Video::find($request->get('id'));
         //dd($video);
-        $video->categories()->sync($request->get('categories'));
+        if(!\Gate::denies('admin-access')) 
+        {
+            $video->categories()->sync($request->get('categories'));
 
-        if($video->fill($request->all()))
-        {
-            $video->save();
-            return \Redirect::back()->with('success', 'El video fue actualizado correctamente.');
+            if($video->fill($request->all()))
+            {
+                $video->save();
+                return \Redirect::back()->with('success', 'El video fue actualizado correctamente.');
+            } 
+            else 
+            {
+                return \Redirect::back()->with('error', 'Sucedio un error en la actualizacion');
+            }
         } 
-        else 
+        if(!\Gate::denies('video-author', $video->user_id)) 
         {
-            return \Redirect::back()->with('error', 'Sucedio un error en la actualizacion');
+            $video->categories()->sync($request->get('categories'));
+
+            if($video->fill($request->all()))
+            {
+                $video->save();
+                return \Redirect::back()->with('success', 'El video fue actualizado correctamente.');
+            } 
+        } else {
+            return "Este usuario no puede editar";
         }
 
     }
@@ -223,13 +238,19 @@ class VideoController extends Controller
     public function deleteHard($id)
     {
         $vid = \App\models\Video::find($id);
-        if( $vid->destroy() ) 
-        {
-            return \Redirect::back()->with('success', 'El post fue borrado satisfactoriamente.');
-        } else 
-        {
-            return \Redirect::back()->with('error', 'El post no pudo ser borrado.');
+
+        if(!\Gate::denies('admin-access') || !\Gate::denies('video-author', $post->id)) {
+            if($vid->destroy()) 
+            {
+                return \Redirect::back()->with('success', 'El post fue borrado satisfactoriamente.');
+            } else 
+            {
+                return \Redirect::back()->with('error', 'El post no pudo ser borrado.');
+            }
+        } else {
+            abort(403);
         }
+
     }
 
         public function deleteSoft($id)

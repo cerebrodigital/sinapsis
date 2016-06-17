@@ -25,18 +25,14 @@ class BlogController extends Controller
         return view('backend.pages.post_blog', compact('categoriesList', 'active_menu'));
 
     }
-    public function hello(Filesystem $filesystem)
-    {
-        $file = $filesystem->get(public_path() .'/hello.txt');
-        \Storage::disk('s3')->put('file.txt', 'Contents aqui asi para el file');
-        return $file;
-    }
+
+
     public function categoryPage($category) 
     {
         $catID = \App\models\Category::where('slug', trim($category))->first();
         if(count($catID) > 0) {
             //$categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
-            $categoria = \App\models\Category::find($catID->id)->posts()->paginate(20); 
+            $categoria = \App\models\Category::find($catID->id)->posts()->where('status', '=', 'publico')->paginate(20); 
             //dd($categoria);
             return \View::make('frontend.categories', compact('categoria', 'category'));
         }
@@ -46,23 +42,7 @@ class BlogController extends Controller
         //dd($catID->id);   
     }
 
-    public function listAllCategories()
-    {
-        $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(20);
-        $active_menu = "blogs";
-        $active_view = "ultimos";
-        //dd($vid);
-        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
-    }
 
-    public function listMostViewed()
-    {
-        $vids = \App\models\Video::orderBy('views', 'DESC')->paginate(20);
-        $active_menu = "blogs";
-        $active_view = "masVistos";
-        //dd($vid);
-        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
-    }
 
 
     public function createPost()
@@ -158,15 +138,6 @@ class BlogController extends Controller
             $reqType = $request->input('type');
             //si es imagen, esta se subira al amazon s3
             if($reqType == 'video') {
-
-                if($request->input('featured_media')) {
-                    $info = Embed::create(\Input::get("featured_media"));
-                    $updatePost = \App\models\Post::find($post->id);
-                    $updatePost->featured_image = $info->image;
-                    $updatePost->save();
-                }
-            }
-            if($reqType == 'URLimage') {
 
                 if($request->input('featured_media')) {
                     $info = Embed::create(\Input::get("featured_media"));
@@ -283,32 +254,55 @@ class BlogController extends Controller
     {
         //dd($request->all());
         $post = \App\models\Post::find($request->id);
-        
-        if($post->delete())
+        if(\Auth::user()->role == "admin") 
         {
-            return \Redirect::back()->with('success', 'El post:' . $request->id . ' fue marcado como basura.');
-        } 
-        else 
-        {
-            return \Redirect::back()->with('error', 'No se pudo eliminar el id:' . $request->id);
+            if($post->delete())
+            {
+                return \Redirect::back()->with('success', 'El post:' . $request->id . ' fue marcado como basura.');
+            } 
+            else 
+            {
+                return \Redirect::back()->with('error', 'No se pudo eliminar el id:' . $request->id);
+            }
         }
-
     }
 
     public function postUpdate(Request $request)
     {
         //dd($request->all());
         $post = \App\models\Post::find($request->get('id'));
-        $post->categories()->sync($request->get('categories'));
 
-        if($post->fill($request->all()))
+
+
+        if(!\Gate::denies('admin-access')) 
         {
-            $post->save();
-            return \Redirect::back()->with('success', 'El post fue actualizado correctamente.');
+            $post->categories()->sync($request->get('categories'));
+
+            if($post->fill($request->all()))
+            {
+                $post->save();
+                return \Redirect::back()->with('success', 'El post fue actualizado correctamente.');
+            } 
+            else 
+            {
+                return \Redirect::back()->with('error', 'Sucedio un error en la actualizacion');
+            }
         } 
-        else 
+        if(!\Gate::denies('post-author', $post->user_id)) 
         {
-            return \Redirect::back()->with('error', 'Sucedio un error en la actualizacion');
+            $post->categories()->sync($request->get('categories'));
+
+            if($post->fill($request->all()))
+            {
+                $post->save();
+                return \Redirect::back()->with('success', 'El post fue actualizado correctamente.');
+            } 
+            else 
+            {
+                return \Redirect::back()->with('error', 'Sucedio un error en la actualizacion');
+            }
+        } else {
+            return "Este usuario no puede editar";
         }
 
     }
@@ -318,7 +312,7 @@ class BlogController extends Controller
     public function tagPage($tag) 
     {
     
-        $posts = \App\models\Post::where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(7);
+        $posts = \App\models\Post::where('status', '=', 'publicado')->with('user')->where('tags', 'LIKE', $tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag.',%')->orWhere('tags', 'LIKE', '%,'.$tag)->orWhere('tags', '=', $tag)->orderBy('created_at', 'desc')->paginate(7);
 /*        $data = array(
             'media' => $media,
             'tag' => $tag,
@@ -335,59 +329,11 @@ class BlogController extends Controller
 
     
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function helloTest(Filesystem $filesystem)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $file = $filesystem->get(public_path() .'/hello.txt');
+        \Storage::disk('s3')->put('file.txt', 'Contents aqui asi para el file');
+        return $file;
     }
 }
