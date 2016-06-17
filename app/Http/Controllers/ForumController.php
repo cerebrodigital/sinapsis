@@ -103,7 +103,7 @@ class ForumController extends Controller
 
     public function listAllTopics()
     {
-        $topics = \App\models\ForumTopic::with('messages', 'author', 'category')->paginate(25);
+        $topics = \App\models\ForumTopic::with('messages', 'author', 'category')->orderBy('updated_at', 'DESC')->paginate(25);
         //dd($topic);
         return \View::make('frontend.forum.topics_list', compact('topics'));
     }

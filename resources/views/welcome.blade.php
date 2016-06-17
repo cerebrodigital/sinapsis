@@ -217,7 +217,63 @@
                         </div>
                         
                         
-                        
+
+              <!-- <h2><span>Otro titulo de la pagina</span></h2> -->
+              
+                            <h2><span>Últimas publicaciones en el foro</span></h2>
+
+                              <div class="forum-threads-head">
+                                <strong class="thread-subject"><span>Tema</span></strong>
+                                <strong class="thread-author">Autor</strong>
+                                <strong class="thread-replies">Respuestas</strong>
+                                <strong class="thread-views">Vistas</strong>
+                                <strong class="thread-last">Última respuesta</strong>
+                              </div>
+                              <!-- BEGIN .forum-threads -->
+                              <div class="forum-threads">
+                              @foreach($topics as $topic)
+                                <!-- BEGIN .thread-link -->
+                                <div class="thread-link thread-unread thread-sticky">
+                                  <a href="{{route('foro.topic.id', $topic->id)}}">
+                                  @if(count($topic->messages) > 0)
+                                    <i class="forum-icon strike-tooltip" title="Topic has answers"> 
+                                      <i class="fa fa-comments-o"></i>
+                                    </i>
+                                  @endif
+                                    <span>@if($topic->pinned == '1')<i class="sticky">PIN</i>@endif {{$topic->title}}</span>
+                                  </a>
+                                  <div class="thread-author">
+                                    <span class="f-user-link"><a href="{{route('dashboard.profile', $topic->author->id)}}"><strong>{{$topic->author->username}}</strong></a></span>
+                                  </div>
+                                  <div class="thread-replies">
+                                    <span>{{count($topic->messages)}}</span>
+                                  </div>
+                                  <div class="thread-views">
+                                    <span>{{$topic->views}}</span>
+                                  </div>
+                                  <div class="thread-last">
+                                  @if(count($topic->messages) >0)
+                                    <span class="f-user-link"><a href="user-single.html"><strong>autor</strong></a></span>
+                                    <span class="t-date">fecha</span>
+                                  @else
+                                    <span class="t-date">ninguna respuesta aun</span>
+                                  @endif
+                                  </div>
+                                <!-- END .thread-link -->
+                                </div>
+                              @endforeach
+                              <!-- END .forum-threads -->
+                              </div>
+                              
+                              <div class="content-padding">
+                                <div class="forum-description">
+                                  <div class="pagination center">
+                                        <a ahref="{{route('foro.topic.all')}}" class="button">Ver más temas</a>
+                                  </div>
+
+                                  
+                                </div>
+                              </div>
                         
                         <!--
                         <h2><span>Upcoming Events</span></h2>
@@ -501,6 +557,8 @@
                         
                         <!-- WIDGETS ULTIMAS PUBLICACIONES -->
                         @include('frontend.widgets.latest_posts')
+
+                        @include('frontend.widgets.ultimos_registrados')
                         
                         <!-- WIDGET CONTACTO -->
                         <div id="youtube" class="youmax"></div> 
