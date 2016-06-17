@@ -2,6 +2,10 @@
 
 @section('main')
 <!-- BEGIN .user-profile -->
+<?php
+        $user_id = \Auth::user()->id;
+?>
+
 <div class="user-profile">
     
     <div class="profile-shadow"></div>
@@ -10,7 +14,6 @@
 
     <!-- BEGIN .profile-right-side -->
     <div class="profile-right-side">
-        <?php $user_id = \Auth::user()->id; ?>
         <h2><span>LLENA TU PERFIL DE USUARIO PARA TENER MAYOR IMPACTO</span></h2>
         <!-- BEGIN .content-padding -->
         <div class="content-padding">

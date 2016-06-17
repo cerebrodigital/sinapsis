@@ -3,6 +3,19 @@
 @section('main')
 <!-- BEGIN .user-profile -->
 <div class="user-profile">
+<?php
+        $user_id = \Auth::user()->id;
+        if(!\Auth::user()->user_profile) {
+            $user_profile = new \App\models\UserProfile();
+            $user_profile->user_id = $user_id;
+            $user_profile->descripcion = "Esta descripción de usuario esta vacia";
+            $user_profile->save();
+            //dd($user_profile);
+        } else {
+            echo "Este perfil Ya tiene descripción";
+        }
+        
+?>
     
     <div class="profile-shadow"></div>
     @include('dashboard.start_left')
@@ -33,7 +46,7 @@
                     <span class="input-group-addon"><i class="fa fa-facebook"></i></span>
                     <input type="text" class="form-control" name="googleplus" value="" placeholder="Google Plus"> </div>
                     <label>Descripcion de Perfil</label><br>
-                    <textarea rows="4" cols="50" class="form-control" name="description"></textarea>
+                    <textarea rows="4" cols="50" class="form-control" name="description">Agrega una descripción acerca de ti o tu organizacion, para que no se quede la por default</textarea>
                         <br>
                         
                             <button type="submit" class="btn blue" style="float:right; font-size:20px">Continuar a mi Dashboard de Usuario</button>

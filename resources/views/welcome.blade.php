@@ -268,7 +268,7 @@
                               <div class="content-padding">
                                 <div class="forum-description">
                                   <div class="pagination center">
-                                        <a ahref="{{route('foro.topic.all')}}" class="button">Ver más temas</a>
+                                        <a href="{{route('foro.topic.all')}}" class="button">Ver más temas</a>
                                   </div>
 
                                   
