@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Cache;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -41,22 +41,44 @@ class VideoController extends Controller
         //dd($vid);
         return view('backend.pages.video_list')->with(compact('vids', 'active_menu'));
     }
-    public function listAllCategories()
+    //VISTA DE TODAS LAS CATEGORIAS
+    public function cacheAllCategories()
     {
         $vids = \App\models\Video::orderBy('updated_at', 'DESC')->paginate(20);
         $active_menu = "videos";
         $active_view = "ultimos";
         //dd($vid);
-        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'))->render();
+    }
+    public function listAllCategories()
+    {
+        if(\Cache::has('video-all-categories')) {
+            $videos = Cache::get('video-all-categories'); // Si si, entonces cargarlo y retornalo
+            return $videos; 
+        }
+        Cache::store('redis')->put('video-all-categories', $this->cacheAllCategories(), 60);
+        $videos = Cache::get('video-all-categories');
+        return $videos;  
     }
 
-    public function listMostViewed()
+    public function cacheMostViewed()
     {
         $vids = \App\models\Video::orderBy('views', 'DESC')->paginate(20);
         $active_menu = "videos";
         $active_view = "masVistos";
         //dd($vid);
-        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'));
+        return view('frontend.video.todas_categorias')->with(compact('vids', 'active_menu', 'active_view'))->render();
+    }
+    public function listMostViewed()
+    {        
+        if(\Cache::has('video-most-viewed')) {
+            $videos = Cache::get('video-most-viewed'); // Si si, entonces cargarlo y retornalo
+            return $videos; 
+        }
+        Cache::store('redis')->put('video-most-viewed', $this->cacheMostViewed(), 60);
+        $videos = Cache::get('video-most-viewed');
+        return $videos;  
+
     }
 
     public function jsonImport(Request $request)
@@ -64,26 +86,28 @@ class VideoController extends Controller
         json_encode($request->get('jsontext'));
 
     }
-
-    public function categoryPage($category) 
+    
+    public function cacheVideoCategory($category) 
     {
         $catID = \App\models\Category::where('slug', trim($category))->first();
         if(count($catID) > 0) {
-            //$categoria = \App\models\Category::with('posts')->where('id', $catID->id)->paginate(15);
             $categoria = \App\models\Category::find($catID->id)->videos()->paginate(20); 
-            //dd($categoria);
             return \View::make('frontend.video.categories', compact('categoria', 'category'))->render();
         }
         else {
-            //$categoria = \App\models\Video::with('categories')->paginate(15);
-            //return \View::make('frontend.video.todas', compact('categoria'))->render();
             abort(404);
-        }
-        //dd($catID->id);
-        
-        
+        } 
+    }
 
-        
+    public function categoryPage($category) 
+    {
+        if(\Cache::has('video-cat-'.$category)) {
+            $video = Cache::get('video-cat-'. $category); // Si si, entonces cargarlo y retornalo
+            return $video; 
+        }
+        Cache::store('redis')->put('video-cat-'.$category, $this->cacheVideoCategory($category), 60);
+        $video = Cache::get('video-cat-'. $category);
+        return $video;  
     }
 
     public function createView()
@@ -266,7 +290,8 @@ class VideoController extends Controller
         }
     }
 
-    public function displayOne($id)
+    
+    public function cacheVideo($id) 
     {
         $vids = \App\models\Video::all();
         $vid = \App\models\Video::with('comments')->where('id', '=', $id)->first();
@@ -274,10 +299,19 @@ class VideoController extends Controller
         $comments = \App\models\VideoComment::where('video_id', '=', $vid1->id)->simplePaginate(25);
         if($vid) {
             \Event::fire(new \App\Events\ViewVideoHandler($vid));
-            return view('frontend.video')->with(compact('vid', 'vids', 'comments'));
+            return view('frontend.video')->with(compact('vid', 'vids', 'comments'))->render();
         }
         abort(404);
-        
+    }
+    public function displayOne($id)
+    {
+        if(\Cache::has('video-'.$id)) { //Se checa si no hay ya algo cacheado
+            $video = Cache::get('video-'. $id); // Si si, entonces cargarlo y retornalo
+            return $video; 
+        }
+        Cache::store('redis')->put('video-'.$id, $this->cacheVideo($id), 60);  //Si no se encuentra entonces guardalo
+        $video = Cache::get('video-'. $id);
+        return $video;  
     }
 
 

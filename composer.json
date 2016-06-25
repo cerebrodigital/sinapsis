@@ -17,7 +17,10 @@
         "nesbot/carbon": "^1.21",
         "embed/embed": "^2.7",
         "s9e/text-formatter": "^0.5.2",
-        "hootlex/laravel-friendships": "^1.0"
+        "hootlex/laravel-friendships": "^1.0",
+        "predis/predis": "^1.1",
+        "sammyk/laravel-facebook-sdk": "^3.0",
+        "barryvdh/laravel-debugbar": "^2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

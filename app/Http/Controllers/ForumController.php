@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Cache;
 use Illuminate\Http\Request;
 use s9e\TextFormatter\Bundles\Forum as TextFormatter;
 use App\Http\Requests;
@@ -87,19 +87,28 @@ class ForumController extends Controller
         return \View::make('frontend.forum.create_topic', compact('categoriesList'));
     }
 
-    public function topic($id)
+    public function topicCache($id) 
     {
         $topic = \App\models\ForumTopic::where('id', '=', $id)->with('messages', 'author', 'category')->first();
         //dd($topic);
         if($topic) {
             \Event::fire(new \App\Events\ViewForumTopicHandler($topic));
-            return \View::make('frontend.forum.topic', compact('topic'));
+            return \View::make('frontend.forum.topic', compact('topic'))->render();
         } else {
             abort(404);
         }
-        
-        
     }
+    public function topic($id)
+    {
+        if(\Cache::has('topic-'.$id)) {
+            $topic = Cache::get('topic-'.$id); // Si si, entonces cargarlo y retornalo
+            return $topic; 
+        }
+        Cache::store('redis')->put('topic-'.$id, $this->topicCache($id), 15);
+        $topic = Cache::get('topic-'.$id);
+        return $topic;  
+    }
+
 
     public function listAllTopics()
     {

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Embed\Embed;
+use Cache;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManager;
 use Image;
+use DomDocument;
 use Illuminate\Filesystem\Filesystem;
 
 class BlogController extends Controller
@@ -18,6 +20,7 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $categoriesList = \App\models\Category::with('children')->where('parent_id', '0')->get();
@@ -125,7 +128,6 @@ class BlogController extends Controller
                 'featured_media'    => $request->get("featured_media"),
                 'created_at'   => date("Y-m-d H:i:s"),                
             );
-            dd(\Input::all());
             $categories = \Input::get('categories');
             $categories_count = count($categories);
             $post = \App\models\Post::create($data);
@@ -134,6 +136,51 @@ class BlogController extends Controller
             for($i = 0; $i < $categories_count; $i++) {
                 $post_categories = \App\models\PostCategory::create(array('post_id' => $post->id, 'category_id' => $categories[$i]));
             }
+            // SUBIR LAS FOTOS SI EL BODY LAS CONTIENE
+            $dom = new DomDocument();
+            $body = \Input::get("body");
+            $dom->loadHtml( mb_convert_encoding($body, 'HTML-ENTITIES', "UTF-8"), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+            $images = $dom->getElementsByTagName('img');
+            // Vamos de imagen en imagen para subirla y cambiar el atributo con URL de Amazon Cloudfront
+            foreach($images as $img){
+                $src = $img->getAttribute('src');
+                
+                // if the img source is 'data-url'
+                if(preg_match('/data:image/', $src)){
+                    
+                    // get the mimetype
+                    preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                    $mimetype = $groups['mime'];
+                    // Generating a random filename
+                    $filename = uniqid();
+                     // getting image extension
+                    $fileName = $filename .'.'.$mimetype; // renameing image
+                    //Manipular la imagen para que mida 800 de ancho y automaticamente resize de alto
+                    $image = Image::make($src)
+                      /* ->resize(300, 200) */
+                      ->encode($mimetype, 100)  // encode file to the specified mimetype
+                      ->save(storage_path() . '/posting-'. $fileName);
+                    //Guardar en la bucket de amazon aws
+                    \Storage::disk('s3')->put('blog/uploads/posts/'. $fileName, $image->__toString());
+                    $bucket = \Config::get('filesystems.disks.s3.bucket');
+                    $s3 = \Storage::disk('s3');
+                    $finalPath = $s3->getDriver()->getAdapter()->getClient()->getObjectUrl($bucket, 'blog/uploads/posts/'. $fileName);
+                    //Actualizar el post con la ruta donde se guardó el archivo
+                    $newFile = 'http://dn934mu97ziz5.cloudfront.net/blog/uploads/posts/'.$fileName;
+                    \File::delete(storage_path() . '/posting-'. $fileName);
+                    
+                    $new_src = asset($newFile);
+                    $img->removeAttribute('src');
+                    $img->setAttribute('src', $new_src);
+                } // <!--endif
+            } // <!--endforeach
+            $post = \App\models\Post::find($post->id);
+            $post->body = $dom->saveHTML();
+            $post->save();
+
+
+
+
                         //verificar que tipo de request de archivo es
             $reqType = $request->input('type');
             //si es imagen, esta se subira al amazon s3
@@ -188,28 +235,33 @@ class BlogController extends Controller
         }   
     
     }
+    // Funcion para cachear
+    public function cachePost($slug) 
+    {
+        $post = \App\models\Post::where('slug', $slug)->with('user')->first();
+        if($post->type == 'video')
+        {
+            $info = Embed::create($post->featured_media);
+            $post->featured_media = $info->code;
+            $post->featured = $info->image;
+            $info->width = 650;
+            return \View::make('frontend.post', compact('post'))->render();
+        }
+        return \View::make('frontend.post', compact('post'))->render();
+    }
 
     public function viewPost($slug)
     {
-        $post = \App\models\Post::where('slug', $slug)->with('user')->first();
-        if($post) {
-            //$post = \App\models\Post::find($posts[0]->id);
-            \Event::fire(new \App\Events\ViewPostHandler($post));
-            if($post->type == 'video')
-            {
-                $info = Embed::create($post->featured_media);
-                $post->featured_media = $info->code;
-                $post->featured = $info->image;
-                $info->width = 650;
-                return \View::make('frontend.post', compact('post'));
-            }
-            return \View::make('frontend.post', compact('post'));
-        } else {
-            abort(404);
+        if(\Cache::has('post-'.$slug)) { //Se checa si no hay ya algo cacheado
+            $post = Cache::get('post-'. $slug); // Si si, entonces cargarlo y retornalo
+            return $post; 
         }
-
-
+        Cache::store('redis')->put('post-'.$slug, $this->cachePost($slug), 60);  //Si no se encuentra entonces guardalo
+        $post = Cache::get('post-'. $slug);
+        return $post;      
     }
+
+
 
     public function likePost($id) 
     {

@@ -153,6 +153,7 @@ return [
         \Conner\Likeable\LikeableServiceProvider::class,
         SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider::class,
         Hootlex\Friendships\FriendshipsServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
 
         
@@ -214,6 +215,7 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'Facebook' => SammyK\LaravelFacebookSdk\FacebookFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
 
     ],

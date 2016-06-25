@@ -152,6 +152,23 @@ Route::get('test', function() {
         return "Soy el que escribió este artículo";
     }
 });
+Route::get('redis/', function() {
+        if(\Cache::has('posts')) {
+            $value = Cache::get('posts');
+            return $value;
+        }
+        $posts = \App\models\Post::all();
+        \Cache::store('redis')->put('posts', $posts, 1);
+        $value = Cache::get('posts');
+        return $value;
+});
+Route::get('test/', function() {
+    $message = '<img src="nelson.jpg"> <img src="nelson.jpg"> <img src="nelson.jpg"> <img src="nelson.jpg"> <b>Asi va esto con 2 imagenes </b><img src="sopas.jpg">';
+    $dom = new DomDocument();
+    $dom->loadHtml($message, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    
+    dd($dom->getElementsByTagName('img'));
+});
 
 Route::get('neuronas', function() {
     return \View::make('frontend.neuronas');

@@ -69,6 +69,7 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'region' => env('AWS_REGION', 'us-east-1'),
             'bucket' => 'cerebrodigital',
+            'cloudfront' => '',
         ],
 
         'rackspace' => [
